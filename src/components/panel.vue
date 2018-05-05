@@ -1,11 +1,11 @@
 <template>
     <div class="panel">
-        <router-link :to="{ path: '/sport/'+ sport.objectId }">
-            <h4 class="title">{{sport.title}}</h4>
-            <p class="desc">{{sport.content}}</p>
+        <router-link :to="{ path: '/action/'+ action.objectId }">
+            <h4 class="title">{{action.title}}</h4>
+            <p class="desc">{{action.content}}</p>
             <ul>
-                <li class="username">{{sport.releaseUsername}}</li>
-                <li class="datetime">{{sport.releaseTime}}</li>
+                <li class="username">{{action.releaseUsername}}</li>
+                <li class="datetime">{{action.releaseTime}}</li>
             </ul>
             <span class="isover">正在报名</span>
         </router-link>

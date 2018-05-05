@@ -1,21 +1,20 @@
 <template>
 	<div class="home">
 		<div class="banner">
-			 <swiper :options="swiperOption" class="swiper-box">
+			首页
+			 <!-- <swiper :options="swiperOption" class="swiper-box">
 					<swiper-slide class="swiper-item"><img src="../assets/images/y-banner01.jpg" alt="..."></swiper-slide>
 					<swiper-slide class="swiper-item"><img src="../assets/images/y-banner03.jpg" alt="..."></swiper-slide>
 					<div class="swiper-pagination" slot="pagination"></div>
-			</swiper>
+			</swiper> -->
 		</div>
-		<v-nav></v-nav>
-		<travel-list :travel-lists="travelListIndex"></travel-list>
 	</div>
 </template>
 
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import nav from '@/components/nav'
-import travelList from '@/components/travelList'
+//import nav from '@/components/nav'
+
 
 import { mapGetters } from 'vuex'
 
@@ -24,8 +23,8 @@ export default {
 	components: {
 		swiper,
 		swiperSlide,
-		'v-nav': nav,
-		travelList
+		//'v-nav': nav,
+		//travelList
 	},
 	data() {
 		return {

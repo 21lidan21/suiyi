@@ -14,14 +14,14 @@
 </template>
 
 <script>
-import cell from '@/components/userCell'
+//import cell from '@/components/userCell'
 
 export default {
     props: {
         cellLists: Array
     },
     components: {
-        cell
+       // cell
     },
     data() {
         return {

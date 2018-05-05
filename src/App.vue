@@ -4,21 +4,21 @@
         <v-alert v-show="showAlert"></v-alert>
         <v-loading v-show="loading"></v-loading>
 
-        <v-header :title="title" :menu-display="menuDisplay" :back-display="backDisplay" :map-display="mapDisplay"></v-header>
+        <!-- <v-header :title="title" :menu-display="menuDisplay" :back-display="backDisplay" :map-display="mapDisplay"></v-header> -->
         <div class="content" :class="{tabar: tabar}">
             <transition name="slide-left">
                 <router-view></router-view>
             </transition>  
         </div>
         <v-tabar></v-tabar>
-        <v-sidebar></v-sidebar>
+        <!-- <v-sidebar></v-sidebar> -->
   </div>
 </template>
 
 <script>
 import tabar from '@/components/tabar'
-import header from '@/components/header'
-import sidebar from '@/components/sidebar'
+//import header from '@/components/header'
+//import sidebar from '@/components/sidebar'
 import toast from '@/components/toast'
 import alert from '@/components/alert'
 import loading from '@/components/loading'
@@ -29,8 +29,8 @@ export default {
   name: 'app',
   components: {
 		'v-tabar': tabar,
-    'v-header': header,
-    'v-sidebar': sidebar,
+    //'v-header': header,
+    //'v-sidebar': sidebar,
 		'v-toast': toast,
 		'v-alert': alert,
 		'v-loading': loading,
@@ -60,13 +60,13 @@ export default {
       title () {
         switch (this.$route.path.split('/')[1]) {
             case '':
-              return "Qu约"
+              return "随益"
             case 'home':
-              return "Qu约"
-            case 'sport':
-              return "约跑"
-            case 'travel':
-              return "约行"
+              return "随益"
+            case 'action':
+              return "传微行动"
+            case 'mall':
+              return "爱心商城"
             case 'user':
               return "我的"
         }

@@ -4,19 +4,19 @@
 			<div class="tab-item">
 				<router-link to="/home">
 					<div class="tab-icon"><img src="../assets/images/tab_home.png" alt=""></div>
-					<div class="tab-text">首页</div>
+					<div class="tab-text">随益</div>
 				</router-link>
 			</div>
 			<div class="tab-item">
-				<router-link to="/sport">
+				<router-link to="/action">
 					<div class="tab-icon"><img src="../assets/images/tab_running.png" alt=""></div>
-					<div class="tab-text">约跑</div>
+					<div class="tab-text">传微行动</div>
 				</router-link>
 			</div>
 			<div class="tab-item">
-				<router-link to="/travel">
+				<router-link to="/mall">
 					<div class="tab-icon"><img src="../assets/images/tab_travel.png" alt=""></div>
-					<div class="tab-text">约行</div>
+					<div class="tab-text">爱心商城</div>
 				</router-link>
 			</div>
 			<div class="tab-item">
