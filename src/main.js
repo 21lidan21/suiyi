@@ -10,6 +10,12 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
 
+import { XHeader,XImg } from 'vux'
+
+Vue.component('x-img', XImg)
+Vue.component('x-header', XHeader)
+
+
 Object.keys(filters).forEach(k => Vue.filter(k, filters[k])) //注册过滤器
 Vue.use(ElementUI, { locale })
 /* eslint-disable no-new */

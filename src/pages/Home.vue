@@ -45,6 +45,18 @@
 	  
     </div> 
 	
+	<router-link to="/dda/index">
+		<i class="icon">&#xe733;</i>
+		<span>dda</span>
+	</router-link>
+		<!--<div class="banner">
+			首页
+			  <swiper :options="swiperOption" class="swiper-box">
+					<swiper-slide class="swiper-item"><img src="../assets/images/y-banner01.jpg" alt="..."></swiper-slide>
+					<swiper-slide class="swiper-item"><img src="../assets/images/y-banner03.jpg" alt="..."></swiper-slide>
+					<div class="swiper-pagination" slot="pagination"></div>
+			</swiper> 
+		</div>-->
 	</div>
 </template>
 
