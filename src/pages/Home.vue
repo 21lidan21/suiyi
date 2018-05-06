@@ -1,13 +1,27 @@
 <template>
 	<div class="home">
-		<div class="banner">
+<!-- <el-row type="flex" class="row-bg">
+  <el-col :span="9"><div class="grid-content bg-purple">公益物质去向查询中心</div></el-col>
+  <el-col :span="9"><div class="grid-content bg-purple-light">南宁</div></el-col>
+  
+</el-row> -->
+<el-row :gutter="20" class='quxiang'>
+  <el-col :span="20"><div class="grid-content bg-purple">公益物质去向查询中心</div></el-col>
+  <el-col :span="4"><div class="grid-content bg-purple">南宁</div></el-col>
+</el-row>
+<el-row type="flex" class="row-bg" justify="space-between">
+  <el-col :span="6"><div class="grid-content bg-purple"><span>9304名</span><br/><span>加入随益平台</span></div></el-col>
+  <el-col :span="6"><div class="grid-content bg-purple-light">成为随益平台会员</div></el-col>
+  <el-col :span="6"><div class="grid-content bg-purple">已完成帮扶对象</div></el-col>
+</el-row>
+		<!--<div class="banner">
 			首页
-			 <!-- <swiper :options="swiperOption" class="swiper-box">
+			  <swiper :options="swiperOption" class="swiper-box">
 					<swiper-slide class="swiper-item"><img src="../assets/images/y-banner01.jpg" alt="..."></swiper-slide>
 					<swiper-slide class="swiper-item"><img src="../assets/images/y-banner03.jpg" alt="..."></swiper-slide>
 					<div class="swiper-pagination" slot="pagination"></div>
-			</swiper> -->
-		</div>
+			</swiper> 
+		</div>-->
 	</div>
 </template>
 
@@ -58,9 +72,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../assets/css/function';
 
-.banner {
+.quxiang{
+ background: url(../assets/images/headerquxiang.png) no-repeat;
+ height:.82rem;
+}
+/* .banner {
 	.swiper-box {
 		width: 100%;
 		height: 100%;
@@ -80,7 +97,7 @@ export default {
 			}
 		}
 	}
-}
+} */
 
 
 </style>
