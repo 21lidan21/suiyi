@@ -1,17 +1,22 @@
 <template>
     <div id="app">
-        <v-toast v-show="showToast"></v-toast>
+        <!-- <v-toast v-show="showToast"></v-toast>
         <v-alert v-show="showAlert"></v-alert>
-        <v-loading v-show="loading"></v-loading>
-
-        <!-- <v-header :title="title" :menu-display="menuDisplay" :back-display="backDisplay" :map-display="mapDisplay"></v-header> -->
-        <div class="content" :class="{tabar: tabar}">
+        <v-loading v-show="loading"></v-loading> -->
+<div style="height:100%;" class="content" :class="{tabar: tabar}">
+  <view-box ref="viewBox">
+    <router-view></router-view>
+    
+  </view-box>
+</div>
+ <v-tabar></v-tabar>
+        <!-- <div class="content" :class="{tabar: tabar}">
             <transition name="slide-left">
                 <router-view></router-view>
             </transition>  
         </div>
-        <v-tabar></v-tabar>
-        <!-- <v-sidebar></v-sidebar> -->
+        <v-tabar></v-tabar> -->
+        
   </div>
 </template>
 
@@ -22,6 +27,7 @@ import tabar from '@/components/tabar'
 import toast from '@/components/toast'
 import alert from '@/components/alert'
 import loading from '@/components/loading'
+import { ViewBox } from 'vux'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -31,9 +37,10 @@ export default {
 		'v-tabar': tabar,
     //'v-header': header,
     //'v-sidebar': sidebar,
-		'v-toast': toast,
-		'v-alert': alert,
-		'v-loading': loading,
+		// 'v-toast': toast,
+		// 'v-alert': alert,
+    // 'v-loading': loading,
+    ViewBox
 	},
   data () {
     return {
@@ -52,11 +59,11 @@ export default {
       }
   },
   computed: {
-      ...mapGetters([
-          'loading',
-          'showToast',
-          'showAlert'
-      ]),
+      // ...mapGetters([
+      //     'loading',
+      //     'showToast',
+      //     'showAlert'
+      // ]),
       title () {
         switch (this.$route.path.split('/')[1]) {
             case '':
@@ -112,10 +119,12 @@ export default {
     font-style:normal;
     color: #ffffff;
 }
-
-html,body {
+html, body {
   height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
+
 
 a.active {
   text-decoration: none;

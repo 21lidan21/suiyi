@@ -88,15 +88,15 @@ img {
   width: 100%;
 }
 
-.swiper-container {
-  overflow: hidden;
-  position: relative;
-  height: 100%;
-}
+// .swiper-container {
+//   overflow: hidden;
+//   position: relative;
+//   height: 100%;
+// }
 
-.swiper-wrapper > div {
-  float: left;
-}
+// .swiper-wrapper > div {
+//   float: left;
+// }
 
 a,
 a:active,
@@ -130,23 +130,7 @@ body,#app{
   z-index: -1;
 }
 
-.show_line1 {
-  /* autoprefixer: off */
-  -webkit-box-orient: vertical;
-  /* autoprefixer: on */
-  overflow: hidden;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 1;
-}
 
-.show_line2 {
-  /* autoprefixer: off */
-  -webkit-box-orient: vertical;
-  /* autoprefixer: on */
-  overflow: hidden;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2;
-}
 
 span.active,input:active,button:active {
   -webkit-filter: brightness(0.9);
