@@ -94,7 +94,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import './assets/css/function';
+//@import './assets/css/function';
+
+@import './style/app';
 
 @font-face {
   font-family: 'icon';  /* project id 172436 */
@@ -124,10 +126,10 @@ a.active {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-  background: #F5F5F5;
+  //background: #F5F5F5;
   .content{
     padding-top: px2rem(100px);
-    background: #F5F5F5;
+    //background: #F5F5F5;
   }
   .tabar {
     margin-bottom: px2rem(120px);

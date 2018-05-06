@@ -75,7 +75,15 @@ export default {
 
 .quxiang{
  background: url(../assets/images/headerquxiang.png) no-repeat;
+ background-size: 100% 100%;
  height:.82rem;
+ width: 100%;
+}
+.row-bg{
+	height: 1.45rem;
+	width: 100%;
+	background: url(../assets/images/homehead.png) no-repeat ;
+    background-size: 100% 100%;
 }
 /* .banner {
 	.swiper-box {
