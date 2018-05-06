@@ -55,6 +55,14 @@ export default new Router({
       },
       component: resolve => require(['../pages/tree/index'], resolve)
     },
+    {
+			path: '/receive',
+			meta: {
+        title: '领取点',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/diandianai/Receive'], resolve)
+    },
     // {
 		// 	path: '/user/login',
 		// 	component: Login
@@ -63,7 +71,15 @@ export default new Router({
     // {
 		// 	path: '/user/navbar',
 		// 	component: Navbar
-		// },
+    // },
+    {
+      path: '/dda/index',
+      component: resolve => require(['../pages/diandianai/Index'], resolve)
+    },
+    {
+      path: '/dda/detail',
+      component: resolve => require(['../pages/diandianai/Detail'], resolve)
+    },
     {
       path: '*',
       name: 'notfound',

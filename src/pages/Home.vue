@@ -14,6 +14,10 @@
   <el-col :span="6"><div class="grid-content bg-purple-light">成为随益平台会员</div></el-col>
   <el-col :span="6"><div class="grid-content bg-purple">已完成帮扶对象</div></el-col>
 </el-row>
+	<router-link to="/dda/index">
+		<i class="icon">&#xe733;</i>
+		<span>dda</span>
+	</router-link>
 		<!--<div class="banner">
 			首页
 			  <swiper :options="swiperOption" class="swiper-box">
