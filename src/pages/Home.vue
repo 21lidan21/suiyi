@@ -17,11 +17,15 @@
 <el-row type="flex" justify="center" class='kuaigongyi'>
   <el-col :span="24"><div class="grid-content bg-purple-dark"><img src="../assets/images/kuaigongyi.jpg" alt=""></div></el-col>
 </el-row>
- <swiper  height="2.04rem" class="activity" :show-dots="false">
-      <swiper-item ><div class="swiper-slide1"><img src="../assets/images/top1.png" alt=""><span>牛奶小镇</span><br/><span>参与人数：112人</span><br/><span>捐助累计：2800天</span><br/><span>帮扶对象：191人</span></div></swiper-item>
-      <swiper-item ><div class="swiper-slide2"><img src="../assets/images/top2.png" alt=""><span>阅食小景</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div></swiper-item>
-      <swiper-item ><div class="swiper-slide3"><img src="../assets/images/top3.png" alt=""><span>传微远航</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div></swiper-item>
-  </swiper> 
+ 
+   <scroller lock-y :scrollbar-x=false>
+      <div  class="activity" >
+      <div class="swiper-slide1"><img src="../assets/images/top1.png" alt=""><span>牛奶小镇</span><br/><span>参与人数：112人</span><br/><span>捐助累计：2800天</span><br/><span>帮扶对象：191人</span></div>
+      <div class="swiper-slide2"><img src="../assets/images/top2.png" alt=""><span>阅食小景</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div>
+      <div class="swiper-slide3"><img src="../assets/images/top3.png" alt=""><span>传微远航</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div>
+    </div>
+    </scroller>
+  
 <div class='xinjintoutiao'>
 <flexbox class="xinjintoutiao-inner">
       <flexbox-item :span="2"><div class="xinjintitle"><img src="../assets/images/xinjintoutiao.png" alt=""></div></flexbox-item>
@@ -56,6 +60,7 @@
 //import { swiper, swiperSlide } from 'vue-awesome-swiper'
 //import nav from '@/components/nav'
 import { ViewBox } from 'vux'
+import { Scroller } from 'vux'
 import { Swiper, GroupTitle, SwiperItem, XButton, Divider } from 'vux'
 import { Flexbox, FlexboxItem } from 'vux'
 
@@ -66,6 +71,7 @@ export default {
 	components: {
 		// swiper, 
 		// swiperSlide,
+		Scroller,
 		ViewBox,
 		Swiper,
 		SwiperItem,
@@ -149,6 +155,7 @@ export default {
 	   margin-right: .3rem
 	}
 }
+
 .service-center{
 	width: 100%;
 	span{
@@ -172,21 +179,26 @@ export default {
   animation-duration: 1s;
   animation-fill-mode: both;
 }
- .banner {
-        width: 100%;
-        height:.74rem;
-        border-top: 0.2rem solid #f5f5f5;
-        padding: .3rem 0;
-		margin-top: .4rem;
-		color: #fff;
- }
+//  .banner {
+//         width: 100%;
+//         height:.74rem;
+//         border-top: 0.2rem solid #f5f5f5;
+//         padding: .3rem 0;
+// 		margin-top: .4rem;
+// 		color: #fff;
+//  }
+.activityContainer{
+	width:100%;
+	overflow: hidden;
+}
 .activity {
-         width: 100%;
+         width: 10rem;
         height:2.04rem;
         border-top: 0.2rem solid #f5f5f5;
         padding: .3rem 0;
 		margin-top: .4rem;
-		color: #fff;
+        color: #fff;
+        overflow: hidden;
 		img{
 		   width: .48rem;
 		   height:.46rem;	
@@ -198,7 +210,9 @@ export default {
 		  height: 1.94rem;
 		  border-radius: 5px;
 		  background: url(../assets/images/databg.png) no-repeat ;
-		  background-size: 100% 100%;
+          background-size: 100% 100%;
+          float: left;
+          margin-right: .32rem;
 		}
 	  }
 	// .swiper-slide {
