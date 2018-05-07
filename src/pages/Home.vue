@@ -2,8 +2,8 @@
 	<div class="home">
 
 <el-row :gutter="20" class='quxiang'>
-  <el-col :span="20"><div class="grid-content bg-purple">公益物质去向查询中心</div></el-col>
-  <el-col :span="4"><div class="grid-content bg-purple">南宁</div></el-col>
+  <el-col :span="18"><div class="grid-content bg-purple chaxun"><img src="../assets/images/chaxun.png" alt="">公益物质去向查询中心</div></el-col>
+  <el-col :span="6"><div class="grid-content bg-purple city"><img src="../assets/images/local.png" alt="">南宁</div></el-col>
 </el-row>
 <el-row type="flex" class="row-bg" justify="space-between">
   <el-col :span="6"><div class="grid-content bg-purple"><span>9304名</span><br/><span>加入随益平台</span></div></el-col>
@@ -61,12 +61,28 @@
   </swiper>   
 </div>
  <scroller lock-y :scrollbar-x=false>
-      <div  class="" >
-      <div class="swiper-slide1"><span>个人志愿者招募</span><br/><span>我要报名 》</span></div>
-      <div class="swiper-slide2"><span>阅食小景</span><br/><span>参与人数：36人</span></div>
-      <div class="swiper-slide3"><span>捐赠行程招募</span><br/><span>参与人数：36人</span></div>
+      <div  class="activity2" >
+      <div class="swiper-slide1"><span>个人志愿者招募</span><br/><a>我要报名 》</a></div>
+      <div class="swiper-slide2"><span>阅食小景</span><br/><a>我要报名 》</a></div>
+      <div class="swiper-slide3"><span>捐赠行程招募</span><br/><a>参与人数：36人</a></div>
     </div>
-    </scroller>
+ </scroller>
+ <div class="daai"></div>
+ <div class='service-center'>
+<p ><span>|</span>爱心商城</p>
+ <swiper auto  class="service-center-swipter" :show-dots="false">
+      <swiper-item ><div class=""><img src="../assets/images/mall1.jpg" alt=""></div></swiper-item>
+      <swiper-item ><div class=""><img src="../assets/images/mall2.jpg" alt=""></div></swiper-item>
+      <swiper-item ><div class=""><img src="../assets/images/mall3.jpg" alt=""></div></swiper-item>
+  </swiper>   
+</div>
+<div class='group1'>
+ <flexbox>
+      <flexbox-item><div class="flex-group1"><img src="../assets/images/qiye.png" alt=""><br/><span>入驻企业</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group1"><img src="../assets/images/jingxuan.png" alt=""><br/><span>爱心精选</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group1"><img src="../assets/images/jiaoru.png" alt=""><br/><span>爱心加入</span></div></flexbox-item>
+</flexbox>
+</div>
 	<router-link to="/dda/index">
 		<i class="icon">&#xe733;</i>
 		<span>dda</span>
@@ -135,6 +151,26 @@ export default {
  background-size: 100% 100%;
  height:.82rem;
  width: 100%;
+ line-height: .82rem;
+ color:linear-gradient(-180deg, #2DA7E0 0%, #77BAF1 100%);
+ .chaxun{
+	 line-height: .5rem;
+	 img{
+		height:.36rem;
+		width: .36rem;
+		margin-right: .18rem;
+	 }
+ }
+ .city{
+	 font-family:PingFangSC-Regular;
+	font-size:.28rem;
+	color:#5b5b5b;
+	img{
+		height:.3rem;
+		width: .3rem;
+		margin-right: .18rem;
+	 }
+ }
 }
 .row-bg{
 	height: 1.45rem;
@@ -207,11 +243,15 @@ export default {
 		margin-bottom: .24rem;
 	}
 }
+.chuanweixingdong{
+	height: 2.2rem;
+	width: 100%;
+}
 .chuanweixingdong-swipter{
 	.cw1,.cw2,.cw3{
 	height: 2.2rem;
 	width: 100%;
-	background-size: 100% 100%;
+	background-size: contain;
 	position: relative;
 	}
 	.cw1{
@@ -268,11 +308,11 @@ export default {
 	overflow: hidden;
 }
 .activity {
-         width: 10rem;
+        width: 10rem;
         height:2.04rem;
-        border-top: 0.2rem solid #f5f5f5;
+        
         padding: .3rem 0;
-		margin-top: .4rem;
+		
         color: #fff;
         overflow: hidden;
 		img{
@@ -291,23 +331,39 @@ export default {
           margin-right: .32rem;
 		}
 	  }
-	// .swiper-slide {
-    //     text-align: center;
-    //     font-size: 18px;
-    //     background: #fff;
-    //     /* Center slide text vertically */
-    //     display: -webkit-box;
-    //     display: -ms-flexbox;
-    //     display: -webkit-flex;
-    //     display: flex;
-    //     -webkit-box-pack: center;
-    //     -ms-flex-pack: center;
-    //     -webkit-justify-content: center;
-    //     justify-content: center;
-    //     -webkit-box-align: center;
-    //     -ms-flex-align: center;
-    //     -webkit-align-items: center;
-    //     align-items: center;
-    //   }
+	  .activity2 {
+        width: 10rem;
+        height:1.4rem;
+        border-top: 0.2rem solid #f5f5f5;
+        padding: .3rem 0;
+		margin-top: .4rem;
+        color: #000;
+        overflow: hidden;
+		  margin-right: .17rem;
+		font-size: .26rem;
+		line-height:.5rem;
+		.swiper-slide1,.swiper-slide2,.swiper-slide3{
+		  width: 2.95rem;
+		  height: 1.94rem;
+		  border-radius: 5px;
+		  background: #fff no-repeat ;
+          background-size: 100% 100%;
+          float: left;
+		  margin-right: .32rem;
+		 
+		  a{
+			 font-size: .2rem;
+			 color:#2da7e0;
+			letter-spacing:2.95px;
+			line-height:.23rem; 
+		  }
+		}
+	  }
+	.daai{
+		background: url(../assets/images/daaiwujiang.jpg) no-repeat ;
+		background-size: 100% 100%;
+		width: 100%;
+		  height: 2rem;
+	}
 
 </style>
