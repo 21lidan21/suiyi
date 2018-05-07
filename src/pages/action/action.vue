@@ -13,11 +13,14 @@
       <swiper-item class="black"><h2 class="title fadeInUp animated">我们试图</h2></swiper-item>
       <swiper-item class="black"><h2 class="title fadeInUp animated">做些改变</h2></swiper-item>
     </swiper> -->
-    <div height="2.04rem" class="activity" >
-      <div class="swiper-slide1"><img src="../../assets/images/top1.png" alt=""><span>牛奶小镇</span><br/><span>参与人数：112人</span><br/><span>捐助累计：2800天</span><br/><span>帮扶对象：191人</span></div>
-      <div class="swiper-slide2"><img src="../../assets/images/top2.png" alt=""><span>阅食小景</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div>
-      <div class="swiper-slide3"><img src="../../assets/images/top3.png" alt=""><span>传微远航</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div>
-  </div> 
+    <div class='chuanweixingdong'>
+<p ><span>|</span>传微行动</p>
+ <swiper auto  class="chuanweixingdong-swipter" :show-dots="false">
+      <swiper-item ><div class="cw1"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></swiper-item>
+      <swiper-item ><div class="cw2"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></swiper-item>
+      <swiper-item ><div class="cw3"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></swiper-item>
+  </swiper>   
+</div>
 
   </div>
 </template>
@@ -54,6 +57,42 @@ export default {
 .green{
     background: green;
     
+}
+.chuanweixingdong-swipter{
+	.cw1,.cw2,.cw3{
+	height: 2.2rem;
+	width: 100%;
+	background-size: 100% 100%;
+	position: relative;
+	}
+	.cw1{
+	
+	background: url(../../assets/images/cwxd01.jpg) no-repeat ;
+
+	}
+	.cw2{
+	
+	background: url(../../assets/images/cwxd02.jpg) no-repeat ;
+
+	}
+	.cw3{
+	
+	background: url(../../assets/images/cwxd03.jpg) no-repeat ;
+	
+	}
+	p{
+	
+		position: absolute;
+		bottom: 0;
+        height: .68rem;
+        width: 100%;
+		background:rgba(0,0,0,0.40);
+		font-family:PingFangSC-Regular;
+		font-size:.24rem;
+		color:#ffffff;
+		letter-spacing:1.02px;
+		text-align:left;
+	}
 }
 .activity {
          width: 10rem;

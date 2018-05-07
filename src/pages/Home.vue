@@ -28,8 +28,8 @@
   
 <div class='xinjintoutiao'>
 <flexbox class="xinjintoutiao-inner">
-      <flexbox-item :span="2"><div class="xinjintitle"><img src="../assets/images/xinjintoutiao.png" alt=""></div></flexbox-item>
-  <flexbox-item><div class="flex-demo"><swiper auto height="30px" direction="vertical" :interval=2000 class="text-scroll" :show-dots="false">
+   <flexbox-item :span="2"><div class="xinjintitle"><img src="../assets/images/xinjintoutiao.png" alt=""></div></flexbox-item>
+  <flexbox-item><div class=""><swiper auto height="30px" direction="vertical" :interval=2000 class="text-scroll" :show-dots="false">
       <swiper-item><div class="item"><img src="../assets/images/toutiao01.png" alt=""><div>目前入驻联盟商家xxx家</div><div>青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
       <swiper-item><div class="item"><img src="../assets/images/toutiao02.png" alt=""><div>目前入驻联盟商家xxx家</div><div>青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
       <swiper-item><div class="item"><img src="../assets/images/toutiao03.png" alt=""><div>目前入驻联盟商家xxx家</div><div>青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
@@ -43,11 +43,30 @@
       <swiper-item ><div class=""><img src="../assets/images/servicecenter1.jpg" alt=""></div></swiper-item>
       <swiper-item ><div class=""><img src="../assets/images/servicecenter2.jpg" alt=""></div></swiper-item>
       <swiper-item ><div class=""><img src="../assets/images/servicecenter3.jpg" alt=""></div></swiper-item>
-  </swiper> 
-  
+  </swiper>   
 </div>
- 
-	
+<div class='group1'>
+ <flexbox>
+      <flexbox-item><div class="flex-group1"><img src="../assets/images/icon01.png" alt=""><br/><span>理事单位/会员</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group1"><img src="../assets/images/icon02.png" alt=""><br/><span>联盟商家</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group1"><img src="../assets/images/icon03.png" alt=""><br/><span>加入事业中心</span></div></flexbox-item>
+</flexbox>
+</div>	
+<div class='chuanweixingdong'>
+<p ><span>|</span>传微行动</p>
+ <swiper auto  class="chuanweixingdong-swipter" :show-dots="false">
+      <swiper-item ><div class="cw1"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></swiper-item>
+      <swiper-item ><div class="cw2"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></swiper-item>
+      <swiper-item ><div class="cw3"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></swiper-item>
+  </swiper>   
+</div>
+ <scroller lock-y :scrollbar-x=false>
+      <div  class="" >
+      <div class="swiper-slide1"><span>个人志愿者招募</span><br/><span>我要报名 》</span></div>
+      <div class="swiper-slide2"><span>阅食小景</span><br/><span>参与人数：36人</span></div>
+      <div class="swiper-slide3"><span>捐赠行程招募</span><br/><span>参与人数：36人</span></div>
+    </div>
+    </scroller>
 	<router-link to="/dda/index">
 		<i class="icon">&#xe733;</i>
 		<span>dda</span>
@@ -175,6 +194,63 @@ export default {
 		}
 	}
 }
+.group1{
+	height: 2.03rem;
+	width: 100%;
+}
+.flex-group1{
+	margin: 0 auto;
+	text-align: center;
+	img{
+		width: .86rem;
+		height: .86rem;
+		margin-bottom: .24rem;
+	}
+}
+.chuanweixingdong-swipter{
+	.cw1,.cw2,.cw3{
+	height: 2.2rem;
+	width: 100%;
+	background-size: 100% 100%;
+	position: relative;
+	}
+	.cw1{
+	
+	background: url(../assets/images/cwxd01.jpg) no-repeat ;
+
+	}
+	.cw2{
+	
+	background: url(../assets/images/cwxd02.jpg) no-repeat ;
+
+	}
+	.cw3{
+	
+	background: url(../assets/images/cwxd03.jpg) no-repeat ;
+	
+	}
+	p{
+	
+		position: absolute;
+		bottom: 0;
+		height: .68rem;
+		width: 100%;
+		display: block;
+		background:rgba(0,0,0,0.40);
+		font-family:PingFangSC-Regular;
+		font-size:.24rem;
+		color:#ffffff;
+		letter-spacing:1.02px;
+		text-align:left;
+	}
+}
+// .flex-demo {
+//   text-align: center;
+//   color: #fff;
+//   background-color: #20b907;
+//   border-radius: 4px;
+//   background-clip: padding-box;
+// }
 .animated {
   animation-duration: 1s;
   animation-fill-mode: both;
