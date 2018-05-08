@@ -45,7 +45,7 @@ export default new Router({
         title: '随益',
         requireAuth: false
       },
-      component: resolve => require(['../pages/Home'], resolve)
+      component: resolve => require(['../pages/usercenter/usercenter'], resolve)
     },
     {
 			path: '/mall',
@@ -70,6 +70,14 @@ export default new Router({
         requireAuth: false
       },
       component: resolve => require(['../pages/diandianai/Bmap'], resolve)
+    },
+      {
+			path: '/login',
+			meta: {
+        title: '验证码登录',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/usercenter/login'], resolve)
     },
     // {
 		// 	path: '/user/login',
