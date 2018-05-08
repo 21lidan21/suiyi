@@ -5,7 +5,7 @@
       <x-input title="请输入验证码" class="weui-vcode">
         <x-button slot="right" type="primary" mini>发送验证码</x-button>
       </x-input>
-       <x-button @click.native="iconType = 'success'"  show-loading> 登录</x-button>
+       <x-button   @click.native="login" > 登录</x-button>
      
      </group>
    </div>
@@ -25,7 +25,12 @@ export default {
         maskValue:'',
         iconType: ''
     };
-  }
+  },
+  methods: {
+	login(){
+        console.log(1)
+    }	
+	}
 };
 </script>
 <style scoped >
@@ -37,5 +42,7 @@ export default {
 }
 x-button{
     background: red;
+    
 }
+
 </style>
