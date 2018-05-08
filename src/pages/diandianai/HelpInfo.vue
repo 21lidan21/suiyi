@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/css/function";
+//@import "../../assets/css/function";
 .footer{
   position: absolute;
   bottom: 2em;

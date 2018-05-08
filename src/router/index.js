@@ -79,6 +79,14 @@ export default new Router({
       },
       component: resolve => require(['../pages/usercenter/login'], resolve)
     },
+    {
+			path: '/regist',
+			meta: {
+        title: '验证码登录',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/usercenter/regist'], resolve)
+    },
     // {
 		// 	path: '/user/login',
 		// 	component: Login
