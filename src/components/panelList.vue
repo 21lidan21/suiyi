@@ -42,7 +42,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../assets/css/function';
 
 .travel-list {
     margin-top: px2rem(15px);

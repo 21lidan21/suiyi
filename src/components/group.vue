@@ -35,7 +35,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/css/function';
 
 .group {
     margin-bottom: px2rem(20px);

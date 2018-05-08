@@ -24,7 +24,6 @@
 </script>
 
 <style lang="scss" scoped>
-    @import '../assets/css/function';
     .alert {
         z-index: 1000;
         .alert-wrap {
