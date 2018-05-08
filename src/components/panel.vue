@@ -29,7 +29,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/css/function';
 
 .panel {
     margin: px2rem(20px) 0 0;
