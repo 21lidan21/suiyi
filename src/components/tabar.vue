@@ -46,8 +46,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../assets/css/function';
-
 .tabar{
 	.tab{
 		position: fixed;
@@ -73,6 +71,7 @@ export default {
 	    	text-align: center;
 			a{
 				display: block;
+				padding: 10px;
 				font-size: 14px;
 					color: rgb(77, 85, 93);
 					&.active{
@@ -80,8 +79,8 @@ export default {
 						text-decoration: none;
 					}
 				.tab-icon{
-					width: px2rem(50px);
-					height: px2rem(50px);
+					width: 50px;
+					height: 50px;
 					margin: 0 auto;
 					img{
 						width: 100%;

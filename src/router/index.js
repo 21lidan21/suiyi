@@ -64,6 +64,14 @@ export default new Router({
       component: resolve => require(['../pages/diandianai/Receive'], resolve)
     },
     {
+			path: '/bmap',
+			meta: {
+        title: '地图',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/diandianai/Bmap'], resolve)
+    },
+      {
 			path: '/login',
 			meta: {
         title: '验证码登录',
@@ -87,6 +95,18 @@ export default new Router({
     {
       path: '/dda/detail',
       component: resolve => require(['../pages/diandianai/Detail'], resolve)
+    },
+    {
+      path: '/dda/join',
+      component: resolve => require(['../pages/diandianai/Join'], resolve)
+    },
+    {
+      path: '/dda/joincamp',
+      component: resolve => require(['../pages/diandianai/JoinCamp'], resolve)
+    },
+    {
+      path: '/dda/helpinfo',
+      component: resolve => require(['../pages/diandianai/HelpInfo'], resolve)
     },
     {
       path: '*',

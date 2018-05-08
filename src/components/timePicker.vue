@@ -3,7 +3,7 @@
         <div class="mask" @click="hideTimePicker"></div>
         <div class="picker-box-c">
             <div class="picker-header">
-                <div class="picker-prev" @click="preMon"> << </div>
+                <div class="picker-prev" @click="preMon"> </div>
                 <div class="picker-year">{{year}}年 {{month}}月</div>
                 <div class="picker-next" @click="nextMon"> >> </div>
             </div>
@@ -18,7 +18,7 @@
                     <div class="picker-weekday">六</div>
                 </div>
                 <div class="picker-con">
-                    <div class="picker-day" v-for="pick in picker" 
+                    <div class="picker-day" v-for="pick in picker" :key="pick"
                         :class="{'outfocus': pick.outfocus, 
                                 'today': pick.showday, 
                                 'start': showStartEnvfun(pick.dateNum,pick.outfocus), 
@@ -292,7 +292,6 @@
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/css/function';
 
 .picker-box {
     z-index: 100;
@@ -342,7 +341,7 @@
                     height: px2rem(80px);
                     line-height: px2rem(80px);
                     margin: px2rem(2px) 0;
-                    colors: #555;
+                    color: #555;
                     font-weight: 600;
                     text-align: center;
                 }
