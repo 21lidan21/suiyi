@@ -63,6 +63,14 @@ export default new Router({
       },
       component: resolve => require(['../pages/diandianai/Receive'], resolve)
     },
+    {
+			path: '/bmap',
+			meta: {
+        title: '地图',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/diandianai/Bmap'], resolve)
+    },
     // {
 		// 	path: '/user/login',
 		// 	component: Login
