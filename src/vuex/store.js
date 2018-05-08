@@ -6,6 +6,7 @@ import sport from './modules/sport'
 import travel from './modules/travel'
 import detail from './modules/detail'
 import com from './modules/com'
+import recevie from './modules/receive'
 
 Vue.use(Vuex)
 
@@ -15,6 +16,7 @@ export default new Vuex.Store({
         sport,
         travel,
         detail,
-        com
+        com,
+        recevie
     }
 })

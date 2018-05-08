@@ -1,7 +1,7 @@
 <template>
 	<div class="conten-body">
     <x-header   class="header" :left-options="{backText: ''}">查看领取点</x-header>
-		<div class="title"><span>门店排序</span></div>
+		<div class="title"><span @click="get11">门店排序</span></div>
 		<el-menu
 		:default-active="activeIndex2"
 		class="el-menu-demo"
@@ -35,6 +35,8 @@
 
 <script>
 import api from '../../fetch/api'
+ import { mapGetters,mapActions } from 'vuex'
+import { setTimeout } from 'timers';
 
 export default {
   
@@ -43,35 +45,36 @@ export default {
       strTest:'',
       activeIndex: "1",
       activeIndex2: "1",
-      dataList:[{"storeName":"新竹店","address":"新竹小区44栋","longitude":"108.3548919668","latitude":"22.821566423099725"},{"storeName":"商城总仓","address":"新竹小区44栋","longitude":"108.3548919668","latitude":"22.821566423099725"},{"storeName":"伶珑店","address":"仙葫开泰路伶龙市场内南外铺第68号","longitude":"108.4444","latitude":"22.818404239252168"},{"storeName":"开泰店","address":"仙葫开泰路63号金地世家1栋A23号1楼","longitude":"108.44528","latitude":"22.81803159753781"},{"storeName":"越秀店","address":"越秀路1号凯越国际9号楼一层2号商铺","longitude":"","latitude":""},{"storeName":"防城富康店","address":"防城镇金狮街公安局宿舍一楼铺面","longitude":"","latitude":""},{"storeName":"防城5号店","address":"辉达山水豪庭小区内","longitude":"","latitude":""},{"storeName":"防城4号店","address":"珍珠路桂海东盟小区","longitude":"","latitude":""},{"storeName":"防城3号店","address":"丽江花园1-26商铺","longitude":"","latitude":""},{"storeName":"防城2号店","address":"防东路27号","longitude":"","latitude":""},{"storeName":"防城1号店","address":"阳光海岸3期南门2803号","longitude":"","latitude":""},{"storeName":"上思店","address":"","longitude":"","latitude":""},{"storeName":"东兴金冠店","address":"东兴市金冠路14号—5号铺面","longitude":"","latitude":""},{"storeName":"总部","address":"","longitude":"","latitude":""}]
+      //dataList:[{"storeName":"新竹店","address":"新竹小区44栋","longitude":"108.3548919668","latitude":"22.821566423099725"},{"storeName":"商城总仓","address":"新竹小区44栋","longitude":"108.3548919668","latitude":"22.821566423099725"},{"storeName":"伶珑店","address":"仙葫开泰路伶龙市场内南外铺第68号","longitude":"108.4444","latitude":"22.818404239252168"},{"storeName":"开泰店","address":"仙葫开泰路63号金地世家1栋A23号1楼","longitude":"108.44528","latitude":"22.81803159753781"},{"storeName":"越秀店","address":"越秀路1号凯越国际9号楼一层2号商铺","longitude":"","latitude":""},{"storeName":"防城富康店","address":"防城镇金狮街公安局宿舍一楼铺面","longitude":"","latitude":""},{"storeName":"防城5号店","address":"辉达山水豪庭小区内","longitude":"","latitude":""},{"storeName":"防城4号店","address":"珍珠路桂海东盟小区","longitude":"","latitude":""},{"storeName":"防城3号店","address":"丽江花园1-26商铺","longitude":"","latitude":""},{"storeName":"防城2号店","address":"防东路27号","longitude":"","latitude":""},{"storeName":"防城1号店","address":"阳光海岸3期南门2803号","longitude":"","latitude":""},{"storeName":"上思店","address":"","longitude":"","latitude":""},{"storeName":"东兴金冠店","address":"东兴市金冠路14号—5号铺面","longitude":"","latitude":""},{"storeName":"总部","address":"","longitude":"","latitude":""}]
     };
+  },
+  computed:{
+    ...mapGetters([
+"dataList"
+    ])
   },
    components:{
   },
-  mounted:()=>{ 
-     var vm = this;
-     vm.dataList = 111;
-     let param = {'code':1,'token':'B254276439438EFC81C2DF56C736F6F9A752512D1333A66D3439C32BAF321A215A66370C9893ED271359AAF5DE888148'};
-     api.getStoreList(param).then(res=>{
-        console.log(JSON.stringify(res));
-        vm.dataList = res;
-     }).catch(err=>{
 
-     });
-  },
+  beforeRouteEnter(to, from, next) {
+        next((vm) => {
+           
+            vm.get11(vm)
+        })
+    },
   methods: {
+    ...mapActions({ getDetail: 'getDetail' }),
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
+    },
+    get11(){
+      
+      this.$store.dispatch("getDetail11",34567);
     },
     goto(item){
       console.log(item);
       localStorage.setItem("item",JSON.stringify(item));
       this.$router.push("./bmap");
-    },
-    getStoreList:()=>{
-     let param = {'code':1,'token':'B254276439438EFC81C2DF56C736F6F9A752512D1333A66D3439C32BAF321A2166E36BCF292696DBC72F38F1F173A49A'};
-     var a = api.getStoreList(param);
-     console.log(a);
     }
   }
 };

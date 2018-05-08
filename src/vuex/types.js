@@ -34,3 +34,5 @@ export const GET_SPORTS_DETAIL  = 'GET_SPORTS_DETAIL' //获取主题详情
 
 //travels 主题详情
 export const GET_TRAVELS_DETAIL  = 'GET_TRAVELS_DETAIL' //获取主题详情
+
+export const GET_DATA_LIST = 'GET_DATA_LIST'

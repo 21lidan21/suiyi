@@ -97,6 +97,18 @@ export default new Router({
       component: resolve => require(['../pages/diandianai/Detail'], resolve)
     },
     {
+      path: '/dda/join',
+      component: resolve => require(['../pages/diandianai/Join'], resolve)
+    },
+    {
+      path: '/dda/joincamp',
+      component: resolve => require(['../pages/diandianai/JoinCamp'], resolve)
+    },
+    {
+      path: '/dda/helpinfo',
+      component: resolve => require(['../pages/diandianai/HelpInfo'], resolve)
+    },
+    {
       path: '*',
       name: 'notfound',
       component: NotFound
