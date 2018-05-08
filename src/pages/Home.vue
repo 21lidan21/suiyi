@@ -11,9 +11,11 @@
   <el-col :span="6"><div class="grid-content bg-purple">已完成帮扶对象</div></el-col>
 </el-row>
 
+<router-link to="/dda/index">
 <el-row type="flex" justify="center" class='diandianai'>
   <el-col :span="24"><div class="grid-content bg-purple-dark"><img src="../assets/images/diandianai.jpg" alt=""></div></el-col>
 </el-row>
+</router-link>
 <el-row type="flex" justify="center" class='kuaigongyi'>
   <el-col :span="24"><div class="grid-content bg-purple-dark"><img src="../assets/images/kuaigongyi.jpg" alt=""></div></el-col>
 </el-row>
@@ -83,10 +85,7 @@
       <flexbox-item><div class="flex-group1"><img src="../assets/images/jiaoru.png" alt=""><br/><span>爱心加入</span></div></flexbox-item>
 </flexbox>
 </div>
-	<router-link to="/dda/index">
-		<i class="icon">&#xe733;</i>
-		<span>dda</span>
-	</router-link>
+	
 		
 	</div>
 </template>
@@ -94,195 +93,184 @@
 <script>
 //import { swiper, swiperSlide } from 'vue-awesome-swiper'
 //import nav from '@/components/nav'
-import { ViewBox } from 'vux'
-import { Scroller } from 'vux'
-import { Swiper, GroupTitle, SwiperItem, XButton, Divider } from 'vux'
-import { Flexbox, FlexboxItem } from 'vux'
+import { ViewBox } from "vux";
+import { Scroller } from "vux";
+import { Swiper, GroupTitle, SwiperItem, XButton, Divider } from "vux";
+import { Flexbox, FlexboxItem } from "vux";
 
 //import { mapGetters } from 'vuex'
 
 export default {
-	
-	components: {
-		// swiper, 
-		// swiperSlide,
-		Scroller,
-		ViewBox,
-		Swiper,
-		SwiperItem,
-		GroupTitle,
-		XButton,
-		Divider,
-		Flexbox,
-		 FlexboxItem
-	},
-	data() {
-		return {
-
-		 auto:false,
-		 loop:false
-		}
-	},
-	created() {
-        // if (this.travelListIndex.length == 0) {
-        //     this.$store.dispatch('getTravelsList')
-        // }
-    },
-	computed: {
-		// ...mapGetters([
-		// 	'travelListIndex'
-		// ])
-	},
-	mounted(){
-		
-    },
-	methods: {
-		
-	}
-}
+  components: {
+    // swiper,
+    // swiperSlide,
+    Scroller,
+    ViewBox,
+    Swiper,
+    SwiperItem,
+    GroupTitle,
+    XButton,
+    Divider,
+    Flexbox,
+    FlexboxItem
+  },
+  data() {
+    return {
+      auto: false,
+      loop: false
+    };
+  },
+  created() {
+    // if (this.travelListIndex.length == 0) {
+    //     this.$store.dispatch('getTravelsList')
+    // }
+  },
+  computed: {
+    // ...mapGetters([
+    // 	'travelListIndex'
+    // ])
+  },
+  mounted() {},
+  methods: {}
+};
 </script>
 
 <style scoped lang="scss">
-.home{
-	padding: 0 .3rem;
+.home {
+  padding: 0 0.3rem;
 }
-.quxiang{
- background: url(../assets/images/headerquxiang.png) no-repeat;
- background-size: 100% 100%;
- height:.82rem;
- width: 100%;
- line-height: .82rem;
- color:linear-gradient(-180deg, #2DA7E0 0%, #77BAF1 100%);
- .chaxun{
-	 line-height: .5rem;
-	 img{
-		height:.36rem;
-		width: .36rem;
-		margin-right: .18rem;
-	 }
- }
- .city{
-	 font-family:PingFangSC-Regular;
-	font-size:.28rem;
-	color:#5b5b5b;
-	img{
-		height:.3rem;
-		width: .3rem;
-		margin-right: .18rem;
-	 }
- }
+.quxiang {
+  background: url(../assets/images/headerquxiang.png) no-repeat;
+  background-size: 100% 100%;
+  height: 0.82rem;
+  width: 100%;
+  line-height: 0.82rem;
+  color: linear-gradient(-180deg, #2da7e0 0%, #77baf1 100%);
+  .chaxun {
+    line-height: 0.5rem;
+    img {
+      height: 0.36rem;
+      width: 0.36rem;
+      margin-right: 0.18rem;
+    }
+  }
+  .city {
+    font-family: PingFangSC-Regular;
+    font-size: 0.28rem;
+    color: #5b5b5b;
+    img {
+      height: 0.3rem;
+      width: 0.3rem;
+      margin-right: 0.18rem;
+    }
+  }
 }
-.row-bg{
-	height: 1.45rem;
-	width: 100%;
-	background: url(../assets/images/homehead.png) no-repeat ;
-    background-size: 100% 100%;
+.row-bg {
+  height: 1.45rem;
+  width: 100%;
+  background: url(../assets/images/homehead.png) no-repeat;
+  background-size: 100% 100%;
 }
-.diandianai{
-	margin-top: .39rem;
-	width: 6.9rem;
-	height: 1.28rem;
-	margin: 0 auto;
+.diandianai {
+  margin-top: 0.39rem;
+  width: 6.9rem;
+  height: 1.28rem;
+  margin: 0 auto;
 }
-.kuaigongyi{
-	margin-top: .54rem;
-	width: 6.9rem;
-	height: 1.8rem;
+.kuaigongyi {
+  margin-top: 0.54rem;
+  width: 6.9rem;
+  height: 1.8rem;
 }
-.xinjintoutiao{
-	height: .9rem;
-	width: 100%;
-	padding: .26rem 0;
-	border: 1px solid red;
-	.xinjintoutiao-inner{
-		height: 100%;
-	}
+.xinjintoutiao {
+  height: 0.9rem;
+  width: 100%;
+  padding: 0.26rem 0;
+  border: 1px solid red;
+  .xinjintoutiao-inner {
+    height: 100%;
+  }
 }
-.xinjintitle{
-	width: .64rem;
-	height: .64rem;
+.xinjintitle {
+  width: 0.64rem;
+  height: 0.64rem;
 }
-.item{
-	img{
-       width: .8rem;
-	   height:.8rem;
-	   float: left;
-	   margin-right: .3rem
-	}
+.item {
+  img {
+    width: 0.8rem;
+    height: 0.8rem;
+    float: left;
+    margin-right: 0.3rem;
+  }
 }
 
-.service-center{
-	width: 100%;
-	span{
-		color: #2da7e0;
-		width: 4px;
-		margin-right: .3rem;
-	}
-	p{
-		font-size: .28rem
-	}
-	.service-center-swipter{
-		margin: .26rem 0 .3rem 0;
-		height: 2.2rem;
-		img{
-			width: 6.9rem;
-			height: 100%;
-		}
-	}
+.service-center {
+  width: 100%;
+  span {
+    color: #2da7e0;
+    width: 4px;
+    margin-right: 0.3rem;
+  }
+  p {
+    font-size: 0.28rem;
+  }
+  .service-center-swipter {
+    margin: 0.26rem 0 0.3rem 0;
+    height: 2.2rem;
+    img {
+      width: 6.9rem;
+      height: 100%;
+    }
+  }
 }
-.group1{
-	height: 2.03rem;
-	width: 100%;
+.group1 {
+  height: 2.03rem;
+  width: 100%;
 }
-.flex-group1{
-	margin: 0 auto;
-	text-align: center;
-	img{
-		width: .86rem;
-		height: .86rem;
-		margin-bottom: .24rem;
-	}
+.flex-group1 {
+  margin: 0 auto;
+  text-align: center;
+  img {
+    width: 0.86rem;
+    height: 0.86rem;
+    margin-bottom: 0.24rem;
+  }
 }
-.chuanweixingdong{
-	height: 2.2rem;
-	width: 100%;
+.chuanweixingdong {
+  height: 2.2rem;
+  width: 100%;
 }
-.chuanweixingdong-swipter{
-	.cw1,.cw2,.cw3{
-	height: 2.2rem;
-	width: 100%;
-	background-size: contain;
-	position: relative;
-	}
-	.cw1{
-	
-	background: url(../assets/images/cwxd01.jpg) no-repeat ;
-
-	}
-	.cw2{
-	
-	background: url(../assets/images/cwxd02.jpg) no-repeat ;
-
-	}
-	.cw3{
-	
-	background: url(../assets/images/cwxd03.jpg) no-repeat ;
-	
-	}
-	p{
-	
-		position: absolute;
-		bottom: 0;
-		height: .68rem;
-		width: 100%;
-		display: block;
-		background:rgba(0,0,0,0.40);
-		font-family:PingFangSC-Regular;
-		font-size:.24rem;
-		color:#ffffff;
-		letter-spacing:1.02px;
-		text-align:left;
-	}
+.chuanweixingdong-swipter {
+  .cw1,
+  .cw2,
+  .cw3 {
+    height: 2.2rem;
+    width: 100%;
+    background-size: contain;
+    position: relative;
+  }
+  .cw1 {
+    background: url(../assets/images/cwxd01.jpg) no-repeat;
+  }
+  .cw2 {
+    background: url(../assets/images/cwxd02.jpg) no-repeat;
+  }
+  .cw3 {
+    background: url(../assets/images/cwxd03.jpg) no-repeat;
+  }
+  p {
+    position: absolute;
+    bottom: 0;
+    height: 0.68rem;
+    width: 100%;
+    display: block;
+    background: rgba(0, 0, 0, 0.4);
+    font-family: PingFangSC-Regular;
+    font-size: 0.24rem;
+    color: #ffffff;
+    letter-spacing: 1.02px;
+    text-align: left;
+  }
 }
 // .flex-demo {
 //   text-align: center;
@@ -303,67 +291,70 @@ export default {
 // 		margin-top: .4rem;
 // 		color: #fff;
 //  }
-.activityContainer{
-	width:100%;
-	overflow: hidden;
+.activityContainer {
+  width: 100%;
+  overflow: hidden;
 }
 .activity {
-        width: 10rem;
-        height:2.04rem;
-        
-        padding: .3rem 0;
-		
-        color: #fff;
-        overflow: hidden;
-		img{
-		   width: .48rem;
-		   height:.46rem;	
-		   float: right;
-		   margin-right: .17rem;
-		}
-		.swiper-slide1,.swiper-slide2,.swiper-slide3{
-		  width: 2.95rem;
-		  height: 1.94rem;
-		  border-radius: 5px;
-		  background: url(../assets/images/databg.png) no-repeat ;
-          background-size: 100% 100%;
-          float: left;
-          margin-right: .32rem;
-		}
-	  }
-	  .activity2 {
-        width: 10rem;
-        height:1.4rem;
-        border-top: 0.2rem solid #f5f5f5;
-        padding: .3rem 0;
-		margin-top: .4rem;
-        color: #000;
-        overflow: hidden;
-		  margin-right: .17rem;
-		font-size: .26rem;
-		line-height:.5rem;
-		.swiper-slide1,.swiper-slide2,.swiper-slide3{
-		  width: 2.95rem;
-		  height: 1.94rem;
-		  border-radius: 5px;
-		  background: #fff no-repeat ;
-          background-size: 100% 100%;
-          float: left;
-		  margin-right: .32rem;
-		 
-		  a{
-			 font-size: .2rem;
-			 color:#2da7e0;
-			letter-spacing:2.95px;
-			line-height:.23rem; 
-		  }
-		}
-	  }
-	.daai{
-		background: url(../assets/images/daaiwujiang.jpg) no-repeat ;
-		background-size: 100% 100%;
-		width: 100%;
-		  height: 2rem;
-	}
+  width: 10rem;
+  height: 2.04rem;
 
+  padding: 0.3rem 0;
+
+  color: #fff;
+  overflow: hidden;
+  img {
+    width: 0.48rem;
+    height: 0.46rem;
+    float: right;
+    margin-right: 0.17rem;
+  }
+  .swiper-slide1,
+  .swiper-slide2,
+  .swiper-slide3 {
+    width: 2.95rem;
+    height: 1.94rem;
+    border-radius: 5px;
+    background: url(../assets/images/databg.png) no-repeat;
+    background-size: 100% 100%;
+    float: left;
+    margin-right: 0.32rem;
+  }
+}
+.activity2 {
+  width: 10rem;
+  height: 1.4rem;
+  border-top: 0.2rem solid #f5f5f5;
+  padding: 0.3rem 0;
+  margin-top: 0.4rem;
+  color: #000;
+  overflow: hidden;
+  margin-right: 0.17rem;
+  font-size: 0.26rem;
+  line-height: 0.5rem;
+  .swiper-slide1,
+  .swiper-slide2,
+  .swiper-slide3 {
+    width: 2.95rem;
+    height: 1.94rem;
+    border-radius: 5px;
+    background: #fff no-repeat;
+    background-size: 100% 100%;
+    float: left;
+    margin-right: 0.32rem;
+
+    a {
+      font-size: 0.2rem;
+      color: #2da7e0;
+      letter-spacing: 2.95px;
+      line-height: 0.23rem;
+    }
+  }
+}
+.daai {
+  background: url(../assets/images/daaiwujiang.jpg) no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 2rem;
+}
 </style>

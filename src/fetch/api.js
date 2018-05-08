@@ -6,7 +6,7 @@ import * as _ from '../util/tool'
 // axios 配置
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-axios.defaults.baseURL = 'http://hzzly.net:4000/';
+axios.defaults.baseURL = 'http://39.108.213.2:8082';
 
 //POST传参序列化
 axios.interceptors.request.use((config) => {
@@ -21,11 +21,10 @@ axios.interceptors.request.use((config) => {
 
 //返回状态判断
 axios.interceptors.response.use((res) =>{
-    if(!res.data.success){
-        // _.toast(res.data.msg);
+    if(res.data.status!=0){
         return Promise.reject(res);
     }
-    return res;
+    return res.data;
 }, (error) => {
     _.toast("网络异常", 'fail');
     return Promise.reject(error);
@@ -135,5 +134,14 @@ export default {
      */
      getAddressJson() {
          return fetch('/api/address')
+     },
+     /**
+      * 获取商家列表信息
+      * @param {*} data 
+      */
+     getStoreList(data){
+        let httpUrl =  "/GetStoreList?code="+data.code;
+        axios.defaults.headers.post['access-key'] = data.token;
+        return fetch(httpUrl, {'code': data.code})
      }
 }
