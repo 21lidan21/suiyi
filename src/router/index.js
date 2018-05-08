@@ -107,7 +107,7 @@ export default new Router({
     {
       path: '/dda/helpinfo',
       component: resolve => require(['../pages/diandianai/HelpInfo'], resolve)
-    },
+    },    
     {
       path: '*',
       name: 'notfound',

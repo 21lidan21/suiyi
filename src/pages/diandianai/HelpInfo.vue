@@ -1,35 +1,92 @@
 <template>
-	<div>
+	<div >
     <x-header   class="header" :left-options="{backText: ''}">帮扶对象信息</x-header>
-		<div style=" border-bottom:solid 1px rgb(255, 208, 75);padding:10px;width:70px" class="doing">我们在行动</div>
-      <group>
-    <selector title="title" v-model="school" options="options" @on-change="changeData" ></selector>
-  </group>
-
-    <div class="footer">我要捐助TA</div>
+		<div style=" border-bottom:solid 1px rgb(255, 208, 75);padding:10px;width:70px;margin-left:5px;" class="doing">我们在行动</div>
+      <el-tabs  class="body_padding" @tab-click="resetNActive"  v-model="activeName">
+  <el-tab-pane
+    v-for="(item, index) in editableTabs2"
+    :key="item.name"
+    :label="item.title"
+    :name="item.name"
+    
+  >
+    <el-row  >
+      <div @click="selectPerson(index,index1)" v-for="(o, index1) in item.content" :key="index+'Index'+index1" >
+  <el-col    :span="12"  >
+    <el-card  class="border_pollyfill"  :class="{isActive: index1 == nActive }">
+      <img :src="o.img" class="image">
+      <div style="padding: 14px;line-height:1.5;font-size:14px;">
+        姓名：<span class="info_color" v-text="o.name"></span><br>
+        班级：<span class="info_color" v-text="o.banji"></span>
+      </div>
+    </el-card>
+  </el-col></div>
+</el-row>
+  </el-tab-pane>
+</el-tabs>
+    <router-link to="/dda/joincamp">
+      <div class="footer">我要捐助TA</div>
+    </router-link>
 	</div>
 </template>
 
 <script>
-import { Selector,Group } from 'vux'
 export default {
-  components: {
-    Selector,
-    Group
-  },
-  
+  components: {},
+
   data() {
     return {
-      title:"学校",
-      school:"xxxx",
-      options:[1,2,3],
-      placeholder:"placeholder"
+      nActive: 0,
+      editableTabs2: [
+        {
+          title: "大新县雷平镇那岸小学",
+          name: "1",
+          content: [
+            {
+              img:
+                "https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike272%2C5%2C5%2C272%2C90/sign=09fa593b700e0cf3b4fa46a96b2f997a/37d3d539b6003af3a32f2849372ac65c1038b606.jpg",
+              name: "选项是否",
+              banji: "5年纪"
+            },
+            {
+              img:
+                "https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike272%2C5%2C5%2C272%2C90/sign=09fa593b700e0cf3b4fa46a96b2f997a/37d3d539b6003af3a32f2849372ac65c1038b606.jpg",
+              name: "选项是否",
+              banji: "5年纪"
+            },
+            {
+              img:
+                "https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike272%2C5%2C5%2C272%2C90/sign=09fa593b700e0cf3b4fa46a96b2f997a/37d3d539b6003af3a32f2849372ac65c1038b606.jpg",
+              name: "选项是否",
+              banji: "5年纪"
+            }
+          ]
+        },
+        {
+          title: "Tab 2",
+          name: "2",
+          content: "Tab 2 content"
+        },
+        {
+          title: "Tab 3",
+          name: "3",
+          content: "Tab 3 content"
+        }
+      ]
     };
+  },
+  computed: {
+    activeName() {
+      return this.editableTabs2[0].name;
+    }
   },
 
   methods: {
-    changeData(){
-      console.log(33)
+    selectPerson(indexOut, indexIn) {
+      this.nActive = indexIn;
+    },
+    resetNActive() {
+      this.nActive = 0;
     }
   }
 };
@@ -37,7 +94,20 @@ export default {
 
 <style scoped lang="scss">
 @import "../../assets/css/function";
-.footer{
+.isActive {
+  border: 2px solid rgb(255, 208, 75) !important;
+  border-radius: 4px;
+}
+.border_pollyfill {
+  border: 2px solid transparent;
+}
+.body_padding {
+  padding: 0 5px;
+}
+.info_color {
+  color: #2da7e0;
+}
+.footer {
   position: absolute;
   bottom: 2em;
   left: 2em;
@@ -55,14 +125,24 @@ export default {
   background: #ffffff;
   box-shadow: 0 1px 2px 0 rgba(225, 225, 225, 0.5);
 }
-.doing{
-  color:rgb(255, 208, 75);
+.doing {
+  color: rgb(255, 208, 75);
 }
 </style>
 <style>
 .vux-header-title-area,
 .vux-header .vux-header-title {
   color: #2da7e0 !important;
+}
+.el-tabs__item.is-active,
+.el-tabs__item:hover {
+  color: black;
+}
+.el-card__body {
+  padding: 0;
+}
+.el-card {
+  margin: 5px;
 }
 .vux-header .vux-header-left .left-arrow:before {
   content: "";

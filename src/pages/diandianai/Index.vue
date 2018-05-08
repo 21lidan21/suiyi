@@ -43,9 +43,13 @@ export default {
   box-shadow: 0 1px 2px 0 rgba(225, 225, 225, 0.5);
 }
 .dda-index-bg {
-  height: 96vh;
+  position: absolute;
+  top: 1rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: url(../../assets/images/dda_index_bg.jpg) no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
   text-align: center;
 }
 .btn {
@@ -53,7 +57,7 @@ export default {
   color: white;
 }
 .fill {
-  height: 65vh;
+  height: 65%;
 }
 .in {
   background-image: linear-gradient(-180deg, #2da7e0 0%, #77baf1 100%);
