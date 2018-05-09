@@ -9,6 +9,9 @@ import com from './modules/com'
 import recevie from './modules/receive'
 import action from './modules/action'
 import actiondetail from './modules/ActionDetail'
+import getorderlistinfo from './modules/getorderlist'
+import getorderdetails from './modules/getorderdetails'
+import undertakingscontent from './modules/undertakingscontent'
 
 Vue.use(Vuex)
 
@@ -21,6 +24,9 @@ export default new Vuex.Store({
         com,
         recevie,
         action,
-        actiondetail
+        actiondetail,
+        getorderlistinfo,
+        getorderdetails,
+        undertakingscontent
     }
 })

@@ -35,7 +35,7 @@
 
 <script>
 import api from '../../fetch/api'
- import { mapGetters,mapActions } from 'vuex'
+import { mapGetters,mapActions } from 'vuex'
 import { setTimeout } from 'timers';
 
 export default {
@@ -50,7 +50,7 @@ export default {
   },
   computed:{
     ...mapGetters([
-"dataList"
+      "dataList"
     ])
   },
    components:{
