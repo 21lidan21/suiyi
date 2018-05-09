@@ -7,6 +7,8 @@ import travel from './modules/travel'
 import detail from './modules/detail'
 import com from './modules/com'
 import recevie from './modules/receive'
+import action from './modules/action'
+import actiondetail from './modules/ActionDetail'
 
 Vue.use(Vuex)
 
@@ -17,6 +19,8 @@ export default new Vuex.Store({
         travel,
         detail,
         com,
-        recevie
+        recevie,
+        action,
+        actiondetail
     }
 })

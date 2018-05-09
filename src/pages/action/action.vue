@@ -1,121 +1,126 @@
 <template>
   <div>
-    <!-- <scroller lock-x scrollbar-y use-pulldown @pulldown:loading="load" enable-horizontal-swiping>
-       <div class="box2">
-          <swiper :list="list" direction="horizontal" auto :min-moving-distance="20" height="180px"></swiper>
-       </div>
-    </scroller> -->
-    <!-- <swiper auto height="100px">
-      <swiper-item class="black"><h2 class="title fadeInUp animated">它无孔不入</h2></swiper-item>
-      <swiper-item class="green"><h2 class="title fadeInUp animated">你无处可藏</h2></swiper-item>
-      <swiper-item class="black"><h2 class="title fadeInUp animated">不是它可恶</h2></swiper-item>
-      <swiper-item class="black"><h2 class="title fadeInUp animated">而是它不懂你</h2></swiper-item>
-      <swiper-item class="black"><h2 class="title fadeInUp animated">我们试图</h2></swiper-item>
-      <swiper-item class="black"><h2 class="title fadeInUp animated">做些改变</h2></swiper-item>
-    </swiper> -->
-    <div class='chuanweixingdong'>
-<p ><span>|</span>传微行动</p>
- <swiper auto  class="chuanweixingdong-swipter" :show-dots="false">
-      <swiper-item ><div class="cw1"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></swiper-item>
-      <swiper-item ><div class="cw2"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></swiper-item>
-      <swiper-item ><div class="cw3"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></swiper-item>
-  </swiper>   
-</div>
-
+  <x-header   class="header "  :left-options="{backText: ''}">传微行动</x-header>
+    <div>
+      <div style="padding:.4rem 0;">
+      <tab :line-width="2" height=".6rem" custom-bar-width="1rem" active-color='#2da7e0'  v-model="index">
+        <tab-item class="vux-center"  :selected="demo2 === item" v-for="(item, index) in list2" @click="demo2 = item" :key="index">{{item}}</tab-item>
+      </tab>
+      </div>
+      <swiper v-model="index"  :show-dots="false">
+        <swiper-item v-for="(item, index) in list2" :key="index">
+          <div class="itemDiv" v-for="(item, index) in actionList" :key="index">
+            <div @click="goto(item)">
+             <img src="../../assets/images/cwxd01.jpg" alt="">
+             <div class="title" v-text="item.title"></div>
+             <div class="message" v-text="item.message"></div>
+            </div>
+          </div>
+        </swiper-item>
+      </swiper>
+    </div>
   </div>
 </template>
 
+
+
 <script>
-import { Scroller } from 'vux'
-import { Swiper, GroupTitle, SwiperItem, XButton, Divider } from 'vux'
+import { mapGetters,mapActions } from 'vuex'
+import { Tab, TabItem, Sticky, Divider, XButton, Swiper, SwiperItem } from 'vux'
+const list = () => ['全部', '传微教育', '传微献爱心', '传微扶贫', '更新中...']
+
 export default {
-  components: {
-    Scroller,
-    Swiper,
-    SwiperItem
-  },
-  methods: {
-    load (uuid) {
-      const _this = this
-      setTimeout(function () {
-        _this.$broadcast('pulldown:reset', uuid)
-      }, 2000)
-    }
-  },
-  data () {
-    return {
-      
-    }
+    data() {
+        return {
+          index01: 0,
+          list2: list(),
+          demo2: '全部',
+          index: 0,   
+           };
+      },
+      computed:{
+        ...mapGetters([
+          "actionList"
+        ])
+      },
+      components:{
+        Tab,
+        TabItem,
+        Sticky,
+        Divider,
+        XButton,
+        Swiper,
+        SwiperItem
+      },
+
+      beforeRouteEnter(to, from, next) {
+            next((vm) => {
+                vm.getData(vm)
+            })
+        },
+      methods: {
+        ...mapActions({ getDetail: 'getDetail' }),
+        handleSelect(key, keyPath) {
+          console.log(key, keyPath);
+        },
+        getData(){
+          this.$store.dispatch("getActionList",34567);
+        },
+        goto(item){
+          console.log(item);
+          //localStorage.setItem("item",JSON.stringify(item));
+          this.$router.push("./action/actiondetail");
+        }
+      }
+    };
+
+</script>
+
+<style lang="less" scoped>
+.header {
+  background: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(225, 225, 225, 0.5);
+}
+.box {
+  padding: 15px;
+}
+
+.itemDiv {
+  margin-top: .5rem; 
+  padding: 0 .26rem;
+  div{
+    padding:.1rem .4rem;
+    font-size:.28rem;
+    line-height: .4rem;
+    font-family:PingFangSC-Regular;
+  }
+  .message{
+    font-size:.24rem;
+    color:#737373;
   }
 }
-</script>
-<style scoped lang="scss">
-.black{
-    background: #000;
-
+</style>
+<style>
+.vux-header-title-area,
+.vux-header .vux-header-title {
+  color: #2da7e0 !important;
+  font-size: 16px;
 }
-.green{
-    background: green;
-    
+.vux-header .vux-header-left .left-arrow:before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #2da7e0;
+  border-width: 1px 0 0 1px;
+  transform: rotate(315deg);
+  top: 8px;
+  left: 7px;
 }
-.chuanweixingdong-swipter{
-	.cw1,.cw2,.cw3{
-	height: 2.2rem;
-	width: 100%;
-	background-size: 100% 100%;
-	position: relative;
-	}
-	.cw1{
-	
-	background: url(../../assets/images/cwxd01.jpg) no-repeat ;
-
-	}
-	.cw2{
-	
-	background: url(../../assets/images/cwxd02.jpg) no-repeat ;
-
-	}
-	.cw3{
-	
-	background: url(../../assets/images/cwxd03.jpg) no-repeat ;
-	
-	}
-	p{
-	
-		position: absolute;
-		bottom: 0;
-        height: .68rem;
-        width: 100%;
-		background:rgba(0,0,0,0.40);
-		font-family:PingFangSC-Regular;
-		font-size:.24rem;
-		color:#ffffff;
-		letter-spacing:1.02px;
-		text-align:left;
-	}
+.vux-tab .vux-tab-item {
+    background: #fff !important;
 }
-.activity {
-         width: 10rem;
-        height:2.04rem;
-        border-top: 0.2rem solid #f5f5f5;
-        padding: .3rem 0;
-		margin-top: .4rem;
-        color: #fff;
-        overflow: hidden;
-		img{
-		   width: .48rem;
-		   height:.46rem;	
-		   float: right;
-		   margin-right: .17rem;
-		}
-		.swiper-slide1,.swiper-slide2,.swiper-slide3{
-		  width: 2.95rem;
-		  height: 1.94rem;
-		  border-radius: 5px;
-		  background: url(../../assets/images/databg.png) no-repeat ;
-          background-size: 100% 100%;
-          float: left;
-          margin-right: .32rem;
-		}
-	  }
+.vux-swiper{
+  min-height:800px;
+}
 </style>
