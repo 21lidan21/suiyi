@@ -56,6 +56,9 @@ export default {
   top: 8px;
   left: 7px;
 }
+.weui-tab__panel {
+  padding-bottom: 0;
+}
 </style>
 <style scoped >
 .header {
