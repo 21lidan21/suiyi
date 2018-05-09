@@ -32,7 +32,23 @@
           // console.log(_this.om.longitude)
           var map = new BMap.Map("allmap");
           map.centerAndZoom(new BMap.Point(_this.om.longitude,_this.om.latitude), 15);
-          map.enableScrollWheelZoom(); //启用滚轮放大缩小  
+          map.enableScrollWheelZoom(); //启用滚轮放大缩小 
+
+        var geolocation = new BMap.Geolocation();
+          geolocation.getCurrentPosition(function(r){
+            if(this.getStatus() == BMAP_STATUS_SUCCESS){
+              var mk = new BMap.Marker(r.point);
+              map.addOverlay(mk);
+              map.panTo(r.point);
+              // alert('您的位置：'+r.point.lng+','+r.point.lat);
+              localStorage.setItem("mylng",r.point.lng);
+              localStorage.setItem("mylat",r.point.lat);
+            }
+            else {
+              alert('failed'+this.getStatus());
+            }        
+          },{enableHighAccuracy: true})
+
           var opts = {
                 width : 250,     // 信息窗口宽度
                 height: 80,     // 信息窗口高度

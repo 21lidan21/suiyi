@@ -8,7 +8,7 @@
       </flexbox>
      </div>
      <div>
-    <swiper auto height="2.4rem">
+    <swiper auto style="height:2.4rem important;">
       <swiper-item class="banner01"  @click="goto"></swiper-item>
       <swiper-item class="banner02"  @click="goto"></swiper-item>
       <swiper-item class="banner03"  @click="goto"></swiper-item>
@@ -252,5 +252,8 @@ export default {
 }
 .vux-tab .vux-tab-item {
     background: #fff !important;
+}
+.vux-swiper{
+  max-height:180px!important;
 }
 </style>
