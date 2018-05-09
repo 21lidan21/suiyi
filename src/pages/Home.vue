@@ -73,9 +73,9 @@
  <div class='service-center'>
 <p ><span>|</span>爱心商城</p>
  <swiper auto  class="service-center-swipter" :show-dots="false">
-      <swiper-item ><div class=""><img src="../assets/images/mall1.jpg" alt=""></div></swiper-item>
-      <swiper-item ><div class=""><img src="../assets/images/mall2.jpg" alt=""></div></swiper-item>
-      <swiper-item ><div class=""><img src="../assets/images/mall3.jpg" alt=""></div></swiper-item>
+      <swiper-item ><div class=""><img style="width:100%" src="../assets/images/banner01.jpg" alt=""></div></swiper-item>
+      <swiper-item ><div class=""><img style="width:100%" src="../assets/images/banner02.jpg" alt=""></div></swiper-item>
+      <swiper-item ><div class=""><img style="width:100%" src="../assets/images/banner03.jpg" alt=""></div></swiper-item>
   </swiper>   
 </div>
 <div class='group1'>
