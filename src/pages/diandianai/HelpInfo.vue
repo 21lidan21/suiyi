@@ -93,7 +93,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/css/function";
 .isActive {
   border: 2px solid rgb(255, 208, 75) !important;
   border-radius: 4px;
