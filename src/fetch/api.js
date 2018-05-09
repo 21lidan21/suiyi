@@ -21,7 +21,7 @@ axios.interceptors.request.use((config) => {
 
 //返回状态判断
 axios.interceptors.response.use((res) =>{
-    
+    debugger
     if(res.data.status!=0){
         _.toast(res.data.desc);
         return Promise.reject(res);
@@ -58,7 +58,7 @@ export default {
      * 用户注册
      */
     Regist(params) {
-        return fetch('/users/api/userRegist', params)
+        return fetch('/VipRegister', params)
     },
 
     /**
