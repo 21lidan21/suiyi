@@ -16,7 +16,7 @@
     </group>
     <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="regist" > 注册</x-button>
      </group>
-     <a @click="$router.push('/usercenter')">会员登录</a>|<a @click="$router.push('/regist')">注册</a>
+     <a @click="$router.push('/login')">验证码登录</a>|<a @click="$router.push('/regist')">注册</a>
    </div>
 </template>
 <script>
@@ -48,6 +48,7 @@ export default {
         value5:'',
         options1:['男','女'],
         option1:'男',
+        sexValue:'',
         cardID:'',
         birthDay:'',
         name:''
@@ -90,7 +91,11 @@ export default {
                 _.alert('请填写完整')
                 return
             }
-         
+         if(this.option1=="男"){
+              this.sexValue='0'
+         }else{
+              this.sexValue='1'
+         }
             let data = {
                 "phone": this.username,
                 "code": this.password,
@@ -100,9 +105,9 @@ export default {
                 "birthDay": this.birthDay,
                 "openid": "8888",
                 "userName":this.name,
-                "sex":this.option1
+                "sex":this.sexValue
             }
-            this.$store.dispatch('setLoadingState', true)
+            //this.$store.dispatch('setLoadingState', true)
             api.Regist(data)
                 .then(res => {
                     console.log(res)

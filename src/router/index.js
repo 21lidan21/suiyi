@@ -79,6 +79,22 @@ export default new Router({
       },
       component: resolve => require(['../pages/usercenter/regist'], resolve)
     },
+    {
+			path: '/userset',
+			meta: {
+        title: '个人设置',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/usercenter/userset'], resolve)
+    },
+    {
+			path: '/userinfo',
+			meta: {
+        title: '个人设置',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/usercenter/userinfo'], resolve)
+    },
     // {
 		// 	path: '/user/login',
 		// 	component: Login

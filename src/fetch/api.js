@@ -7,6 +7,9 @@ import * as _ from '../util/tool'
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 axios.defaults.baseURL = 'http://39.108.213.2:8082';
+// if(sessionStorage.sessionId){
+//    axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || 'B254276439438EFC81C2DF56C736F6F9A752512D1333A66D3439C32BAF321A21C9F2913ED28DD69AD059D0887DE1CE58';
+// }
 
 //POST传参序列化
 axios.interceptors.request.use((config) => {
@@ -21,7 +24,7 @@ axios.interceptors.request.use((config) => {
 
 //返回状态判断
 axios.interceptors.response.use((res) =>{
-    debugger
+    //debugger
     if(res.data.status!=0){
         _.toast(res.data.desc);
         return Promise.reject(res);
@@ -53,14 +56,23 @@ export default {
     Login(params) {
         return fetch('/VipLoginByCode', params)
     },
-    
+    vipLogin(params) {
+        return fetch('/VipLogin', params)
+    },
     /**
      * 用户注册
      */
     Regist(params) {
         return fetch('/VipRegister', params)
     },
+    GetUserInfoByID(params) {
+       // return fetch('/GetUserInfoByID', params)
+       
 
+        let httpUrl =  "/GetUserInfoByID?sessionID="+sessionStorage.sessionId;
+        axios.defaults.headers.post['access-key'] = sessionStorage.sessionId;
+        return fetch(httpUrl)
+    },
     /**
      * 发送注册验证码
      */

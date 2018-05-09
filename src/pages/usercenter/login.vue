@@ -8,7 +8,7 @@
        <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="login" > 登录</x-button>
      
      </group>
-     <a @click="$router.push('/usercenter')">会员登录</a>|<a @click="$router.push('/regist')">注册</a>
+     <a @click="$router.push('/viplogin')">会员登录</a>|<a @click="$router.push('/regist')">注册</a>
    </div>
 </template>
 <script>
@@ -79,7 +79,7 @@ export default {
                         this.$store.dispatch('setLoadingState', false)
                         //this.setUserInfo(res.data)
                          sessionStorage.sessionId =res.sessionId
-                        this.$router.replace('/home')
+                        this.$router.replace('/userinfo')
                     }
                 })
                 .catch(error => {
