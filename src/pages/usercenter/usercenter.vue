@@ -30,7 +30,7 @@
       <cell-box is-link>
        联系客服
       </cell-box>
-       <cell-box is-link>
+       <cell-box is-link :link="{path:'/userset'}">
         个人设置
       </cell-box>
     </group>
@@ -53,8 +53,8 @@ export default {
 		XButton,
 		Divider,
 		Flexbox,
-         FlexboxItem,
-         Group,
+        FlexboxItem,
+        Group,
         Cell,
         CellBox
 	},

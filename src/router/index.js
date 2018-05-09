@@ -64,6 +64,14 @@ export default new Router({
       component: resolve => require(['../pages/usercenter/login'], resolve)
     },
     {
+			path: '/viplogin',
+			meta: {
+        title: '会员登录',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/usercenter/viplogin'], resolve)
+    },
+    {
 			path: '/regist',
 			meta: {
         title: '验证码登录',
@@ -86,6 +94,21 @@ export default new Router({
         requireAuth: false
       },
     component: resolve => require(['../pages/usercenter/GetOrderDetails'], resolve)
+    },
+		{	path: '/userset',
+			meta: {
+        title: '个人设置',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/usercenter/userset'], resolve)
+    },
+    {
+			path: '/userinfo',
+			meta: {
+        title: '个人设置',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/usercenter/userinfo'], resolve)
     },
     // {
 		// 	path: '/user/login',
