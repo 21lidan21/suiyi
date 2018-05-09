@@ -5,8 +5,10 @@
       <x-input title="验证码" placeholder="请输入验证码" class="weui-vcode" v-model="password">
         <x-button slot="right" type="primary" @click.native="sendCode" mini>发送验证码</x-button>
       </x-input>
-       <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="login" > 登录</x-button>
-     
+       
+      <x-input title="请输入密码" type="password" placeholder="" v-model="userpassword" :min="6"  @on-change="change"></x-input>
+      <x-input title="请确认密码" type="password" v-model="userpassword2"  placeholder="" :equal-with="userpassword"></x-input>
+    <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="login" > 注册</x-button>
      </group>
      <a @click="$router.push('/usercenter')">会员登录</a>|<a @click="$router.push('/regist')">注册</a>
    </div>
@@ -29,7 +31,9 @@ export default {
         iconType: '',
         username: '',
         password: '',
-        codeKey: ''
+        codeKey: '',
+        userpassword:'',
+        userpassword2:''
     };
   },
   methods: {

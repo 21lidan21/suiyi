@@ -11,9 +11,9 @@
          领取点兑换码：<span v-text="code" class="code"></span>
        </div>
        <div class="line"></div>
-       <div class="dda_join_list_2 point  " >领取点</div>
+       <div class="dda_join_list_2 point " @click="goto('/dda/receive')">领取点</div>
      </div>
-     <div class="footer" @click="goto">
+     <div class="footer" @click="goto('/dda/detail')">
        <p>捐赠信息请持续关注传微行动</p>
        <p>
          诚挚邀请您共同解决儿童们更长期的营养供应问题
@@ -47,20 +47,20 @@ export default {
   data() {
     return {
       isPopUp: true,
-      isMilk:false,
+      isMilk: false,
       code: 897982379889689
     };
   },
-  methods:{
-    close(type){
-      if(type){
+  methods: {
+    close(type) {
+      if (type) {
       }
       this.isPopUp = false;
     },
-    goto(){
-      this.$router.push('/dda/detail');
+    goto(path) {
+      this.$router.push(path);
     },
-    showMilk(){
+    showMilk() {
       this.isPopUp = true;
       this.isMilk = true;
     }
@@ -68,16 +68,16 @@ export default {
 };
 </script>
 <style scoped >
-.milk_panel{
+.milk_panel {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   position: absolute;
   bottom: 0;
-  top:4.1rem;
-  left: .3rem;
-  right:.3rem;
+  top: 4.1rem;
+  left: 0.3rem;
+  right: 0.3rem;
   background: url(../../assets/images/milk.png) no-repeat center;
-  background-size: auto 100% ;
+  background-size: auto 100%;
 }
 .yellow_suc {
   color: #fcdf5e;

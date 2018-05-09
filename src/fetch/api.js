@@ -21,10 +21,12 @@ axios.interceptors.request.use((config) => {
 
 //返回状态判断
 axios.interceptors.response.use((res) =>{
+    
     if(res.data.status!=0){
+        _.toast(res.data.desc);
         return Promise.reject(res);
     }
-    return res.data;
+    return res.data ;
 }, (error) => {
     _.toast("网络异常", 'fail');
     return Promise.reject(error);
@@ -34,7 +36,7 @@ export function fetch(url, params) {
     return new Promise((resolve, reject) => {
         axios.post(url, params)
             .then(response => {
-                resolve(response.data);
+                resolve(response.data || response);
             }, err => {
                 reject(err);
             })
@@ -49,7 +51,7 @@ export default {
      * 用户登录
      */
     Login(params) {
-        return fetch('/users/api/userLogin', params)
+        return fetch('/VipLoginByCode', params)
     },
     
     /**
@@ -62,8 +64,8 @@ export default {
     /**
      * 发送注册验证码
      */
-     RegistVerifiCode(tellphone) {
-         return fetch('/users/api/registVerifiCode', {tellphone: tellphone})
+     RegistVerifiCode(params) {
+         return fetch('/SendCode', params)
      },
 
     /**

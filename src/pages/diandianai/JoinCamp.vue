@@ -12,8 +12,8 @@
        请到活动公益宣传点或牛奶领取点<br>
        咨询、参加
      </div>
-     <div class="footer">
-       <div class="footer_btn">前往公益点</div>
+     <div class="footer" @click="goto">
+       <div class="footer_btn" >前往公益点</div>
      </div>
      
    </div>
@@ -26,11 +26,15 @@ export default {
       heart: "0.00"
     };
   },
-  methods: {}
+  methods: {
+    goto() {
+      this.$router.push("/data/receive");
+    }
+  }
 };
 </script>
 <style scoped >
-.footer{
+.footer {
   background: #ffffff;
   line-height: 1rem;
   height: 1rem;
@@ -40,50 +44,50 @@ export default {
   width: 3rem;
   text-align: center;
   position: absolute;
-  bottom: 2em;
+  bottom: 1em;
   left: 50%;
   transform: translate(-50%);
 }
-.footer_btn{
+.footer_btn {
   text-align: center;
   margin: 0 auto;
   bottom: 3em;
 }
-.bg{
+.bg {
   height: 100vh;
   background: url(../../assets/images/camp_footer.jpg) no-repeat center bottom;
   background-size: 100% auto;
 }
-.info{
+.info {
   text-align: center;
   font-size: 18px;
   line-height: 1.3;
 }
-.flag{
+.flag {
   margin: 6em auto 1em;
-  width: .6rem;
-  height: .6rem;
+  width: 0.6rem;
+  height: 0.6rem;
   background: url(../../assets/images/flag.png) no-repeat center;
   background-size: contain;
 }
-.txt{
+.txt {
   font-size: 18px;
 }
 .balance {
   width: 40%;
-  padding-top:2.5em;
+  padding-top: 2.5em;
   display: inline-block;
   color: #ffffff;
   line-height: 1.5;
 }
 .div_line {
-   display: inline-block;
+  display: inline-block;
   background: #ffffff;
   width: 1px;
   height: 0.6rem;
 }
 .camp_header {
-    font-size: 14px;
+  font-size: 14px;
   text-align: center;
   width: 100%;
   height: 2.74rem;
@@ -97,6 +101,9 @@ export default {
 }
 </style>
 <style>
+.weui-tab__panel {
+  padding-bottom: 0;
+}
 .vux-header-title-area,
 .vux-header .vux-header-title {
   color: #2da7e0 !important;
