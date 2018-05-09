@@ -121,6 +121,6 @@ export default {
     background: #fff !important;
 }
 .vux-swiper{
-  min-height:800px;
+  min-height:800px!important;
 }
 </style>

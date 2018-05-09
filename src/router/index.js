@@ -53,7 +53,7 @@ export default new Router({
         title: '随益',
         requireAuth: false
       },
-      component: resolve => require(['../pages/tree/index'], resolve)
+      component: resolve => require(['../pages/lovecity/index'], resolve)
     },
     {
 			path: '/login',
