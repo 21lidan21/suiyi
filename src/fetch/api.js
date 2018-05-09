@@ -145,5 +145,9 @@ export default {
         let httpUrl =  "/GetStoreList?code="+data.code;
         axios.defaults.headers.post['access-key'] = data.token;
         return fetch(httpUrl, {'code': data.code})
+     },
+     getDefaultSchoolList(param){
+        let httpUrl =  "/GetSchoolList?req="+param.req;
+        return fetch(httpUrl)
      }
 }
