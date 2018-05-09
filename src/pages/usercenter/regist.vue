@@ -7,14 +7,21 @@
       </x-input>
        
       <x-input title="请输入密码" type="password" placeholder="" v-model="userpassword" :min="6"  @on-change="change"></x-input>
-      <x-input title="请确认密码" type="password" v-model="userpassword2"  placeholder="" :equal-with="userpassword"></x-input>
-    <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="login" > 注册</x-button>
+     <x-input title="请确认密码" type="password" v-model="userpassword2"  placeholder="" :equal-with="userpassword"></x-input>
+    <group title="以下是选填">
+      <x-input title="姓名" name="name" v-model="name" placeholder="请输入姓名" is-type="china-name"></x-input>
+     <popup-radio title="请选择性别" :options="options1" v-model="option1"></popup-radio>
+      <datetime :value.sync="value5" placeholder="请选择日期" :min-year=2000 :max-year=2016 format="YYYY-MM-DD" @on-change="change" title="请选择生日" year-row="{value}年" month-row="{value}月" day-row="{value}日"  confirm-text="完成" cancel-text="取消"></datetime>
+     <x-input title="请输入随益会员卡" name="cardID" placeholder="请输入随益会员卡" v-model="cardID"></x-input>
+    </group>
+    <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="regist" > 注册</x-button>
      </group>
      <a @click="$router.push('/usercenter')">会员登录</a>|<a @click="$router.push('/regist')">注册</a>
    </div>
 </template>
 <script>
 import { XInput, Group, XButton, Cell } from 'vux'
+import { PopupRadio,PopupPicker, Datetime } from 'vux'
 import api from '../../fetch/api'
 import * as _ from '../../util/tool'
 
@@ -23,7 +30,10 @@ export default {
     XInput, 
     Group, 
     XButton, 
-    Cell
+    Cell,
+    PopupRadio,
+    PopupPicker,
+    Datetime
   },
   data() {
     return {
@@ -33,10 +43,22 @@ export default {
         password: '',
         codeKey: '',
         userpassword:'',
-        userpassword2:''
+        userpassword2:'',
+        date:'',
+        value5:'',
+        options1:['男','女'],
+        option1:'男',
+        cardID:'',
+        birthDay:'',
+        name:''
+
     };
   },
   methods: {
+       change (value) {
+           this.birthDay=value
+        console.log('change', value)
+       },
       sendCode(){
           if (!this.username ) {
                 alert('请填写手机号')
@@ -62,20 +84,26 @@ export default {
                     console.log(error)
                 })
       },
-	login(){
+	regist(){
        
-        if (!this.username || !this.password) {
+        if (!this.username || !this.password  || !this.userpassword|| !this.userpassword2) {
                 _.alert('请填写完整')
                 return
             }
-           
+         
             let data = {
                 "phone": this.username,
                 "code": this.password,
-                "codeKey":this.codeKey
+                "codeKey":this.codeKey,
+                "password": this.userpassword,
+                "cardID": this.cardID,
+                "birthDay": this.birthDay,
+                "openid": "8888",
+                "userName":this.name,
+                "sex":this.option1
             }
             this.$store.dispatch('setLoadingState', true)
-            api.Login(data)
+            api.Regist(data)
                 .then(res => {
                     console.log(res)
                     if(res) {
