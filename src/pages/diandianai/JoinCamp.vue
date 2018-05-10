@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     goto() {
-      this.$router.push("/data/receive");
+      this.$router.push("/dda/receive");
     }
   }
 };

@@ -2,13 +2,19 @@
 	<div >
     <x-header   class="header" :left-options="{backText: ''}">帮扶对象信息</x-header>
 		<div style=" border-bottom:solid 1px rgb(255, 208, 75);padding:10px;width:70px;margin-left:5px;" class="doing">我们在行动</div>
-      <el-tabs  class="body_padding" @tab-click="resetNActive"  v-model="activeName">
+
+  <group>
+    <popup-picker :title="title1" :data="list1" v-model="value1" @on-show="onShow" @on-hide="onHide" @on-change="onChange" ></popup-picker>
+  </group>
+
+
+   
+<mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
+   <el-tabs    v-model="activeName">
   <el-tab-pane
     v-for="(item, index) in editableTabs2"
     :key="item.name"
-    :label="item.title"
     :name="item.name"
-    
   >
     <el-row  >
       <div @click="selectPerson(index,index1)" v-for="(o, index1) in item.content" :key="index+'Index'+index1" >
@@ -24,6 +30,8 @@
 </el-row>
   </el-tab-pane>
 </el-tabs>
+</mt-loadmore>
+
     <router-link to="/dda/joincamp">
       <div class="footer">我要捐助TA</div>
     </router-link>
@@ -31,8 +39,20 @@
 </template>
 
 <script>
+import { PopupPicker, Group } from "vux";
+import api from '../../fetch/api'
+
 export default {
-  components: {},
+  components: {
+    PopupPicker,
+    Group
+  },
+  beforeRouteEnter(to, from, next) {
+        next((vm) => {
+           
+            vm.getDefault(vm);
+        })
+    },
 
   data() {
     return {
@@ -72,7 +92,11 @@ export default {
           name: "3",
           content: "Tab 3 content"
         }
-      ]
+      ],
+      title1: "学校：",
+      list1: [[]],
+      value1: ["默认学校"],
+      allLoaded: false
     };
   },
   computed: {
@@ -80,8 +104,40 @@ export default {
       return this.editableTabs2[0].name;
     }
   },
-
   methods: {
+    getDefault(){
+      var param = {
+        req:1
+      }
+      api.getDefaultSchoolList(param)
+         .then(res=>{
+           console.log(res);
+           for(let i =0;i<res.length;i++){
+             
+           }
+           this.list1=[res[0]["schoolName"]];
+         }).catch(err=>{
+
+         })
+    },
+    loadTop(id) {
+      // 加载更多数据
+      // this.$broadcast("onTopLoaded", id);
+    },
+    loadBottom(id) {
+      // 加载数据
+      this.allLoaded = true; // 若数据已全部获取完毕
+      // this.$broadcast("onBottomLoaded", id);
+    },
+    onShow() {
+      console.log("on show");
+    },
+    onHide(type) {
+      console.log("on hide", type);
+    },
+    onChange(val) {
+      console.log("val change", val);
+    },
     selectPerson(indexOut, indexIn) {
       this.nActive = indexIn;
     },
@@ -89,7 +145,7 @@ export default {
       this.nActive = 0;
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">
