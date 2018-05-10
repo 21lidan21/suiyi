@@ -25,7 +25,7 @@
       <tab-item>低温酸奶</tab-item>
        <tab-item>奶酪</tab-item>
     </tab>
-    <div @click="goto">
+    <div style="margin-bottom:2rem" @click="goto">
       <flexbox :gutter="0" >
        <flexbox-item><div class="flex-demo" ><img class="commodity" src="../../assets/images/01.jpg" alt=""></div></flexbox-item>
        <flexbox-item><div class="flex-demo" ><img class="commodity" src="../../assets/images/02.jpg" alt=""></div></flexbox-item>
@@ -178,7 +178,7 @@ export default {
 
 
 .pop {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;

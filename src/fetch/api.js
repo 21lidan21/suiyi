@@ -6,10 +6,13 @@ import * as _ from '../util/tool'
 // axios 配置
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-axios.defaults.baseURL = 'http://39.108.213.2:8082';
+
+axios.defaults.baseURL = 'http://api.lcaui.com';
+
 // if(sessionStorage.sessionId){
 //    axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || 'B254276439438EFC81C2DF56C736F6F9A752512D1333A66D3439C32BAF321A21C9F2913ED28DD69AD059D0887DE1CE58';
 // }
+
 
 //POST传参序列化
 axios.interceptors.request.use((config) => {
@@ -24,7 +27,6 @@ axios.interceptors.request.use((config) => {
 
 //返回状态判断
 axios.interceptors.response.use((res) =>{
-    //debugger
     if(res.data.status!=0){
         _.toast(res.data.desc);
         return Promise.reject(res);
@@ -157,5 +159,26 @@ export default {
         let httpUrl =  "/GetStoreList?code="+data.code;
         axios.defaults.headers.post['access-key'] = data.token;
         return fetch(httpUrl, {'code': data.code})
+     },
+     getDefaultSchoolList(param){
+        let httpUrl =  "/GetSchoolList?req="+param.req;
+        return fetch(httpUrl)
+     },
+     getStudentsList(){
+        axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || '';
+        return fetch("/GetStudentsBySchool", data)
+     },
+     getorderlist(data){
+        axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || '';
+        return fetch("/GetOrderList", data)
+     },
+     getOrderDetails(data){
+         console.log(JSON.stringify(data));
+        axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || '';
+        return fetch("/GetOrderDetails", data)
+     },
+     ThreeeLoveOrderPub(param){
+        axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || '';
+        return fetch("/ThreeeLoveOrderPub", data)
      }
 }

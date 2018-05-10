@@ -17,7 +17,7 @@
 		<div style="overflow:scroll;height:100%">
       <el-row class="tag"  v-for="item in dataList" :key="item.storeName">		
         <el-col class="tag-item" :span="8">
-          <img class="log" src="../../assets/images/error.png" style="padding: 14px;" > </el-col>
+          <img class="log" src="../../assets/images/shangjia.jpg" style="padding: .14rem" > </el-col>
         <el-col class="tag-item" :span="15">
           <div class="tag-item">
             <div v-text="item.storeName"></div>
@@ -35,7 +35,7 @@
 
 <script>
 import api from '../../fetch/api'
- import { mapGetters,mapActions } from 'vuex'
+import { mapGetters,mapActions } from 'vuex'
 import { setTimeout } from 'timers';
 
 export default {
@@ -50,7 +50,7 @@ export default {
   },
   computed:{
     ...mapGetters([
-"dataList"
+      "dataList"
     ])
   },
    components:{
