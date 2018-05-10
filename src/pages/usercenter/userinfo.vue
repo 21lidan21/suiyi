@@ -3,18 +3,34 @@
       <div class="head" @click="$router.push('/login')">
           <div class="login_head">
           <div class="headimg"><img :src="imgurl" alt=""></div>
-          <span>{{name}}</span><br/>
-         <span>{{levelName}}</span>
+          <span>{{name}}</span>
+         <span class="levelName">{{levelName}}</span>
+   <div class='group2'> 
+        <!-- <div class='showvalue'>
+      <span>余额</span><br/><span>{{point}}</span>
+        </div>     -->
+    <flexbox>
+      <flexbox-item >
+        <div class="flex-demo">  
+          <div class='point'><span>余额</span><br/><span>{{point}}</span></div>
+         <div class='doNum'><span>爱心值</span><br/><span>{{doNum}}</span></div>
+        </div>
+      </flexbox-item>
+      <flexbox-item :span="4"><div class="flex-right"><span>{{showPrice}}</span></div></flexbox-item>
+    </flexbox>
+</div>
+          
+   <!-- <div class='group2'>      
     <flexbox>
       <flexbox-item ><div class="flex-demo"> <span>{{point}}</span>
          <span>{{doNum}}</span></div></flexbox-item>
       <flexbox-item :span="4"><div class="flex-demo"><span>{{showPrice}}</span></div></flexbox-item>
     </flexbox>
-          
+     </div>    -->
         
          
           </div>
-      </div>
+      </div>  
       <div class='group1'>
  <flexbox>
       <flexbox-item><div class="flex-group1"><img src="../../assets/images/myorder.png" alt=""><br/><span>我的订单</span></div></flexbox-item>
@@ -52,7 +68,7 @@ import { Swiper, GroupTitle, SwiperItem, XButton, Divider } from 'vux'
 import { Flexbox, FlexboxItem } from 'vux'
 import { CellBox } from 'vux'
 import { XInput, Group,  Cell } from 'vux'
-
+import { Card } from 'vux'
 
 import { PopupRadio,PopupPicker, Datetime } from 'vux'
 import api from '../../fetch/api'
@@ -75,7 +91,8 @@ export default {
         Cell,
         PopupRadio,
         PopupPicker, 
-        Datetime 
+        Datetime,
+        Card
     },
     
   data() {
@@ -100,11 +117,7 @@ export default {
    methods: {
        
       
-       getUserInfo(){
-           
-        //    let data = {
-        //        "sessionID": sessionStorage.sessionId            
-        //     }
+       getUserInfo(){     
             api.GetUserInfoByID()
                 .then(res => {
                     console.log(res)
@@ -138,35 +151,64 @@ export default {
     height: 4.6rem;
     line-height: 1rem;
     //margin: 1.8rem auto;
-    text-align: center;
+   // text-align: center;
     .headimg{
         width: 1rem;
         height: 1rem;
         background: #fff;
         border-radius: 50%;
         display: inline-block;
-        margin: 1.8rem 0;
-        margin-left: -1.2rem;
+        margin: 1.36rem .38rem 0 .3rem;
+       // margin: 1.8rem 0;
+        // margin-left: -1.2rem;
     }
-    .login_head{
+    .levelName{
+        float: right;
+        width: 1.5rem;
+        height: .46rem;
+        display: inline-block;
+        background-color:#fff;
         text-align: center;
-        margin: 0 auto;
-       // position: relative;
-        width: 4rem;
-    //    span{
-    //        font-family:PingFangSC-Regular;
-    //         font-size:.36rem;
-    //         color:#ffffff;
-    //         position: absolute;
-    //         top: 50%;
-    //         left: 50%;
-    //         margin-left: .3rem;
-    //         margin-top: -.44rem;
-    //         width: 1.62rem;
-    //         display: inline-block;
-    //    }
+        line-height: .5rem;
+        margin-top: 1.7rem;
+        border-top-left-radius:2em;
+-webkit-border-top-left-radius:2em;
+border-bottom-left-radius:2em;
+-webkit-border-bottom-left-radius:2em;
+font-family:PingFangSC-Regular;
+font-size:.18rem;
+color:#f0a807;
+letter-spacing:0.9px;
     }
+   
 }
+.point,.doNum{
+    display: inline-block;
+    width: 2.24rem;
+    height: .8rem;
+    float: left;
+    text-align: center;
+}
+.point span:first-child,.doNum span:first-child
+{
+    font-family:PingFangSC-Regular;
+    font-size:.3rem;
+    color:#ffffff;
+   
+}
+.point span:last-child,.doNum span:last-child
+{
+    font-family:PingFangSC-Regular;
+    font-size:.5rem;
+    color:#ffffff;
+   line-height: .5rem;
+}
+.flex-right{
+    float: right;
+}
+// .doNum{
+//     float: left;
+// }
  .group1{
         
         .flex-group1{
