@@ -1,6 +1,6 @@
 <template>
-	<div class="home">
-
+<div class="home"> 
+  <x-header class="header " :left-options="{showBack: false}">随意</x-header>
 <el-row :gutter="20" class='quxiang'>
   <el-col :span="18"><div class="grid-content bg-purple chaxun"><img src="../assets/images/chaxun.png" alt="">公益物质去向查询中心</div></el-col>
   <el-col :span="6"><div class="grid-content bg-purple city"><img src="../assets/images/local.png" alt="">南宁</div></el-col>
@@ -136,6 +136,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.header {
+  background: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(225, 225, 225, 0.5);
+}
 .home {
   padding: 0 0.3rem;
 }
@@ -357,4 +361,28 @@ export default {
   width: 100%;
   height: 2rem;
 }
+</style>
+<style>
+.vux-header-title-area,
+.vux-header .vux-header-title {
+  color: #2da7e0 !important;
+  font-size: 16px;
+}
+.vux-header .vux-header-left .left-arrow:before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #2da7e0;
+  border-width: 1px 0 0 1px;
+  transform: rotate(315deg);
+  top: 8px;
+  left: 7px;
+}
+.vux-tab .vux-tab-item {
+    background: #fff !important;
+}
+/* .vux-swiper{
+  min-height:800px!important;
+} */
 </style>

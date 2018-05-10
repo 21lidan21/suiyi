@@ -8,7 +8,7 @@
       </div>
       <div class='group1'>
  <flexbox>
-      <flexbox-item><div class="flex-group1"><img src="../../assets/images/myorder.png" alt=""><br/><span>我的订单</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group1"  @click="goto('/my/GetOrderList')"><img src="../../assets/images/myorder.png" alt=""><br/><span>我的订单</span></div></flexbox-item>
       <flexbox-item><div class="flex-group1"><img src="../../assets/images/helpman.png" alt=""><br/><span>帮扶对象</span></div></flexbox-item>
       <flexbox-item><div class="flex-group1 last-child"><img src="../../assets/images/promote.png" alt=""><br/><span>推广大使</span></div></flexbox-item>
 </flexbox>
@@ -30,7 +30,7 @@
       <cell-box is-link>
        联系客服
       </cell-box>
-       <cell-box is-link>
+       <cell-box is-link :link="{path:'/userset'}">
         个人设置
       </cell-box>
     </group>
@@ -53,13 +53,18 @@ export default {
 		XButton,
 		Divider,
 		Flexbox,
-         FlexboxItem,
-         Group,
+        FlexboxItem,
+        Group,
         Cell,
         CellBox
 	},
   data() {
     return {};
+  },
+  methods:{
+    goto(path) {
+      this.$router.push(path);
+    },
   }
 };
 </script>

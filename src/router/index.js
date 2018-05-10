@@ -64,12 +64,51 @@ export default new Router({
       component: resolve => require(['../pages/usercenter/login'], resolve)
     },
     {
+			path: '/viplogin',
+			meta: {
+        title: '会员登录',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/usercenter/viplogin'], resolve)
+    },
+    {
 			path: '/regist',
 			meta: {
         title: '验证码登录',
         requireAuth: false
       },
       component: resolve => require(['../pages/usercenter/regist'], resolve)
+    },
+    {
+			path: '/my/getOrderList',
+			meta: {
+        title: '我的订单',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/usercenter/GetOrderLis'], resolve)
+    },
+    {
+      path: '/my/getOrderDetails',
+      meta: {
+        title: '订单详情',
+        requireAuth: false
+      },
+    component: resolve => require(['../pages/usercenter/GetOrderDetails'], resolve)
+    },
+		{	path: '/userset',
+			meta: {
+        title: '个人设置',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/usercenter/userset'], resolve)
+    },
+    {
+			path: '/userinfo',
+			meta: {
+        title: '个人设置',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/usercenter/userinfo'], resolve)
     },
     // {
 		// 	path: '/user/login',
@@ -120,6 +159,28 @@ export default new Router({
     {
       path: '/action/actiondetail',
       component: resolve => require(['../pages/action/ActionDetail'], resolve)
+    },
+      //公益事业
+      {
+        path: '/home/undertakings',
+        component: resolve => require(['../pages/home/Undertakings'], resolve)
+      },
+        //公益事业详情
+    {
+      path: '/home/undertakingsContent',
+      component: resolve => require(['../pages/home/UndertakingsContent'], resolve)
+    },
+    {
+      path: '/home/undertakingsContent1',
+      component: resolve => require(['../pages/home/UndertakingsContent1'], resolve)
+    },
+    {
+      path: '/home/undertakingsContent2',
+      component: resolve => require(['../pages/home/UndertakingsContent2'], resolve)
+    },
+    {
+      path: '/home/undertakingsContent3',
+      component: resolve => require(['../pages/home/UndertakingsContent3'], resolve)
     },
     {
       path: '*',

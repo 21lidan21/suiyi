@@ -37,13 +37,14 @@
         <tab-item class="vux-center"  :selected="demo2 === item" v-for="(item, index) in list2" @click="demo2 = item" :key="index">{{item}}</tab-item>
       </tab>
       </div>
-      <swiper v-model="index"  :show-dots="false">
+       <img @click="goto(1)" src="../../assets/images/love1.jpg" alt="">
+      <!-- <swiper v-model="index"  :show-dots="false">
         <swiper-item v-for="(item, index) in list2" :key="index">
           <div class="itemDiv" >
-           <img src="../../assets/images/bottomC.png" alt="">
+           
           </div>
         </swiper-item>
-      </swiper>
+      </swiper> -->
     </div>
   </div>
 </template>
@@ -76,11 +77,12 @@ export default {
         Tab,
         TabItem, 
         Swiper, 
-        SwiperItem 
+        SwiperItem,
       },
 
       beforeRouteEnter(to, from, next) {
             next((vm) => {
+              //vm.open();
                // vm.getData(vm)
             })
         },
@@ -96,6 +98,10 @@ export default {
           console.log(item);
           localStorage.setItem("item",JSON.stringify(item));
           this.$router.push("./bmap");
+        },
+        open(){
+          console.log("111");
+          
         }
       }
     };

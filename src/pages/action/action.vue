@@ -4,10 +4,16 @@
     <div>
       <div style="padding:.4rem 0;">
       <tab :line-width="2" height=".6rem" custom-bar-width="1rem" active-color='#2da7e0'  v-model="index">
-        <tab-item class="vux-center"  :selected="demo2 === item" v-for="(item, index) in list2" @click="demo2 = item" :key="index">{{item}}</tab-item>
+        <tab-item class="vux-center" @on-item-click="onItemClick" :selected="demo2 === item" v-for="(item, index) in list2" @click="demo2 = item" :key="index">{{item}}</tab-item>
       </tab>
       </div>
-      <swiper v-model="index"  :show-dots="false">
+      <div style="margin-bottom:1rem">
+        <img @click="goto(1)" src="../../assets/images/love1.jpg" alt="">
+        <img @click="goto(2)" src="../../assets/images/love2.jpg" alt="">
+        <img @click="goto(3)" src="../../assets/images/love3.jpg" alt="">
+      </div>
+    
+      <!-- <swiper v-model="index"  :show-dots="false">
         <swiper-item v-for="(item, index) in list2" :key="index">
           <div class="itemDiv" v-for="(item, index) in actionList" :key="index">
             <div @click="goto(item)">
@@ -17,7 +23,7 @@
             </div>
           </div>
         </swiper-item>
-      </swiper>
+      </swiper> -->
     </div>
   </div>
 </template>
@@ -68,9 +74,19 @@ export default {
         },
         goto(item){
           console.log(item);
-          //localStorage.setItem("item",JSON.stringify(item));
-          this.$router.push("./action/actiondetail");
-        }
+            if(item==1){
+              window.location.href="https://mp.weixin.qq.com/s/pHbaVAQq_EUPKyGcn5s_MA";
+            }else if(item==2){
+              window.location.href="https://mp.weixin.qq.com/s/7udfqyahMavHrB1x4pL-Uw";
+            }else{
+              window.location.href="https://mp.weixin.qq.com/s/4f76Hp7GyzsGuUs6Q5sLBA";
+            }
+          // localStorage.setItem("item",item);
+          // this.$router.push("./action/actiondetail");
+        },
+        onItemClick (index) { 
+            console.log(index);
+        },
       }
     };
 
@@ -120,7 +136,7 @@ export default {
 .vux-tab .vux-tab-item {
     background: #fff !important;
 }
-.vux-swiper{
+/* .vux-swiper{
   min-height:800px!important;
-}
+} */
 </style>
