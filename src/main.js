@@ -11,14 +11,15 @@ import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
 
 import { XHeader,XImg } from 'vux'
-import { Loadmore } from 'mint-ui'
+import { InfiniteScroll } from 'mint-ui'
+
 
 Vue.component('x-img', XImg)
 Vue.component('x-header', XHeader)
-Vue.component(Loadmore.name, Loadmore);
 
 Object.keys(filters).forEach(k => Vue.filter(k, filters[k])) //注册过滤器
 Vue.use(ElementUI, { locale })
+Vue.use(InfiniteScroll)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

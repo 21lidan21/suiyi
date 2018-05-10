@@ -3,9 +3,9 @@
      <x-header   class="header" :left-options="{backText: ''}">点点爱公益</x-header>
    <div class="dda-index-bg">
      <div class="fill"></div>
-     <router-link to="/dda/join">
-        <div class="btn in">参加活动</div>
-     </router-link>
+     
+        <div class="btn in" @click="joinIn">参加活动</div>
+   
      <router-link to="/dda/detail">
         <div class="btn detail">了解详情 >></div>
      </router-link>
@@ -13,9 +13,104 @@
    </div>
 </template>
 <script>
+import api from "../../fetch/api";
+
 export default {
   data() {
     return {};
+  },
+  methods: {
+    joinIn() {
+      var openId = GetQueryString("openid");
+      var wxJsApiParam = "";
+      if (openId == "") {
+        location.href =
+          "http://www.lcaui.com/oauth/authorize.aspx?redirect_uri=" +
+          window.location.href;
+        return;
+        
+      }
+
+      //获取url地址的字符串参数
+      function GetQueryString(key) {
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return "";
+      }
+      //立即支付
+      function callpay(obj) {
+        if (typeof WeixinJSBridge == "undefined") {
+          if (document.addEventListener) {
+            document.addEventListener("WeixinJSBridgeReady", jsApiCall, false);
+          } else if (document.attachEvent) {
+            document.attachEvent("WeixinJSBridgeReady", jsApiCall);
+            document.attachEvent("onWeixinJSBridgeReady", jsApiCall);
+          }
+        } else {
+          jsApiCall(obj);
+        }
+      }
+
+      //调用微信JS api 支付
+      function jsApiCall(obj) {
+        if (obj.length <= 0) {
+          console.log("wxJsApiParam length is 0");
+          //$$.showMsg("缺少支付参数，请返回重试");
+          return;
+        }
+        // alert(wxJsApiParam);
+        var wx = JSON.parse(obj);
+        WeixinJSBridge.invoke(
+          "getBrandWCPayRequest",
+          {
+            appId: wx.appId,
+            nonceStr: wx.nonceStr,
+            package: wx.package,
+            paySign: wx.paySign,
+            signType: wx.signType,
+            timeStamp: wx.timeStamp
+          },
+          function(res) {
+            console.log(res.err_code + "-" + res.err_desc + "-" + res.err_msg);
+            switch (res.err_msg) {
+              case "get_brand_wcpay_request:ok":
+              case "ok":
+                //跳转到上一页
+                //$('.return').trigger("click");
+               
+                this.$router.push("/dda/join");
+
+                break;
+              case "get_brand_wcpay_request:fail":
+              case "fail":
+                WeixinJSBridge.log(
+                  res.err_code + "-" + res.err_desc + "-" + res.err_msg
+                );
+                break;
+              case "get_brand_wcpay_request:cancel":
+              case "cancel":
+                break;
+            }
+          }
+        );
+      }
+
+      var param = { openID: openId };
+      
+      api
+        .ThreeeLoveOrderPub(param)
+        .then(res => {
+          alert(res);
+          // let wxJsApiParam = res.data[0].parameters;
+          // if (data.status >= 0 && wxJsApiParam.length > 0) {
+          //   callpay(wxJsApiParam);
+          // }
+        })
+        .catch(err => {
+          alert("请求支付错误");
+        });
+    }
   }
 };
 </script>

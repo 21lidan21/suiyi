@@ -9,28 +9,23 @@
 
 
    
-<mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
-   <el-tabs    v-model="activeName">
-  <el-tab-pane
-    v-for="(item, index) in editableTabs2"
-    :key="item.name"
-    :name="item.name"
-  >
-    <el-row  >
-      <div @click="selectPerson(index,index1)" v-for="(o, index1) in item.content" :key="index+'Index'+index1" >
+
+ 
+    <el-row  v-infinite-scroll="loadMore"
+  infinite-scroll-disabled="loading"
+  infinite-scroll-distance="10">
+      <div v-for="(item, index) in editableTabs2" @click="selectPerson(index)" :key="index+'Index'" >
   <el-col    :span="12"  >
-    <el-card  class="border_pollyfill"  :class="{isActive: index1 == nActive }">
-      <img :src="o.img" class="image">
+    <el-card  class="border_pollyfill"  :class="{isActive: index == nActive }">
+      <img :src="item.img" class="image">
       <div style="padding: 14px;line-height:1.5;font-size:14px;">
-        姓名：<span class="info_color" v-text="o.name"></span><br>
-        班级：<span class="info_color" v-text="o.banji"></span>
+        姓名：<span class="info_color" v-text="item.name"></span><br>
+        班级：<span class="info_color" v-text="item.banji"></span>
       </div>
     </el-card>
   </el-col></div>
 </el-row>
-  </el-tab-pane>
-</el-tabs>
-</mt-loadmore>
+
 
     <router-link to="/dda/joincamp">
       <div class="footer">我要捐助TA</div>
@@ -40,7 +35,7 @@
 
 <script>
 import { PopupPicker, Group } from "vux";
-import api from '../../fetch/api'
+import api from "../../fetch/api";
 
 export default {
   components: {
@@ -48,55 +43,41 @@ export default {
     Group
   },
   beforeRouteEnter(to, from, next) {
-        next((vm) => {
-           
-            vm.getDefault(vm);
-        })
-    },
+    next(vm => {
+      vm.getDefault(vm);
+    });
+  },
 
   data() {
     return {
       nActive: 0,
       editableTabs2: [
         {
-          title: "大新县雷平镇那岸小学",
-          name: "1",
-          content: [
-            {
-              img:
-                "https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike272%2C5%2C5%2C272%2C90/sign=09fa593b700e0cf3b4fa46a96b2f997a/37d3d539b6003af3a32f2849372ac65c1038b606.jpg",
-              name: "选项是否",
-              banji: "5年纪"
-            },
-            {
-              img:
-                "https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike272%2C5%2C5%2C272%2C90/sign=09fa593b700e0cf3b4fa46a96b2f997a/37d3d539b6003af3a32f2849372ac65c1038b606.jpg",
-              name: "选项是否",
-              banji: "5年纪"
-            },
-            {
-              img:
-                "https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike272%2C5%2C5%2C272%2C90/sign=09fa593b700e0cf3b4fa46a96b2f997a/37d3d539b6003af3a32f2849372ac65c1038b606.jpg",
-              name: "选项是否",
-              banji: "5年纪"
-            }
-          ]
+          img:
+            "https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike272%2C5%2C5%2C272%2C90/sign=09fa593b700e0cf3b4fa46a96b2f997a/37d3d539b6003af3a32f2849372ac65c1038b606.jpg",
+          name: "选项是否",
+          banji: "5年纪"
         },
         {
-          title: "Tab 2",
-          name: "2",
-          content: "Tab 2 content"
+          img:
+            "https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike272%2C5%2C5%2C272%2C90/sign=09fa593b700e0cf3b4fa46a96b2f997a/37d3d539b6003af3a32f2849372ac65c1038b606.jpg",
+          name: "选项是否",
+          banji: "5年纪"
         },
         {
-          title: "Tab 3",
-          name: "3",
-          content: "Tab 3 content"
+          img:
+            "https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike272%2C5%2C5%2C272%2C90/sign=09fa593b700e0cf3b4fa46a96b2f997a/37d3d539b6003af3a32f2849372ac65c1038b606.jpg",
+          name: "选项是否",
+          banji: "5年纪"
         }
       ],
       title1: "学校：",
       list1: [[]],
       value1: ["默认学校"],
-      allLoaded: false
+      rawData: [],
+      nowSchoolId: "",
+      curPage :0,
+      // allLoaded: false,
     };
   },
   computed: {
@@ -105,30 +86,61 @@ export default {
     }
   },
   methods: {
-    getDefault(){
+    getDefault() {
       var param = {
-        req:1
-      }
-      api.getDefaultSchoolList(param)
-         .then(res=>{
-           console.log(res);
-           for(let i =0;i<res.length;i++){
-             
-           }
-           this.list1=[res[0]["schoolName"]];
-         }).catch(err=>{
-
-         })
+        req: 1
+      };
+      api
+        .getDefaultSchoolList(param)
+        .then(res => {
+          console.log(res);
+          let tmp = [];
+          for (let i = 0; i < res.length; i++) {
+            tmp.push(res[i]["schoolName"]);
+          }
+          this.list1 = [tmp];
+          this.rawData = res;
+          this.value1 = [res[0]["schoolName"]];
+          this.nowSchoolId = res[0]["schoolID"];
+          this.getStudents();
+        })
+        .catch(err => {});
     },
-    loadTop(id) {
-      // 加载更多数据
-      // this.$broadcast("onTopLoaded", id);
+    getStudents(needClose) {
+      var param = {
+        schoolID: this.nowSchoolId,
+        pageSize: 10,
+        curPage: this.curPage
+      };
+      api
+        .getStudentsList(param)
+        .then(res => {
+          console.log(res);
+          if(needClose){
+            this.loading = flase;
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          if(needClose){
+            this.loading = flase;
+          }
+        });
     },
-    loadBottom(id) {
-      // 加载数据
-      this.allLoaded = true; // 若数据已全部获取完毕
-      // this.$broadcast("onBottomLoaded", id);
+    loadMore() {
+      this.loading = true;
+      this.curPage++;
+      this.getStudents(1);
     },
+    // loadTop(id) {
+    //   // 加载更多数据
+    //   this.$broadcast("onTopLoaded", id);
+    // },
+    // loadBottom(id) {
+    //   // 加载数据
+    //   this.allLoaded = true; // 若数据已全部获取完毕
+    //   this.$broadcast("onBottomLoaded", id);
+    // },
     onShow() {
       console.log("on show");
     },
@@ -137,15 +149,27 @@ export default {
     },
     onChange(val) {
       console.log("val change", val);
+      if (val[0] == this.value1[0]) {
+        return;
+      }
+      let tmp = this.rawData;
+
+      for (let i = 0; i < tmp.length; i++) {
+        if (val[0] == tmp[i]["schoolName"]) {
+          this.nowSchoolId = tmp[i]["schoolID"];
+          return;
+        }
+      }
+      this.getStudents();
     },
-    selectPerson(indexOut, indexIn) {
-      this.nActive = indexIn;
+    selectPerson(index) {
+      this.nActive = index;
     },
     resetNActive() {
       this.nActive = 0;
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">

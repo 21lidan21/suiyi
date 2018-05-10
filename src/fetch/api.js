@@ -163,8 +163,11 @@ export default {
      getDefaultSchoolList(param){
         let httpUrl =  "/GetSchoolList?req="+param.req;
         return fetch(httpUrl)
-     }
-     ,
+     },
+     getStudentsList(){
+        axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || '';
+        return fetch("/GetStudentsBySchool", data)
+     },
      getorderlist(data){
         axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || '';
         return fetch("/GetOrderList", data)
@@ -173,5 +176,9 @@ export default {
          console.log(JSON.stringify(data));
         axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || '';
         return fetch("/GetOrderDetails", data)
+     },
+     ThreeeLoveOrderPub(param){
+        axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || '';
+        return fetch("/ThreeeLoveOrderPub", data)
      }
 }
