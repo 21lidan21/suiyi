@@ -121,7 +121,7 @@ export default {
             break;
           }
           let param ={
-            "userID": 'B254276439438EFC81C2DF56C736F6F9A752512D1333A66D3439C32BAF321A21C9F2913ED28DD69AA73624B1C16E4A8A',
+            "userID": sessionStorage.sessionId || '',
             "curStatus":nowType,
             "pageSize": 10,
             "curPage": 1

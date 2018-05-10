@@ -43,7 +43,8 @@ export default {
       },
       computed:{
         ...mapGetters([
-          "orderListDetails"
+          "orderListDetails",
+          "orderID"
         ]),
       },
       components:{
@@ -75,8 +76,8 @@ export default {
         },
         onItemClick () {
           let param ={
-                  "userID": "B254276439438EFC81C2DF56C736F6F9A752512D1333A66D3439C32BAF321A2134105197AE54387ADAA1B2DC0DACEC12",
-                  "orderID": "OR20180507204809034665376"
+                  "userID": sessionStorage.sessionId || '',
+                  "orderID": orderID
                 };
           this.$store.dispatch("getorderListDetails",param);
         },
