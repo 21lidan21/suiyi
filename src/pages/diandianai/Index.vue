@@ -19,16 +19,32 @@ export default {
   data() {
     return {};
   },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.checkPay(vm);
+    });
+  },
   methods: {
-    joinIn() {
+    checkPay() {
+      var redirectPay = sessionStorage["redirectOpenId"];
+      sessionStorage["redirectOpenId"] = "";
+      if (redirectPay) {
+        this.joinIn(redirectPay);
+      }
+    },
+    joinIn(gotId) {
+      var self = this;
       var openId = GetQueryString("openid");
+      if (gotId) {
+        openId = gotId;
+      }
       var wxJsApiParam = "";
-      if (openId == "") {
+
+      if (openId == "" || typeof openId == "object") {
         location.href =
           "http://www.lcaui.com/oauth/authorize.aspx?redirect_uri=" +
           window.location.href;
         return;
-        
       }
 
       //获取url地址的字符串参数
@@ -78,8 +94,8 @@ export default {
               case "ok":
                 //跳转到上一页
                 //$('.return').trigger("click");
-               
-                this.$router.push("/dda/join");
+
+                self.$router.push("/dda/join");
 
                 break;
               case "get_brand_wcpay_request:fail":
@@ -96,19 +112,20 @@ export default {
         );
       }
 
-      var param = { openID: openId };
-      
-      api
-        .ThreeeLoveOrderPub(param)
-        .then(res => {
-          alert(res);
-          // let wxJsApiParam = res.data[0].parameters;
-          // if (data.status >= 0 && wxJsApiParam.length > 0) {
-          //   callpay(wxJsApiParam);
-          // }
+      var params = { openID: openId };
+
+      api.ThreeeLoveOrderPub(params).then(res => {
+        console.log(res);
+          let wxJsApiParam = res[0].parameters;
+          console.log(wxJsApiParam);
+          if ( wxJsApiParam.length > 0) {
+            callpay(wxJsApiParam);
+          }else{
+            console.log("支付parameters");;
+          }
         })
-        .catch(err => {
-          alert("请求支付错误");
+        .catch(error => {
+          alert("支付openID错误")
         });
     }
   }

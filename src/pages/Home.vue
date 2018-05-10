@@ -125,13 +125,38 @@ export default {
     //     this.$store.dispatch('getTravelsList')
     // }
   },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.redirect(vm);
+    });
+  },
   computed: {
     // ...mapGetters([
     // 	'travelListIndex'
     // ])
   },
   mounted() {},
-  methods: {}
+  methods: {
+    redirect() {
+     
+      var openId = GetQueryString("openid");
+      
+      if (openId) {
+        sessionStorage["redirectOpenId"] = openId;
+        window.location.href = window.location.href.replace(/\?openid.*/ig,"#/dda/index");
+      }else{
+        
+      }
+
+      //获取url地址的字符串参数
+      function GetQueryString(key) {
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return "";
+      }
+    }
+  }
 };
 </script>
 
@@ -380,7 +405,7 @@ export default {
   left: 7px;
 }
 .vux-tab .vux-tab-item {
-    background: #fff !important;
+  background: #fff !important;
 }
 /* .vux-swiper{
   min-height:800px!important;

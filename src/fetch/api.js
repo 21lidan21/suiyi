@@ -178,7 +178,6 @@ export default {
         return fetch("/GetOrderDetails", data)
      },
      ThreeeLoveOrderPub(param){
-        axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || '';
-        return fetch("/ThreeeLoveOrderPub", data)
+        return fetch("/ThreeeLoveOrderPub", param)
      }
 }
