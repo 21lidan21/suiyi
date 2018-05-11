@@ -16,11 +16,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      meta: {
-        title: '随益',
-        requireAuth: false
-      },
-      component: resolve => require(['../pages/Home'], resolve)
+      redirect:"/home"
     },
     {
       path: '/home',
