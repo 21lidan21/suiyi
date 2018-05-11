@@ -9,7 +9,7 @@
      <group title="">
       <x-input title="" placeholder="请输入手机号码" v-model="username" :max="13" is-type="china-mobile"></x-input>
       <x-input title="" placeholder="请输入验证码" class="weui-vcode" v-model="password">
-        <x-button slot="right" type="primary" :class="{ 'class-a': ischeck, 'class-b': !ischeck}" :disabled="disabled" @click.native="sendCode" mini ><input style="" type="text" v-model="text"></x-button>
+        <x-button slot="right" type="primary" :class="{ 'class-a': ischeck, 'class-b': !ischeck}" :disabled="disabled" @click.native="sendCode" mini ><input style="color:#ffffff" type="text" v-model="text"></x-button>
       </x-input>
        
       <x-input title="" type="password" placeholder="请输入设置登录密码" v-model="userpassword" :min="6"  @on-change="change"></x-input>
@@ -164,11 +164,11 @@ export default {
   padding-bottom: 2rem;
 }
 .class-a {
-  background: #F8B62C;
-  color:#ffffff;
+  background: #2da7e0;
+  width: 50%;
 }
 .class-b {
-  background: #928c8c;
+  background: #F8B62C;
 }
 .main {
   padding-top: 0.5rem;
