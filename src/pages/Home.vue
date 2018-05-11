@@ -142,13 +142,18 @@ export default {
     return {
       auto: false,
       loop: false,
-      isPopUp: false,
+      isPopUp: false
     };
   },
   created() {
     // if (this.travelListIndex.length == 0) {
     //     this.$store.dispatch('getTravelsList')
     // }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.redirect(vm);
+    });
   },
   computed: {
     // ...mapGetters([
@@ -157,18 +162,39 @@ export default {
   },
   mounted() {},
   methods: {
-  	goto(item){
-         this.isPopUp = true;
-         document.body.style="overflow：hidden;";
-          // console.log(item);
-          // localStorage.setItem("item",JSON.stringify(item));
-          // this.$router.push("./bmap");
-        },
-        close(type) {
-          if (type) {
-          }
-          this.isPopUp = false;
-        },
+    redirect() {
+      var openId = GetQueryString("openid");
+
+      if (openId) {
+        sessionStorage["redirectOpenId"] = openId;
+        let reStr = window.location.search + window.location.hash;
+        window.location.href = window.location.href.replace(
+          reStr,
+          "#/dda/index"
+        );
+      } else {
+      }
+
+      //获取url地址的字符串参数
+      function GetQueryString(key) {
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return "";
+      }
+    },
+    goto(item) {
+      this.isPopUp = true;
+      document.body.style = "overflow：hidden;";
+      // console.log(item);
+      // localStorage.setItem("item",JSON.stringify(item));
+      // this.$router.push("./bmap");
+    },
+    close(type) {
+      if (type) {
+      }
+      this.isPopUp = false;
+    }
   }
 };
 </script>
@@ -177,10 +203,9 @@ export default {
 .header {
   background: #ffffff;
   box-shadow: 0 1px 2px 0 rgba(225, 225, 225, 0.5);
-  
 }
 .home {
-  width:100% !important;
+  width: 100% !important;
   /*background-color:#2DA7E0;*/
 }
 .quxiang {
@@ -192,7 +217,7 @@ export default {
   color: linear-gradient(-180deg, #2da7e0 0%, #77baf1 100%);
   .chaxun {
     line-height: 0.8rem;
-    color:#2da7e0;
+    color: #2da7e0;
     font-size: 0.28rem;
     img {
       height: 0.26rem;
@@ -231,7 +256,7 @@ export default {
 }
 .xinjintoutiao {
   padding: 0.5rem 0.26rem 0.5rem 0.26rem;
-  margin-bottom: .3rem;
+  margin-bottom: 0.3rem;
   box-shadow: 0 0 5px 2.5px rgba(225, 225, 225, 0.5);
   .xinjintoutiao-inner {
     height: 100%;
@@ -253,7 +278,7 @@ export default {
 .service-center {
   width: 100%;
   box-shadow: 0 0 5px 2.5px rgba(225, 225, 225, 0.5);
-  margin-bottom: .3rem;
+  margin-bottom: 0.3rem;
   span {
     color: #2da7e0;
     width: 4px;
@@ -261,14 +286,14 @@ export default {
   }
   p {
     font-size: 0.28rem;
-    padding-top:.2rem;
-    padding-left: .25rem;
+    padding-top: 0.2rem;
+    padding-left: 0.25rem;
   }
   .service-center-swipter {
     margin: 0.26rem 0 0.3rem 0;
     height: 2.2rem;
     img {
-      width:100%;
+      width: 100%;
       height: 100%;
     }
   }
@@ -296,8 +321,7 @@ export default {
   }
   p {
     font-size: 0.28rem;
-    padding:.2rem 0 .3rem .25rem;
-    
+    padding: 0.2rem 0 0.3rem 0.25rem;
   }
 }
 .chuanweixingdong-swipter {
@@ -378,7 +402,7 @@ export default {
     background-size: 100% 100%;
     float: left;
     margin-right: 0.32rem;
-    padding-left:.3rem;
+    padding-left: 0.3rem;
   }
 }
 .activity2 {
@@ -415,7 +439,7 @@ export default {
   background-size: 100% 100%;
   width: 100%;
   height: 2rem;
-  margin-bottom: .3rem;
+  margin-bottom: 0.3rem;
 }
 .pop {
   position: fixed;
@@ -425,7 +449,6 @@ export default {
   right: 0;
   z-index: 1000;
   background: rgba(0, 0, 0, 0.3) !important;
-  
 }
 .popup {
   padding: 2rem 0 0;
@@ -465,11 +488,13 @@ export default {
   left: 7px;
 }
 .vux-tab .vux-tab-item {
-    background: #fff !important;
+  background: #fff !important;
 }
-.vux-slider .service-center-swipter .vux-swiper{width:100%;}
-.vux-swiper-item{
-	width:100%;
+.vux-slider .service-center-swipter .vux-swiper {
+  width: 100%;
+}
+.vux-swiper-item {
+  width: 100%;
 }
 /* .vux-swiper{
   min-height:800px!important;
