@@ -94,6 +94,13 @@ export default {
 					background: url(../assets/images/tab_home.png) no-repeat;
 					background-size:100% 100%; 
 				}
+				.tab-text{
+					font-family:PingFangSC-Regular;
+					font-size:.16rem;
+					color:#757783;
+					letter-spacing:1.45px;
+					text-align:center;
+				}
 			  }
 			}
 			.tab_running{

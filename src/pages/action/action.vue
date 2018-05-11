@@ -7,7 +7,7 @@
         <tab-item class="vux-center" @on-item-click="onItemClick" :selected="demo2 === item" v-for="(item, index) in list2" @click="demo2 = item" :key="index">{{item}}</tab-item>
       </tab>
       </div>
-      <div style="margin-bottom:1rem">
+      <div style="margin-bottom:3rem">
         <img @click="goto(1)" src="../../assets/images/love1.jpg" alt="">
         <img @click="goto(2)" src="../../assets/images/love2.jpg" alt="">
         <img @click="goto(3)" src="../../assets/images/love3.jpg" alt="">
