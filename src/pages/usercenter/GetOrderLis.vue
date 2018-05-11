@@ -149,7 +149,6 @@ body{
   background:#ffffff;
   width:100%;
   height:2.5rem;
-  margin: .2rem 0;
   position: absolute;
 }
 .tabsp{

@@ -14,7 +14,7 @@
 		<el-menu-item index="2"><span>离我最近</span></el-menu-item>
 		<el-menu-item index="3"><span>推荐领取点</span></el-menu-item>
 		</el-menu>
-		<div style="overflow:scroll;height:100%">
+		<div style="overflow:scroll;height:80%; background: #daf5f8;">
       <el-row class="tag"  v-for="item in dataList" :key="item.storeName">		
         <el-col class="tag-item" :span="8">
           <img class="log" src="../../assets/images/shangjia.jpg" style="padding: .14rem" > </el-col>

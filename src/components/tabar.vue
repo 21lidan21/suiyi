@@ -76,13 +76,15 @@ export default {
 				padding: 10px;
 				color: rgb(77, 85, 93);
 					&.active{
-					    color:#2da7e0;
 						text-decoration: none;
 						 .tab-icon{
 						    width: .7rem;
 							height: .7rem;
 							background: url(../assets/images/tab_home_active.png) no-repeat;
 							background-size:100% 100%; 
+						 }
+						 .tab-text{
+							 color:#2da7e0;
 						 }
 					}
 	            .tab-icon{
@@ -92,14 +94,7 @@ export default {
 					background: url(../assets/images/tab_home.png) no-repeat;
 					background-size:100% 100%; 
 				}
-				.tab-text{
-					font-family:PingFangSC-Regular;
-					font-size:.16rem;
-					color:#757783;
-					letter-spacing:1.45px;
-					text-align:center;
-				}
-				}
+			  }
 			}
 			.tab_running{
 				flex: 1;
@@ -116,6 +111,9 @@ export default {
 							height: .7rem;
 							background: url(../assets/images/tab_running_active.png) no-repeat;
 							background-size:100% 100%; 
+						 }
+						 .tab-text{
+							 color:#2da7e0;
 						 }
 					}
 	            .tab-icon{
@@ -150,6 +148,9 @@ export default {
 							background: url(../assets/images/tab_travel_active.png) no-repeat;
 							background-size:100% 100%; 
 						 }
+						 .tab-text{
+							 color:#2da7e0;
+						 }
 					}
 	            .tab-icon{
 					margin: auto; //外面的div高度的一半
@@ -183,6 +184,10 @@ export default {
 							background: url(../assets/images/tab_user_active.png) no-repeat;
 							background-size:100% 100%; 
 						 }
+						 .tab-text{
+							 color:#2da7e0;
+						 }
+						 
 					}
 	            .tab-icon{
 					margin: auto; //外面的div高度的一半
