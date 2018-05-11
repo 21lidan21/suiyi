@@ -7,7 +7,7 @@ import * as _ from '../util/tool'
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
-axios.defaults.baseURL = 'http://api.lcaui.com';
+axios.defaults.baseURL = 'http://api.syccpt.com';
 
 // if(sessionStorage.sessionId){
 //    axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || 'B254276439438EFC81C2DF56C736F6F9A752512D1333A66D3439C32BAF321A21C9F2913ED28DD69AD059D0887DE1CE58';
