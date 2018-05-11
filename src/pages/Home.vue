@@ -336,12 +336,15 @@ export default {
   }
   .cw1 {
     background: url(../assets/images/cwxd01.jpg) no-repeat;
+    background-size: 100% 100%;
   }
   .cw2 {
     background: url(../assets/images/cwxd02.jpg) no-repeat;
+    background-size: 100% 100%;
   }
   .cw3 {
     background: url(../assets/images/cwxd03.jpg) no-repeat;
+    background-size: 100% 100%;
   }
   p {
     position: absolute;
