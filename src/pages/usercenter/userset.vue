@@ -1,21 +1,25 @@
 <template>
    <div class="usercenter">
-       
- <group>
+       <x-header class="header" :left-options="{backText: ''}">个人设置</x-header>
+ 	<div style="margin-top:-0.4rem;">
+ 		<group>
      
         <!-- <x-input is-link title="姓名" name="name" v-model="name"  is-type="china-name"></x-input> -->
      
-       <cell title="姓名" :value="name" is-link></cell>
-       <cell title="性别" :value="option1" is-link></cell>
+       <cell style="font-size: .28rem;" title="姓名" :value="name" is-link></cell>
+       <cell style="font-size: .28rem;" title="性别" :value="option1" is-link></cell>
         <!-- <popup-radio title="性别" :options="options1" v-model="option1"></popup-radio> -->
-       <cell title="生日" :value="value5" is-link></cell>
-        <cell title="会员卡卡号" :value="cardID" is-link></cell>
-         <cell title="手机号码" :value="phone" is-link></cell>
+       <cell style="font-size: .28rem;" title="生日" :value="value5" is-link></cell>
+        <cell style="font-size: .28rem;" title="会员卡卡号" :value="cardID" is-link></cell>
+         <cell style="font-size: .28rem;" title="手机号码" :value="phone" is-link></cell>
     <!-- <datetime :value.sync="value5" disabled :min-year=1990 :max-year=2016 format="YYYY-MM-DD" @on-change="change" title="生日" year-row="{value}年" month-row="{value}月" day-row="{value}日"  confirm-text="完成" cancel-text="取消"></datetime> -->
       <!-- <x-input title="会员卡卡号" name="cardID"  v-model="cardID"></x-input> -->
     <!-- <x-input title="手机号码"  v-model="phone" :max="13" ></x-input> -->
     </group>
-    <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="loginout" > 注销登录</x-button>
+ 	</div>
+    <div  style="padding:0 .2rem;">
+    <x-button style="font-size: .28rem;" :gradients="['#2da7e0', '#77baf1']"  @click.native="loginout" > 注销登录</x-button>
+    </div>
    </div>
 </template>
 <script>
@@ -126,41 +130,10 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.head{
-    background: url(../../assets/images/个人中心背景.png) no-repeat ;
-    background-size: 100% 100%;
-    width: 100%;
-    height: 4.6rem;
-    line-height: 1rem;
-    //margin: 1.8rem auto;
-    text-align: center;
-    .headimg{
-        width: 1rem;
-        height: 1rem;
-        background: #fff;
-        border-radius: 50%;
-        display: inline-block;
-        margin: 1.8rem 0;
-        margin-left: -1.2rem;
-    }
-    .login_head{
-        text-align: center;
-        margin: 0 auto;
-        position: relative;
-        width: 4rem;
-       span{
-           font-family:PingFangSC-Regular;
-            font-size:.36rem;
-            color:#ffffff;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-left: .3rem;
-            margin-top: -.44rem;
-            width: 1.62rem;
-            display: inline-block;
-       }
-    }
+.header {
+  background: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(225, 225, 225, 0.5);
+  
 }
  .group1{
         

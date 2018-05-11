@@ -1,22 +1,30 @@
 <template>
    <div class="login_bg">
+   	<x-header class="header" :left-options="{backText: ''}">注册</x-header>
+   	<div class="main">
+   	<div style="width: 20%;margin:.5rem auto;">
+      <img src="../../assets/images/wp04.png" style="width:1.2rem; height: 1.2rem;" alt="">
+    </div>
+    <div class="register">
      <group title="">
-      <x-input title="手机号码" placeholder="请输入手机号码" v-model="username" :max="13" is-type="china-mobile"></x-input>
-      <x-input title="验证码" placeholder="请输入验证码" class="weui-vcode" v-model="password">
+      <x-input title="" placeholder="请输入手机号码" v-model="username" :max="13" is-type="china-mobile"></x-input>
+      <x-input title="" placeholder="请输入验证码" class="weui-vcode" v-model="password">
         <x-button slot="right" type="primary" @click.native="sendCode" mini>发送验证码</x-button>
       </x-input>
        
-      <x-input title="请输入密码" type="password" placeholder="" v-model="userpassword" :min="6"  @on-change="change"></x-input>
-     <x-input title="请确认密码" type="password" v-model="userpassword2"  placeholder="" :equal-with="userpassword"></x-input>
-    <group title="以下是选填">
-      <x-input title="姓名" name="name" v-model="name" placeholder="请输入姓名" is-type="china-name"></x-input>
-     <popup-radio title="请选择性别" :options="options1" v-model="option1"></popup-radio>
-      <datetime :value.sync="value5" placeholder="请选择日期" :min-year=2000 :max-year=2016 format="YYYY-MM-DD" @on-change="change" title="请选择生日" year-row="{value}年" month-row="{value}月" day-row="{value}日"  confirm-text="完成" cancel-text="取消"></datetime>
-     <x-input title="请输入随益会员卡" name="cardID" placeholder="请输入随益会员卡" v-model="cardID"></x-input>
+      <x-input title="" type="password" placeholder="请输入设置登录密码" v-model="userpassword" :min="6"  @on-change="change"></x-input>
+     <x-input title="" type="password" style="border-bottom: 1px solid #F2F2F2;margin-bottom: .5rem;" v-model="userpassword2"  placeholder="请再次输入确认登录密码" :equal-with="userpassword"></x-input>
+    <group title="以下是选填信息">
+      <x-input title="" name="name" v-model="name" placeholder="请输入姓名" is-type="china-name"></x-input>
+     <popup-radio style="font-size:.28rem;color:#B1B1B1;border-bottom: 1px solid #F2F2F2;" title="请选择性别" :options="options1" v-model="option1"></popup-radio>
+      <datetime :value.sync="value5" style="font-size:.28rem;color:#B1B1B1;border-bottom: 1px solid #F2F2F2;" placeholder="" :min-year=2000 :max-year=2016 format="YYYY-MM-DD" @on-change="change" title="请选择生日" year-row="{value}年" month-row="{value}月" day-row="{value}日"  confirm-text="完成" cancel-text="取消"></datetime>
+     <x-input title="" name="cardID" placeholder="请输入随益会员卡" v-model="cardID"></x-input>
     </group>
-    <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="regist" > 注册</x-button>
+    <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="regist" style="font-size: .3rem;"> 注册</x-button>
      </group>
-     <a @click="$router.push('/login')">验证码登录</a>|<a @click="$router.push('/regist')">注册</a>
+     
+    </div>
+   </div>
    </div>
 </template>
 <script>
@@ -128,11 +136,52 @@ export default {
 </script>
 <style scoped >
 .login_bg{
-     background: url(../../assets/images/login_bg.jpeg) no-repeat ;
-    background-size: 100% 100%;
     width: 100%;
     height: 100%;
 }
-
+.main{
+	padding-top:.5rem;
+	width: 100%;
+	height: 100%;
+	background: url(../../assets/images/login_bg.jpeg);
+    background-size: 100% 100%;
+}
+.register{
+	padding: 0 .3rem;
+	border-radius: .2rem;
+}
+.header {
+  background: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(225, 225, 225, 0.5);
+  
+}
 
 </style>
+<style>
+::-webkit-scrollbar{
+  display:none;
+}
+.inner-container::-webkit-scrollbar {
+    display: none;
+}
+.vux-header-title-area,
+.vux-header .vux-header-title {
+  color: #2da7e0 !important;
+  font-size: 16px;
+}
+.vux-tab .vux-tab-item {
+    background: #fff !important;
+}
+.vux-header .vux-header-left .left-arrow:before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #2da7e0;
+  border-width: 1px 0 0 1px;
+  transform: rotate(315deg);
+  top: 8px;
+  left: 7px;
+}
+</style>
+

@@ -1,7 +1,7 @@
 <template>
 	<div>
     <x-header class="header" :left-options="{backText: ''}">帮扶对象服务中心</x-header>
-      <div style="margin-bottom: 0.8rem;">
+      <div style="margin-bottom: 0.3rem;">
       	<img src="../../assets/images/扶贫.jpg" alt="">
       </div>
       <router-link to="/home/hopeHelpService">

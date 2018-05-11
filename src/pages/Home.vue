@@ -13,30 +13,30 @@
 <div style="padding: 0 0.3rem;">
 <router-link to="/dda/index">
 <el-row type="flex" justify="center" class='diandianai'>
-  <el-col :span="24"><div class="grid-content bg-purple-dark"><img src="../assets/images/diandianai.jpg" alt=""></div></el-col>
+  <el-col :span="24"><div class="grid-content bg-purple-dark"><img src="../assets/images/diandianai.jpg" width="100%" alt=""></div></el-col>
 </el-row>
 </router-link>
 <el-row type="flex" justify="center" class='kuaigongyi'>
-  <el-col :span="24"><div class="grid-content bg-purple-dark" @click="goto"><img src="../assets/images/kuaigongyi.jpg" alt=""></div></el-col>
+  <el-col :span="24"><div class="grid-content bg-purple-dark" @click="goto"><img src="../assets/images/kuaigongyi.jpg" width="100%" alt=""></div></el-col>
 </el-row>
  
    <scroller lock-y :scrollbar-x=false>
       <div  class="activity">
       	<router-link to="/home/undertakingsContent">
-      <div class="swiper-slide1"><img src="../assets/images/top1.png" alt=""><div style="padding-top:.3rem;line-height: .35rem;"><span style="font-size: .28rem;">牛奶小镇</span><br/><span>参与人数：112人</span><br/><span>捐助累计：2800天</span><br/><span>帮扶对象：191人</span></div></div>
+      <div class="swiper-slide1"><img src="../assets/images/top1.png" alt=""><div style="padding-top:.3rem;line-height: .38rem;color: #fff;"><span style="font-size: .28rem;">牛奶小镇</span><br/><span>参与人数：112人</span><br/><span>捐助累计：2800天</span><br/><span>帮扶对象：191人</span></div></div>
       </router-link>
       <router-link to="/home/undertakingsContent1">
-      <div class="swiper-slide2"><img src="../assets/images/top2.png" alt=""><div style="padding-top:.3rem;line-height: .35rem;"><span style="font-size: .28rem;">阅食小景</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div></div>
+      <div class="swiper-slide2"><img src="../assets/images/top2.png" alt=""><div style="padding-top:.3rem;line-height: .38rem;color: #fff;"><span style="font-size: .28rem;">阅食小景</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div></div>
       </router-link>
       <router-link to="/home/undertakingsContent2">
-      <div class="swiper-slide3"><img src="../assets/images/top3.png" alt=""><div style="padding-top:.3rem;line-height: .35rem;"><span style="font-size: .28rem;">传微远航</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div></div>
+      <div class="swiper-slide3"><img src="../assets/images/top3.png" alt=""><div style="padding-top:.3rem;line-height: .38rem;color: #fff;"><span style="font-size: .28rem;">传微远航</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div></div>
     </router-link>
       </div>
     </scroller>
   
 <div class='xinjintoutiao'>
 <flexbox class="xinjintoutiao-inner">
-   <flexbox-item :span="2"><div class="xinjintitle"><img src="../assets/images/xinjintoutiao.png" alt=""></div></flexbox-item>
+   <flexbox-item :span="2"><div class="xinjintitle"><img src="../assets/images/xinjintoutiao.png" width="100%;" alt=""></div></flexbox-item>
   <flexbox-item><div class=""><swiper auto height="30px" direction="vertical" :interval=2000 class="text-scroll" :show-dots="false">
       <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao01.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.1rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
       <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao02.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.1rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
@@ -86,7 +86,7 @@
  <router-link to="/home/helpService">
  <div class="daai"></div>
  </router-link>
- <div class='service-center' style="margin-bottom: 1rem;">
+ <div class='service-center' style="margin-bottom: 1.8rem;">
 <p ><span>|</span>爱心商城</p>
 <router-link to="/mall">
  <swiper auto  class="service-center-swipter" :show-dots="false">
@@ -159,7 +159,7 @@ export default {
   methods: {
   	goto(item){
          this.isPopUp = true;
-         document.body.style="height：100%;overflow：hidden;";
+         document.body.style="overflow：hidden;";
           // console.log(item);
           // localStorage.setItem("item",JSON.stringify(item));
           // this.$router.push("./bmap");

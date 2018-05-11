@@ -33,29 +33,29 @@
       </div>  
       <div class='group1'>
  <flexbox>
-      <flexbox-item><div class="flex-group1"><img src="../../assets/images/myorder.png" alt=""><br/><span>我的订单</span></div></flexbox-item>
-      <flexbox-item><div class="flex-group1"><img src="../../assets/images/helpman.png" alt=""><br/><span>帮扶对象</span></div></flexbox-item>
-      <flexbox-item><div class="flex-group1 last-child"><img src="../../assets/images/promote.png" alt=""><br/><span>推广大使</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group1"><img src="../../assets/images/myorder.png" width="80%" alt=""><span>我的订单</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group1"><img src="../../assets/images/helpman.png" alt=""><span>帮扶对象</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group1 last-child"><img src="../../assets/images/promote.png" alt=""><span>推广大使</span></div></flexbox-item>
 </flexbox>
 </div>
  <group>
       
-      <cell-box is-link>
+      <cell-box is-link style="font-size: .28rem;">
         我的地址
       </cell-box>
-       <cell-box is-link>
+       <cell-box is-link style="font-size: .28rem;">
         爱心体验券
       </cell-box>
-      <cell-box is-link>
+      <cell-box is-link style="font-size: .28rem;">
        我的收藏
       </cell-box>
-       <cell-box is-link>
+       <cell-box is-link style="font-size: .28rem;">
         周边领取点
       </cell-box>
-      <cell-box is-link>
+      <cell-box is-link style="font-size: .28rem;">
        联系客服
       </cell-box>
-       <cell-box is-link :link="{path:'/userset'}">
+       <cell-box is-link :link="{path:'/userset'}" style="font-size: .28rem;">
         个人设置
       </cell-box>
     </group>
@@ -216,8 +216,9 @@ letter-spacing:0.9px;
             margin: .43rem 0 .41rem 0;
             border-right: #ccc solid 1px;
             img{
-                height:.36rem;
-                width: .36rem;  
+                height:.26rem;
+                width: .26rem;  
+                margin-right: .1rem; 
                }
         }
         .flex-group1.last-child{
