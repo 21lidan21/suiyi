@@ -8,7 +8,7 @@
       </div>
       <div class='group1'>
  <flexbox>
-      <flexbox-item><div class="flex-group1"  @click="goto('/my/GetOrderList')"><img src="../../assets/images/myorder.png" width="80%" alt=""><span>我的订单</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group1"   @click="showPlugin('/my/GetOrderList')"><img src="../../assets/images/myorder.png" width="80%" alt=""><span>我的订单</span></div></flexbox-item>
       <flexbox-item><div class="flex-group1"><img src="../../assets/images/helpman.png" alt=""><span>帮扶对象</span></div></flexbox-item>
       <flexbox-item><div class="flex-group1 last-child"><img src="../../assets/images/promote.png" alt=""><span>推广大使</span></div></flexbox-item>
 </flexbox>
@@ -37,26 +37,19 @@
    </div>
 </template>
 <script>
-import { Scroller } from 'vux'
-import { Swiper, GroupTitle, SwiperItem, XButton, Divider } from 'vux'
-import { Flexbox, FlexboxItem } from 'vux'
-import { Group, Cell, CellBox } from 'vux'
-
+import {  GroupTitle, Group, Cell, CellBox,SwiperItem, Flexbox, FlexboxItem, XButton, Divider} from 'vux'
 export default {
     components: {
 		// swiper, 
 		// swiperSlide,
-		Scroller,
-		Swiper,
-		SwiperItem,
 		GroupTitle,
 		XButton,
 		Divider,
 		Flexbox,
-        FlexboxItem,
-        Group,
-        Cell,
-        CellBox
+    FlexboxItem,
+    Group,
+    Cell,
+    CellBox,
 	},
   data() {
     return {};
@@ -65,6 +58,20 @@ export default {
     goto(path) {
       this.$router.push(path);
     },
+    showPlugin (path) {
+    	if(sessionStorage.sessionId == "" || sessionStorage.sessionId == "undefined" || sessionStorage.sessionId == undefined){
+    		this.$vux.alert.show({
+		        title: '提示',
+		        content: '您还未登录，请先登录',
+		        onShow () {
+		        },
+		        onHide () {
+		        }
+		      })
+    	}else{
+    		this.$router.push(path);
+    	}
+    }
   }
 };
 </script>

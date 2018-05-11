@@ -9,7 +9,7 @@
      <group title="">
       <x-input title="" placeholder="请输入手机号码" v-model="username" :max="13" is-type="china-mobile"></x-input>
       <x-input title="" placeholder="请输入验证码" class="weui-vcode" v-model="password">
-        <x-button slot="right" type="primary" @click.native="sendCode" mini>发送验证码</x-button>
+        <x-button slot="right" type="primary" :class="{ 'class-a': ischeck, 'class-b': !ischeck}" :disabled="disabled" @click.native="sendCode" mini ><input style="" type="text" v-model="text"></x-button>
       </x-input>
        
       <x-input title="" type="password" placeholder="请输入设置登录密码" v-model="userpassword" :min="6"  @on-change="change"></x-input>
@@ -28,16 +28,16 @@
    </div>
 </template>
 <script>
-import { XInput, Group, XButton, Cell } from 'vux'
-import { PopupRadio,PopupPicker, Datetime } from 'vux'
-import api from '../../fetch/api'
-import * as _ from '../../util/tool'
+import { XInput, Group, XButton, Cell } from "vux";
+import { PopupRadio, PopupPicker, Datetime } from "vux";
+import api from "../../fetch/api";
+import * as _ from "../../util/tool";
 
 export default {
   components: {
-    XInput, 
-    Group, 
-    XButton, 
+    XInput,
+    Group,
+    XButton,
     Cell,
     PopupRadio,
     PopupPicker,
@@ -45,124 +45,153 @@ export default {
   },
   data() {
     return {
-        maskValue:'',
-        iconType: '',
-        username: '',
-        password: '',
-        codeKey: '',
-        userpassword:'',
-        userpassword2:'',
-        date:'',
-        value5:'',
-        options1:['男','女'],
-        option1:'男',
-        sexValue:'',
-        cardID:'',
-        birthDay:'',
-        name:''
-
+      time: 60,
+     ischeck: true,
+      disabled:false,
+      text:'发送验证码',
+      maskValue: "",
+      iconType: "",
+      username: "",
+      password: "",
+      codeKey: "",
+      userpassword: "",
+      userpassword2: "",
+      date: "",
+      value5: "",
+      options1: ["男", "女"],
+      option1: "男",
+      sexValue: "",
+      cardID: "",
+      birthDay: "",
+      name: ""
     };
   },
   methods: {
-       change (value) {
-           this.birthDay=value
-        console.log('change', value)
-       },
-      sendCode(){
-          if (!this.username ) {
-                alert('请填写手机号')
-                return
+     timer: function () {
+         console.log(this.time);
+            if (this.time > 0) {
+                this.time--;
+                this.text = this.time + 's 后重获取重新获取验证码';
+                setTimeout(this.timer, 1000);
+            }else{
+             this.disabled = false;
             }
-       let data = {
-                "phone": this.username,
-                "sendType": "3"
-            }
-          api.RegistVerifiCode(data)
-                .then(res => {
-                    console.log(res)
-                    if(res) {
-                        // let userInfo = Object.assign()
-                        // this.$store.dispatch('setLoadingState', false)
-                        // this.setUserInfo(res.data)
-                        // this.$router.replace('/home')
-                       console.log(res[0].key) 
-                       this.codeKey=res[0].key
-                    }
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-      },
-	regist(){
-       
-        if (!this.username || !this.password  || !this.userpassword|| !this.userpassword2) {
-                _.alert('请填写完整')
-                return
-            }
-         if(this.option1=="男"){
-              this.sexValue='0'
-         }else{
-              this.sexValue='1'
-         }
-            let data = {
-                "phone": this.username,
-                "code": this.password,
-                "codeKey":this.codeKey,
-                "password": this.userpassword,
-                "cardID": this.cardID,
-                "birthDay": this.birthDay,
-                "openid": "8888",
-                "userName":this.name,
-                "sex":this.sexValue
-            }
-            //this.$store.dispatch('setLoadingState', true)
-            api.Regist(data)
-                .then(res => {
-                    console.log(res)
-                    if(res) {
-                        // let userInfo = Object.assign()sessionId
-                        this.$store.dispatch('setLoadingState', false)
-                        //this.setUserInfo(res.data)
-                         sessionStorage.sessionId =res.sessionId
-                        this.$router.replace('/home')
-                    }
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-    }	
-	}
+        },  
+    change(value) {
+      this.birthDay = value;
+      console.log("change", value);
+    },
+    sendCode() {
+      if (!this.username) {
+        this.toats("请填写手机号", "cancel", 3000);
+        return;
+      }
+      this.timer();
+      this.disabled = true;
+      this.ischeck = false;
+      let data = {
+        phone: this.username,
+        sendType: "3"
+      };
+      api.RegistVerifiCode(data)
+        .then(res => {
+          console.log(res);
+          if (res) {
+            console.log(res[0].key);
+            this.codeKey = res[0].key;
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    regist() {
+      if (
+        !this.username ||
+        !this.password ||
+        !this.userpassword ||
+        !this.userpassword2
+      ) {
+        this.toats("请填写完整信息", "cancel", 3000);
+        return;
+      }
+      if (this.option1 == "男") {
+        this.sexValue = "0";
+      } else {
+        this.sexValue = "1";
+      }
+      let data = {
+        phone: this.username,
+        code: this.password,
+        codeKey: this.codeKey,
+        password: this.userpassword,
+        cardID: this.cardID,
+        birthDay: this.birthDay,
+        openid: "8888",
+        userName: this.name,
+        sex: this.sexValue
+      };
+      api.Regist(data)
+        .then(res => {
+          console.log(res);
+          if (res) {
+            // let userInfo = Object.assign()sessionId
+            this.$store.dispatch("setLoadingState", false);
+            //this.setUserInfo(res.data)
+            sessionStorage.sessionId = res.sessionId;
+            this.$router.replace("/home");
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    toats(msg, text, time) {
+      this.$vux.toast.show({
+        text: msg,
+        time: time,
+        type: text,
+        width: "5rem"
+      });
+    }
+  }
 };
 </script>
 <style scoped >
-.login_bg{
-    width: 100%;
-    height: 100%;
+.login_bg {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 2rem;
 }
-.main{
-	padding-top:.5rem;
-	width: 100%;
-	height: 100%;
-	background: url(../../assets/images/login_bg.jpeg);
-    background-size: 100% 100%;
+.class-a {
+  background: #F8B62C;
+  color:#ffffff;
 }
-.register{
-	padding: 0 .3rem;
-	border-radius: .2rem;
+.class-b {
+  background: #928c8c;
+}
+.main {
+  padding-top: 0.5rem;
+  width: 100%;
+  height: 100%;
+  background: url(../../assets/images/login_bg.jpeg);
+  background-size: 100% 100%;
+}
+.register {
+  padding: 0 0.3rem;
+  border-radius: 0.2rem;
 }
 .header {
   background: #ffffff;
   box-shadow: 0 1px 2px 0 rgba(225, 225, 225, 0.5);
-  
 }
-
 </style>
 <style>
-::-webkit-scrollbar{
-  display:none;
+::-webkit-scrollbar {
+  display: none;
 }
 .inner-container::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 .vux-header-title-area,
 .vux-header .vux-header-title {
@@ -170,7 +199,7 @@ export default {
   font-size: 16px;
 }
 .vux-tab .vux-tab-item {
-    background: #fff !important;
+  background: #fff !important;
 }
 .vux-header .vux-header-left .left-arrow:before {
   content: "";

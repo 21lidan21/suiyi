@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
    <x-header class="header" style="padding:0;" :left-options="{showBack: false}">传微行动</x-header>
     <div>
       <div style="padding:.1rem 0;">
@@ -7,9 +7,11 @@
         <tab-item class="vux-center" @on-item-click="onItemClick" :selected="demo2 === item" v-for="(item, index) in list2" @click="demo2 = item" :key="index">{{item}}</tab-item>
       </tab>
       </div>
-      <div style="margin-bottom:3rem">
+
+      <div style="margin-bottom:2rem">
+
         <img @click="goto(1)" src="../../assets/images/love1.jpg" alt="">
-        <img @click="goto(2)" src="../../assets/images/love2.jpg" alt="">
+        <img @click="goto(2)" style="margin: .3rem 0;" src="../../assets/images/love2.jpg" alt="">
         <img @click="goto(3)" src="../../assets/images/love3.jpg" alt="">
       </div>
     
@@ -93,6 +95,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  .content{
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling:touch !important;
+      height:100% !important;
+  }
 .header {
   background: #ffffff;
   box-shadow: 0 1px 2px 0 rgba(225, 225, 225, 0.5);

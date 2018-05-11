@@ -5,7 +5,7 @@
       	<img src="../../assets/images/扶贫.jpg" alt="">
       </div>
       <router-link to="/home/hopeHelpService">
-      	<div class="bangfu" style="text-align:center;margin:.5rem 0;background-color: #43ACE5;border-radius: 1rem;line-height: 1rem;">
+      	<div class="bangfu" style="width: 95%;margin:0 auto;text-align:center;background-color: #43ACE5;border-radius: 1rem;line-height: .8rem;">
 	    	<div style=" color:#ffffff;font-size:.25rem;">我 需 要 帮 扶</div>
 	    </div>
     </router-link>
@@ -73,12 +73,7 @@ export default {
     margin-right: .2rem;
     margin-top: -.2rem;
   }
-  .bangfu{
-  	width: 95%;
-  	margin:0 auto;
-  	background-color: #43ACE5;
-  	border-radius: 50%;
-  }
+  
 }
 </style>
 <style>

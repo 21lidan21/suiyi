@@ -5,11 +5,13 @@
   <el-col :span="19"><div class="grid-content bg-purple chaxun" @click="goto"><img src="../assets/images/chaxun.png" alt="">公益物质去向查询中心</div></el-col>
   <el-col :span="5"><div class="grid-content bg-purple city"><img src="../assets/images/local.png" alt="">南宁</div></el-col>
 </el-row>
-<el-row type="flex" class="row-bg" justify="space-between">
-  <el-col :span="7"><div class="grid-content bg-purple" style="padding-top:.5rem;padding-left:.3rem;"><div style="border-right: 1px solid #E7E8EA;line-height: .35rem;"><span style="color: #2da7e0;font-size: .25rem;">9304 </span><span style="color: #2da7e0;">名</span><br/><span style="color:#A3A3A3;font-size: .15rem;">加入随益平台</span></div></div></el-col>
-  <el-col :span="8"><div class="grid-content bg-purple-light" style="padding-top:.5rem;"><div style="border-right: 1px solid #E7E8EA;line-height: .35rem;"><span style="color: #2da7e0;font-size: .25rem;">27846 </span><span style="color: #2da7e0;">人</span><br/><span style="color:#A3A3A3;font-size: .15rem;">成为随益平台会员</span></div></div></el-col>
-  <el-col :span="7"><div class="grid-content bg-purple" style="padding-top:.5rem;"><div style="line-height: .35rem;"><span style="color: #2da7e0;font-size: .25rem;">257392 </span><span style="color: #2da7e0;">人</span><br/><span style="color:#A3A3A3;font-size: .15rem;">已完成帮扶对象</span></div></div></el-col>
-</el-row>
+<div class="group2 row-bg">
+<flexbox>
+      <flexbox-item><div class="flex-group2"><span style="color: #2da7e0;font-size: .25rem;">4464 盒</span><br><span style="color: rgb(163, 163, 163); font-size: 0.15rem;">总捐牛奶</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group2"><span style="color: #2da7e0;font-size: .25rem;">80 人</span><br><span style="color: rgb(163, 163, 163); font-size: 0.15rem;">公益行参与人数</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group2 last-child"><span style="color: #2da7e0;font-size: .25rem;">191 人</span><br><span style="color: rgb(163, 163, 163); font-size: 0.15rem;">已完成帮扶对象</span></div></flexbox-item>
+</flexbox>
+</div>
 <div style="padding: 0 0.3rem;">
 <router-link to="/dda/index">
 <el-row type="flex" justify="center" class='diandianai'>
@@ -206,8 +208,10 @@ export default {
 }
 .home {
   width: 100% !important;
+ 
   /*background-color:#2DA7E0;*/
 }
+
 .quxiang {
   background: url(../assets/images/headerquxiang.png) no-repeat;
   background-size: 100% 100%;
@@ -473,6 +477,17 @@ export default {
   height: 7.87rem;
   margin: 0 auto;
   text-align: center;
+}
+.group2{  
+    .flex-group2{
+        text-align: center;
+        margin: .43rem 0 .1rem 0;
+        border-right: #ccc solid 1px;
+        line-height: .35rem;
+    }
+    .flex-group2.last-child{
+      border-right: transparent solid 1px;
+    }
 }
 </style>
 <style>

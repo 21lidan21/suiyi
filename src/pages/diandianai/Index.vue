@@ -27,17 +27,18 @@ export default {
   methods: {
     checkPay() {
       var redirectPay = sessionStorage["redirectOpenId"];
-      sessionStorage["redirectOpenId"] = "";
-      if (redirectPay) {
+      // sessionStorage["redirectOpenId"] = "";
+      // if (redirectPay) {
         this.joinIn(redirectPay);
-      }
+      // }
     },
     joinIn(gotId) {
       var self = this;
-      var openId = GetQueryString("openid");
-      if (gotId) {
-        openId = gotId;
-      }
+      var openId =gotId;// GetQueryString("openid");
+      // if (gotId) {
+      //   openId = gotId;
+      // }
+      // alert("url"+window.location.href+"--"+gotId+"openId"+openId);
       var wxJsApiParam = "";
 
       if (openId == "" || typeof openId == "object") {
@@ -125,7 +126,7 @@ export default {
           }
         })
         .catch(error => {
-          alert("支付openID错误")
+          alert(error.data.desc);
         });
     }
   }

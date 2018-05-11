@@ -8,9 +8,9 @@
     <div class="register">
      <group title="">
       <x-input title="" placeholder="请输入手机号码" v-model="username" :max="13" is-type="china-mobile"></x-input>
-      <x-input title="" placeholder="请输入密码" class="weui-vcode" v-model="password">
+      <x-input title="" placeholder="请输入密码" type="password" class="weui-vcode" v-model="password">
       </x-input>
-       <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="login" style="font-size:.3rem;padding:.1rem 0;" > 登 录</x-button>
+       <x-button  :class="{ 'class-a': ischeck, 'class-b': !ischeck}" :disabled="disabled"  @click.native="login" style="font-size:.3rem;padding:.1rem 0;color:#ffffff" > 登 录</x-button>
      
      </group>
      <!--
@@ -27,89 +27,110 @@
    </div>
 </template>
 <script>
-import { XInput, Group, XButton, Cell } from 'vux'
-import api from '../../fetch/api'
-import * as _ from '../../util/tool'
+import { XInput, Group, XButton, Cell } from "vux";
+import api from "../../fetch/api";
+import * as _ from "../../util/tool";
 
 export default {
   components: {
-    XInput, 
-    Group, 
-    XButton, 
+    XInput,
+    Group,
+    XButton,
     Cell
   },
   data() {
     return {
-        maskValue:'',
-        iconType: '',
-        username: '',
-        password: ''
-        
+      maskValue: "",
+      iconType: "",
+      username: "",
+      password: "",
+      disabled: false,
+      ischeck: true
     };
   },
   methods: {
-     
-	login(){
-       
-        if (!this.username || !this.password) {
-                _.alert('请填写完整')
-                return
-            }
-        
-  
-            let data = {
-                "phone": this.username,
-                "pwd": this.password,
-                "openID":' '
-            }
-            this.$store.dispatch('setLoadingState', true)
-            api.vipLogin(data)
-                .then(res => {
-                    console.log(res)
-                    if(res) {
-                        // let userInfo = Object.assign()sessionId
-                        this.$store.dispatch('setLoadingState', false)
-                        //this.setUserInfo(res.data)
-                        sessionStorage.sessionId =res.sessionId
-                        this.$router.replace('/userinfo')
-                    }
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-    }	
-	}
+    login() {
+      if (!this.username || !this.password) {
+        this.toats("请输入账号密码", "cancel", 3000);
+        return;
+      }
+
+      this.toats("正在登录，请稍后...", "text", 10000);
+      this.disabled = true;
+      this.ischeck = false;
+      let data = {
+        phone: this.username,
+        pwd: this.password,
+        openID: " "
+      };
+      this.$store.dispatch("setLoadingState", true);
+      api
+        .vipLogin(data)
+        .then(res => {
+          console.log(res);
+          if (res) {
+            // let userInfo = Object.assign()sessionId
+            this.$store.dispatch("setLoadingState", false);
+            //this.setUserInfo(res.data)
+            sessionStorage.sessionId = res.sessionId;
+            this.$router.replace("/userinfo");
+          }
+        })
+        .catch(error => {
+          console.log(error.data.desc);
+          this.toats(error.data.desc, "cancel", 3000);
+          setTimeout(() => {
+            // 隐藏
+            this.$vux.toast.hide();
+            this.disabled = false;
+            this.ischeck = true;
+          }, 3000);
+        });
+    },
+    toats(msg, text, time) {
+      this.$vux.toast.show({
+        text: msg,
+        time: time,
+        type: text,
+        width: "5rem"
+      });
+    }
+  }
 };
 </script>
 <style scoped >
-.login_bg{
-    width: 100%;
-    height: 100%;
+.login_bg {
+  width: 100%;
+  height: 100%;
 }
-.main{
-	padding-top:1.5rem;
-	width: 100%;
-	height: 100%;
-	background: url(../../assets/images/login_bg.jpeg);
-    background-size: 100% 100%;
+.class-a {
+  background: #2da7e0;
 }
-.register{
-	padding: 0 .3rem;
-	border-radius: .2rem;
+.class-b {
+  background: #928c8c;
+}
+.main {
+  padding-top: 1.5rem;
+  width: 100%;
+  height: 100%;
+  background: url(../../assets/images/login_bg.jpeg);
+  background-size: 100% 100%;
+}
+.register {
+  padding: 0 0.3rem;
+  border-radius: 0.2rem;
 }
 .header {
   background: #ffffff;
   box-shadow: 0 1px 2px 0 rgba(225, 225, 225, 0.5);
-  
 }
-
 </style>
 <style>
-::-webkit-scrollbar{
-  display:none;
+::-webkit-scrollbar {
+  display: none;
 }
 .inner-container::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 .vux-header-title-area,
 .vux-header .vux-header-title {
@@ -117,7 +138,7 @@ export default {
   font-size: 16px;
 }
 .vux-tab .vux-tab-item {
-    background: #fff !important;
+  background: #fff !important;
 }
 .vux-header .vux-header-left .left-arrow:before {
   content: "";

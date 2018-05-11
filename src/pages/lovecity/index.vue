@@ -8,7 +8,7 @@
       </flexbox>
      </div>
      <div>
-    <swiper auto style="height:2.4rem important;">
+    <swiper auto style="width:100%;height:2.4rem important;">
       <swiper-item class="banner01"  @click="goto"></swiper-item>
       <swiper-item class="banner02"  @click="goto"></swiper-item>
       <swiper-item class="banner03"  @click="goto"></swiper-item>
@@ -116,8 +116,10 @@ export default {
 .headerDiv{
   background:#ffffff;
   width:100%;
-  height:2.5rem;
   position: absolute;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling:touch !important;
+  height:100% !important;
 }
 .tabsp{
   border:1px solid #dddddd;

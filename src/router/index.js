@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Home from '../pages/Home'
 
+import {AlertPlugin,ToastPlugin } from 'vux'
 //import User from '../pages/action/action'
 
 
@@ -10,6 +11,8 @@ import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 
 Vue.use(Router)
+Vue.use(AlertPlugin)
+Vue.use(ToastPlugin)
 
 export default new Router({
   linkActiveClass: 'active',

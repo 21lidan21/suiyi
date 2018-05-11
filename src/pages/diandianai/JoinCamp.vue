@@ -12,7 +12,7 @@
        请到活动公益宣传点或牛奶领取点<br>
        咨询、参加
      </div>
-     <div class="footer" @click="goto">
+     <div class="footer" @click="showPlugin('/dda/receive')">
        <div class="footer_btn" >前往公益点</div>
      </div>
      
@@ -29,6 +29,20 @@ export default {
   methods: {
     goto() {
       this.$router.push("/dda/receive");
+    },
+    showPlugin (path) {
+    	if(sessionStorage.sessionId == "" || sessionStorage.sessionId == "undefined" || sessionStorage.sessionId == undefined){
+    		this.$vux.alert.show({
+		        title: '提示',
+		        content: '您还未登录，请先登录',
+		        onShow () {
+		        },
+		        onHide () {
+		        }
+		      })
+    	}else{
+    		this.$router.push(path);
+    	}
     }
   }
 };

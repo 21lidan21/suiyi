@@ -3,7 +3,7 @@
         <!-- <v-toast v-show="showToast"></v-toast>
         <v-alert v-show="showAlert"></v-alert>
         <v-loading v-show="loading"></v-loading> -->
-<div style="height:100%;" class="content" :class="{tabar: tabar}">
+<div class="content">
     <router-view></router-view>
 </div>
  <v-tabar></v-tabar>
@@ -102,6 +102,8 @@ export default {
 
 @import './style/app';
 
+
+
 @font-face {
   font-family: 'icon';  /* project id 172436 */
   src: url('//at.alicdn.com/t/font_w71lovnj7adobt9.eot');
@@ -120,6 +122,7 @@ html, body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
+  overflow-y: auto !important;
 }
 
 
@@ -131,11 +134,14 @@ a.active {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling:touch !important;
+  height:100% !important;
   //background: #F5F5F5;
   .content{
-    padding-top: px2rem(100px);
-    //background: #F5F5F5;
+     overflow-y: auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    height:100% !important;
   }
   .tabar {
     margin-bottom: px2rem(120px);
@@ -167,6 +173,4 @@ a.active {
     transform: translate3d(0, 0, 0);
   }
 }
-
-
 </style>
