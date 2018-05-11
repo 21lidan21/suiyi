@@ -1,8 +1,8 @@
 <template>
   <div>
-  <x-header   class="header "  :left-options="{backText: ''}">传微行动</x-header>
+   <x-header class="header" style="padding:0;" :left-options="{showBack: false}">传微行动</x-header>
     <div>
-      <div style="padding:.4rem 0;">
+      <div style="padding:.1rem 0;">
       <tab :line-width="2" height=".6rem" custom-bar-width="1rem" active-color='#2da7e0'  v-model="index">
         <tab-item class="vux-center" @on-item-click="onItemClick" :selected="demo2 === item" v-for="(item, index) in list2" @click="demo2 = item" :key="index">{{item}}</tab-item>
       </tab>

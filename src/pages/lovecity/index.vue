@@ -1,10 +1,10 @@
 <template>
   <div  class="headerDiv">
-  <x-header   class="header "  :left-options="{backText: ''}">爱传递</x-header>
+   <x-header class="header" style="padding:0;" :left-options="{showBack: false}">爱心商城</x-header>
      <div class="top">
        <flexbox :gutter="0">
-       <flexbox-item :span="3"><div class="flex-demo" ><img class="point" src="../../assets/images/point_top.png" alt=""></div></flexbox-item>
-        <flexbox-item><div class="flex-demo"  @click="goto"><img class="point1" src="../../assets/images/search.png" alt=""></div></flexbox-item>
+       <flexbox-item :span="3"><div class="flex-demo" ><img onclick="return false"  class="point" src="../../assets/images/point_top.png" alt=""></div></flexbox-item>
+        <flexbox-item><div class="flex-demo"  @click="goto"><img onclick="return false"  class="point1" src="../../assets/images/search.png" alt=""></div></flexbox-item>
       </flexbox>
      </div>
      <div>
@@ -14,9 +14,9 @@
       <swiper-item class="banner03"  @click="goto"></swiper-item>
     </swiper>
      <div class="container" @click="goto">
-       <div class="item"><img src="../../assets/images/juan1.png" alt=""></div>
-       <div class="item"><img src="../../assets/images/juan2.png" alt=""></div>
-       <div class="item"><img src="../../assets/images/juan3.png" alt=""></div>
+       <div class="item"><img onclick="return false"  src="../../assets/images/juan1.png" alt=""></div>
+       <div class="item"><img onclick="return false"  src="../../assets/images/juan2.png" alt=""></div>
+       <div class="item"><img onclick="return false"  src="../../assets/images/juan3.png" alt=""></div>
       </div>
      </div>
       <tab class="tabsp" :line-width="0" active-color="red" >
@@ -27,12 +27,12 @@
     </tab>
     <div style="margin-bottom:2rem" @click="goto">
       <flexbox :gutter="0" >
-       <flexbox-item><div class="flex-demo" ><img class="commodity" src="../../assets/images/01.jpg" alt=""></div></flexbox-item>
-       <flexbox-item><div class="flex-demo" ><img class="commodity" src="../../assets/images/02.jpg" alt=""></div></flexbox-item>
+       <flexbox-item><div class="flex-demo" ><img onclick="return false"  class="commodity" src="../../assets/images/01.jpg" alt=""></div></flexbox-item>
+       <flexbox-item><div class="flex-demo" ><img onclick="return false"   class="commodity" src="../../assets/images/02.jpg" alt=""></div></flexbox-item>
       </flexbox>
       <flexbox :gutter="0" >
-       <flexbox-item><div class="flex-demo" ><img class="commodity" src="../../assets/images/03.jpg" alt=""></div></flexbox-item>
-       <flexbox-item><div class="flex-demo" ><img class="commodity" src="../../assets/images/04.jpg" alt=""></div></flexbox-item>
+       <flexbox-item><div class="flex-demo" ><img onclick="return false"  class="commodity" src="../../assets/images/03.jpg" alt=""></div></flexbox-item>
+       <flexbox-item><div class="flex-demo" ><img onclick="return false"  class="commodity" src="../../assets/images/04.jpg" alt=""></div></flexbox-item>
       </flexbox>
       <flexbox :gutter="0" >
        <flexbox-item><div class="flex-demo" ><img class="commodity" src="../../assets/images/05.jpg" alt=""></div></flexbox-item>
@@ -117,7 +117,6 @@ export default {
   background:#ffffff;
   width:100%;
   height:2.5rem;
-  margin: .2rem 0;
   position: absolute;
 }
 .tabsp{
@@ -141,22 +140,28 @@ export default {
 }
 .banner01 {
   background-image: url(../../assets/images/banner01.jpg);
+  background-size: 100% 100%;
 }
 .banner02 {
   background-image: url(../../assets/images/banner02.jpg);
+  background-size: 100% 100%;
 }
 .banner03 {
   background-image: url(../../assets/images/banner03.jpg);
+  background-size: 100% 100%;
 }
 .top{
  border-bottom:1px solid #dddddd;
 }
 .flex-demo{
+  margin: .1rem 0;
   .point{
-    margin:.1rem .3rem; 
+    margin:.1rem .5rem; 
+    height: .5rem;
+    width: 80%;
   }
   .point1{
-    margin:.1rem .8rem; 
+    margin:.1rem .2rem .1rem .8rem; 
     width: 80%;
   }
   .commodity{

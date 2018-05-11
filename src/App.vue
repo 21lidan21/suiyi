@@ -4,10 +4,7 @@
         <v-alert v-show="showAlert"></v-alert>
         <v-loading v-show="loading"></v-loading> -->
 <div style="height:100%;" class="content" :class="{tabar: tabar}">
-  <view-box ref="viewBox">
     <router-view></router-view>
-    
-  </view-box>
 </div>
  <v-tabar></v-tabar>
         <!-- <div class="content" :class="{tabar: tabar}">

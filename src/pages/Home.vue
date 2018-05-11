@@ -7,8 +7,8 @@
 </el-row>
 <el-row type="flex" class="row-bg" justify="space-between">
   <el-col :span="7"><div class="grid-content bg-purple" style="padding-top:.5rem;padding-left:.3rem;"><div style="border-right: 1px solid #E7E8EA;line-height: .35rem;"><span style="color: #2da7e0;font-size: .25rem;">9304 </span><span style="color: #2da7e0;">名</span><br/><span style="color:#A3A3A3;font-size: .15rem;">加入随益平台</span></div></div></el-col>
-  <el-col :span="8"><div class="grid-content bg-purple-light" style="padding-top:.5rem;"><div style="border-right: 1px solid #E7E8EA;line-height: .35rem;"><span style="color: #2da7e0;font-size: .25rem;">27846 </span><span style="color: #2da7e0;">人</span><br/><span style="color:#A3A3A3;font-size: .15rem;"">成为随益平台会员</span></div></div></el-col>
-  <el-col :span="7"><div class="grid-content bg-purple" style="padding-top:.5rem;"><div style="line-height: .35rem;"><span style="color: #2da7e0;font-size: .25rem;">257392 </span><span style="color: #2da7e0;">人</span><br/><span style="color:#A3A3A3;font-size: .15rem;"">已完成帮扶对象</span></div></div></el-col>
+  <el-col :span="8"><div class="grid-content bg-purple-light" style="padding-top:.5rem;"><div style="border-right: 1px solid #E7E8EA;line-height: .35rem;"><span style="color: #2da7e0;font-size: .25rem;">27846 </span><span style="color: #2da7e0;">人</span><br/><span style="color:#A3A3A3;font-size: .15rem;">成为随益平台会员</span></div></div></el-col>
+  <el-col :span="7"><div class="grid-content bg-purple" style="padding-top:.5rem;"><div style="line-height: .35rem;"><span style="color: #2da7e0;font-size: .25rem;">257392 </span><span style="color: #2da7e0;">人</span><br/><span style="color:#A3A3A3;font-size: .15rem;">已完成帮扶对象</span></div></div></el-col>
 </el-row>
 <div style="padding: 0 0.3rem;">
 <router-link to="/dda/index">

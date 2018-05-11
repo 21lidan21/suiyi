@@ -57,7 +57,7 @@ module.exports = vuxLoader.merge({
     ]
   }
 }, {
-  plugins: ['vux-ui']
+  plugins: ['vux-ui', 'progress-bar', 'duplicate-style', {name: 'less-theme', path: 'src/style/vux_theme.less'}]
 })
 
 
