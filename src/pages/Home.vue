@@ -23,13 +23,13 @@
    <scroller lock-y :scrollbar-x=false>
       <div  class="activity">
       	<router-link to="/home/undertakingsContent">
-      <div class="swiper-slide1"><img src="../assets/images/top1.png" alt=""><div style="padding-top:.3rem;line-height: .38rem;color: #fff;"><span style="font-size: .28rem;">牛奶小镇</span><br/><span>参与人数：112人</span><br/><span>捐助累计：2800天</span><br/><span>帮扶对象：191人</span></div></div>
+      <div class="swiper-slide1"><img src="../assets/images/top1.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">牛奶小镇</span><br/><span>参与人数：112人</span><br/><span>捐助累计：2800天</span><br/><span>帮扶对象：191人</span></div></div>
       </router-link>
       <router-link to="/home/undertakingsContent1">
-      <div class="swiper-slide2"><img src="../assets/images/top2.png" alt=""><div style="padding-top:.3rem;line-height: .38rem;color: #fff;"><span style="font-size: .28rem;">阅食小景</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div></div>
+      <div class="swiper-slide2"><img src="../assets/images/top2.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">阅食小景</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div></div>
       </router-link>
       <router-link to="/home/undertakingsContent2">
-      <div class="swiper-slide3"><img src="../assets/images/top3.png" alt=""><div style="padding-top:.3rem;line-height: .38rem;color: #fff;"><span style="font-size: .28rem;">传微远航</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div></div>
+      <div class="swiper-slide3"><img src="../assets/images/top3.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">传微远航</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div></div>
     </router-link>
       </div>
     </scroller>
@@ -245,18 +245,18 @@ export default {
 }
 .diandianai {
   margin-top: 0.39rem;
-  width: 6.9rem;
+  width: 100%;
   height: 1.28rem;
   margin: 0 auto;
 }
 .kuaigongyi {
   margin-top: 0.54rem;
-  width: 6.9rem;
+  width: 100%;
   height: 1.8rem;
 }
 .xinjintoutiao {
   padding: 0.5rem 0.26rem 0.5rem 0.26rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: .3rem;
   box-shadow: 0 0 5px 2.5px rgba(225, 225, 225, 0.5);
   .xinjintoutiao-inner {
     height: 100%;
@@ -278,7 +278,7 @@ export default {
 .service-center {
   width: 100%;
   box-shadow: 0 0 5px 2.5px rgba(225, 225, 225, 0.5);
-  margin-bottom: 0.3rem;
+  margin-bottom: .3rem;
   span {
     color: #2da7e0;
     width: 4px;
@@ -286,14 +286,14 @@ export default {
   }
   p {
     font-size: 0.28rem;
-    padding-top: 0.2rem;
-    padding-left: 0.25rem;
+    padding-top:.2rem;
+    padding-left: .25rem;
   }
   .service-center-swipter {
     margin: 0.26rem 0 0.3rem 0;
     height: 2.2rem;
     img {
-      width: 100%;
+      width:100%;
       height: 100%;
     }
   }
@@ -321,7 +321,8 @@ export default {
   }
   p {
     font-size: 0.28rem;
-    padding: 0.2rem 0 0.3rem 0.25rem;
+    padding:.2rem 0 .3rem .25rem;
+    
   }
 }
 .chuanweixingdong-swipter {
@@ -402,7 +403,7 @@ export default {
     background-size: 100% 100%;
     float: left;
     margin-right: 0.32rem;
-    padding-left: 0.3rem;
+    padding-left:.3rem;
   }
 }
 .activity2 {
@@ -439,7 +440,7 @@ export default {
   background-size: 100% 100%;
   width: 100%;
   height: 2rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: .3rem;
 }
 .pop {
   position: fixed;
@@ -449,6 +450,7 @@ export default {
   right: 0;
   z-index: 1000;
   background: rgba(0, 0, 0, 0.3) !important;
+  
 }
 .popup {
   padding: 2rem 0 0;
@@ -488,13 +490,11 @@ export default {
   left: 7px;
 }
 .vux-tab .vux-tab-item {
-  background: #fff !important;
+    background: #fff !important;
 }
-.vux-slider .service-center-swipter .vux-swiper {
-  width: 100%;
-}
-.vux-swiper-item {
-  width: 100%;
+.vux-slider .service-center-swipter .vux-swiper{width:100%;}
+.vux-swiper-item{
+	width:100%;
 }
 /* .vux-swiper{
   min-height:800px!important;

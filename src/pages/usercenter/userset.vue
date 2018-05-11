@@ -18,7 +18,7 @@
     </group>
  	</div>
     <div  style="padding:0 .2rem;">
-    <x-button style="font-size: .28rem;" :gradients="['#2da7e0', '#77baf1']"  @click.native="loginout" > 注销登录</x-button>
+    <x-button style="font-size: .28rem;padding:.1rem 0;" :gradients="['#2da7e0', '#77baf1']"  @click.native="loginout" > 注销登录</x-button>
     </div>
    </div>
 </template>

@@ -20,7 +20,7 @@
       <datetime :value.sync="value5" style="font-size:.28rem;color:#B1B1B1;border-bottom: 1px solid #F2F2F2;" placeholder="" :min-year=2000 :max-year=2016 format="YYYY-MM-DD" @on-change="change" title="请选择生日" year-row="{value}年" month-row="{value}月" day-row="{value}日"  confirm-text="完成" cancel-text="取消"></datetime>
      <x-input title="" name="cardID" placeholder="请输入随益会员卡" v-model="cardID"></x-input>
     </group>
-    <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="regist" style="font-size: .3rem;"> 注册</x-button>
+    <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="regist" style="font-size: .3rem;padding:.1rem 0;"> 注册</x-button>
      </group>
      
     </div>

@@ -11,11 +11,11 @@
       <x-input title="" placeholder="请输入验证码" class="weui-vcode" v-model="password">
         <x-button slot="right" type="primary" @click.native="sendCode" mini>发送验证码</x-button>
       </x-input>
-       <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="login" style="font-size:.3rem;" > 登 录</x-button>
+       <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="login" style="font-size:.3rem; padding:.1rem 0;" > 登 录</x-button>
      
      </group>
-     <div style="margin-top:.15rem;font-size:.2rem;">
-     	<a @click="$router.push('/viplogin')">会员登录</a> | <a @click="$router.push('/regist')">注册</a>
+     <div style="margin-top:.25rem;font-size:.25rem;">
+     	<a @click="$router.push('/viplogin')">会员登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;  <a @click="$router.push('/regist')">注册</a>
      </div>
      </div>
    </div>

@@ -10,7 +10,7 @@
       <x-input title="" placeholder="请输入手机号码" v-model="username" :max="13" is-type="china-mobile"></x-input>
       <x-input title="" placeholder="请输入密码" class="weui-vcode" v-model="password">
       </x-input>
-       <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="login" style="font-size:.3rem;" > 登 录</x-button>
+       <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="login" style="font-size:.3rem;padding:.1rem 0;" > 登 录</x-button>
      
      </group>
      <!--

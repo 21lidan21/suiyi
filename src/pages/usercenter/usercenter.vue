@@ -1,5 +1,5 @@
 <template>
-   <div class="usercenter">
+   <div class="usercenter" style="padding-bottom: 2rem;">
       <div class="head" @click="$router.push('/login')">
           <div class="login_head">
           <div class="headimg"><img src="../../assets/images/我的有色.png" width="100%" alt=""></div>
@@ -75,7 +75,6 @@ export default {
     width: 100%;
     height: 4.6rem;
     line-height: 1rem;
-    //margin: 1.8rem auto;
     text-align: center;
     .headimg{
         width: 1rem;
