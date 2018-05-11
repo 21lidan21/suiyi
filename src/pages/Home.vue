@@ -1,67 +1,78 @@
 <template>
 <div class="home"> 
-  <x-header class="header " :left-options="{showBack: false}">随意</x-header>
+  <x-header class="header" style="padding:0;" :left-options="{showBack: false}">随意</x-header>
 <el-row :gutter="20" class='quxiang'>
-  <el-col :span="18"><div class="grid-content bg-purple chaxun"><img src="../assets/images/chaxun.png" alt="">公益物质去向查询中心</div></el-col>
-  <el-col :span="6"><div class="grid-content bg-purple city"><img src="../assets/images/local.png" alt="">南宁</div></el-col>
+  <el-col :span="19"><div class="grid-content bg-purple chaxun" @click="goto"><img src="../assets/images/chaxun.png" alt="">公益物质去向查询中心</div></el-col>
+  <el-col :span="5"><div class="grid-content bg-purple city"><img src="../assets/images/local.png" alt="">南宁</div></el-col>
 </el-row>
 <el-row type="flex" class="row-bg" justify="space-between">
-  <el-col :span="6"><div class="grid-content bg-purple"><span>9304名</span><br/><span>加入随益平台</span></div></el-col>
-  <el-col :span="6"><div class="grid-content bg-purple-light">成为随益平台会员</div></el-col>
-  <el-col :span="6"><div class="grid-content bg-purple">已完成帮扶对象</div></el-col>
+  <el-col :span="7"><div class="grid-content bg-purple" style="padding-top:.5rem;padding-left:.3rem;"><div style="border-right: 1px solid #E7E8EA;line-height: .35rem;"><span style="color: #2da7e0;font-size: .25rem;">9304 </span><span style="color: #2da7e0;">名</span><br/><span style="color:#A3A3A3;font-size: .15rem;">加入随益平台</span></div></div></el-col>
+  <el-col :span="8"><div class="grid-content bg-purple-light" style="padding-top:.5rem;"><div style="border-right: 1px solid #E7E8EA;line-height: .35rem;"><span style="color: #2da7e0;font-size: .25rem;">27846 </span><span style="color: #2da7e0;">人</span><br/><span style="color:#A3A3A3;font-size: .15rem;"">成为随益平台会员</span></div></div></el-col>
+  <el-col :span="7"><div class="grid-content bg-purple" style="padding-top:.5rem;"><div style="line-height: .35rem;"><span style="color: #2da7e0;font-size: .25rem;">257392 </span><span style="color: #2da7e0;">人</span><br/><span style="color:#A3A3A3;font-size: .15rem;"">已完成帮扶对象</span></div></div></el-col>
 </el-row>
-
+<div style="padding: 0 0.3rem;">
 <router-link to="/dda/index">
 <el-row type="flex" justify="center" class='diandianai'>
   <el-col :span="24"><div class="grid-content bg-purple-dark"><img src="../assets/images/diandianai.jpg" alt=""></div></el-col>
 </el-row>
 </router-link>
 <el-row type="flex" justify="center" class='kuaigongyi'>
-  <el-col :span="24"><div class="grid-content bg-purple-dark"><img src="../assets/images/kuaigongyi.jpg" alt=""></div></el-col>
+  <el-col :span="24"><div class="grid-content bg-purple-dark" @click="goto"><img src="../assets/images/kuaigongyi.jpg" alt=""></div></el-col>
 </el-row>
  
    <scroller lock-y :scrollbar-x=false>
-      <div  class="activity" >
-      <div class="swiper-slide1"><img src="../assets/images/top1.png" alt=""><span>牛奶小镇</span><br/><span>参与人数：112人</span><br/><span>捐助累计：2800天</span><br/><span>帮扶对象：191人</span></div>
-      <div class="swiper-slide2"><img src="../assets/images/top2.png" alt=""><span>阅食小景</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div>
-      <div class="swiper-slide3"><img src="../assets/images/top3.png" alt=""><span>传微远航</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div>
-    </div>
+      <div  class="activity">
+      	<router-link to="/home/undertakingsContent">
+      <div class="swiper-slide1"><img src="../assets/images/top1.png" alt=""><div style="padding-top:.3rem;line-height: .35rem;"><span style="font-size: .28rem;">牛奶小镇</span><br/><span>参与人数：112人</span><br/><span>捐助累计：2800天</span><br/><span>帮扶对象：191人</span></div></div>
+      </router-link>
+      <router-link to="/home/undertakingsContent1">
+      <div class="swiper-slide2"><img src="../assets/images/top2.png" alt=""><div style="padding-top:.3rem;line-height: .35rem;"><span style="font-size: .28rem;">阅食小景</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div></div>
+      </router-link>
+      <router-link to="/home/undertakingsContent2">
+      <div class="swiper-slide3"><img src="../assets/images/top3.png" alt=""><div style="padding-top:.3rem;line-height: .35rem;"><span style="font-size: .28rem;">传微远航</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div></div>
+    </router-link>
+      </div>
     </scroller>
   
 <div class='xinjintoutiao'>
 <flexbox class="xinjintoutiao-inner">
    <flexbox-item :span="2"><div class="xinjintitle"><img src="../assets/images/xinjintoutiao.png" alt=""></div></flexbox-item>
   <flexbox-item><div class=""><swiper auto height="30px" direction="vertical" :interval=2000 class="text-scroll" :show-dots="false">
-      <swiper-item><div class="item"><img src="../assets/images/toutiao01.png" alt=""><div>目前入驻联盟商家xxx家</div><div>青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
-      <swiper-item><div class="item"><img src="../assets/images/toutiao02.png" alt=""><div>目前入驻联盟商家xxx家</div><div>青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
-      <swiper-item><div class="item"><img src="../assets/images/toutiao03.png" alt=""><div>目前入驻联盟商家xxx家</div><div>青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao01.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.1rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao02.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.1rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.1rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
     </swiper></div>
    </flexbox-item>
 </flexbox>
 </div>
+<router-link to="/home/undertakings">
 <div class='service-center'>
-<p ><span>|</span>公益事业服务中心</p>
+<p><span>|</span>公益事业服务中心</p>
  <swiper auto  class="service-center-swipter" :show-dots="false">
       <swiper-item ><div class=""><img src="../assets/images/servicecenter1.jpg" alt=""></div></swiper-item>
       <swiper-item ><div class=""><img src="../assets/images/servicecenter2.jpg" alt=""></div></swiper-item>
       <swiper-item ><div class=""><img src="../assets/images/servicecenter3.jpg" alt=""></div></swiper-item>
-  </swiper>   
-</div>
-<div class='group1'>
- <flexbox>
-      <flexbox-item><div class="flex-group1"><img src="../assets/images/icon01.png" alt=""><br/><span>理事单位/会员</span></div></flexbox-item>
-      <flexbox-item><div class="flex-group1"><img src="../assets/images/icon02.png" alt=""><br/><span>联盟商家</span></div></flexbox-item>
-      <flexbox-item><div class="flex-group1"><img src="../assets/images/icon03.png" alt=""><br/><span>加入事业中心</span></div></flexbox-item>
-</flexbox>
+  </swiper> 
+  <div class='group1'>
+	 <flexbox>
+	      <flexbox-item><div class="flex-group1"><img src="../assets/images/icon01.png" alt=""><br/><span style="margin-left: .25rem;">理事单位/会员</span></div></flexbox-item>
+	      <flexbox-item><div class="flex-group1"><img src="../assets/images/icon02.png" alt=""><br/><span style="margin-left: .25rem;">联盟商家</span></div></flexbox-item>
+	      <flexbox-item><div class="flex-group1"><img src="../assets/images/icon03.png" alt=""><br/><span style="margin-left: .25rem;">加入事业中心</span></div></flexbox-item>
+	</flexbox>
 </div>	
+</div>
+</router-link>
+<div style="box-shadow: 0 0 5px 2.5px rgba(225, 225, 225, 0.5);margin-bottom: .3rem;">
 <div class='chuanweixingdong'>
 <p ><span>|</span>传微行动</p>
  <swiper auto  class="chuanweixingdong-swipter" :show-dots="false">
-      <swiper-item ><div class="cw1"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></swiper-item>
-      <swiper-item ><div class="cw2"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></swiper-item>
-      <swiper-item ><div class="cw3"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></swiper-item>
+      <swiper-item ><router-link to="/home/loveTransmission"><div class="cw1"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></router-link></swiper-item>
+      <swiper-item ><router-link to="/home/loveTransmission"><div class="cw2"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></router-link></swiper-item>
+      <swiper-item ><router-link to="/home/loveTransmission"><div class="cw3"><p>18年元旦，我们发起了浩坤三合小学公益送奶活动…</p></div></router-link></swiper-item>
   </swiper>   
 </div>
+<router-link to="/home/iGoJoin">
+<div style="padding-top:.3rem;padding-left:.4rem;">
  <scroller lock-y :scrollbar-x=false>
       <div  class="activity2" >
       <div class="swiper-slide1"><span>个人志愿者招募</span><br/><a>我要报名 》</a></div>
@@ -69,24 +80,37 @@
       <div class="swiper-slide3"><span>捐赠行程招募</span><br/><a>参与人数：36人</a></div>
     </div>
  </scroller>
+ </div>
+ </router-link>
+ </div>
+ <router-link to="/home/helpService">
  <div class="daai"></div>
- <div class='service-center'>
+ </router-link>
+ <div class='service-center' style="margin-bottom: 1rem;">
 <p ><span>|</span>爱心商城</p>
+<router-link to="/mall">
  <swiper auto  class="service-center-swipter" :show-dots="false">
       <swiper-item ><div class=""><img style="width:100%" src="../assets/images/banner01.jpg" alt=""></div></swiper-item>
       <swiper-item ><div class=""><img style="width:100%" src="../assets/images/banner02.jpg" alt=""></div></swiper-item>
       <swiper-item ><div class=""><img style="width:100%" src="../assets/images/banner03.jpg" alt=""></div></swiper-item>
-  </swiper>   
+  </swiper> 
+</router-link>
+  <div class='group1'>
+	 <flexbox>
+	      <flexbox-item><router-link to="/home/iGoJoin"><div class="flex-group1"><img src="../assets/images/qiye.png" alt=""><br/><span style="color:#8E8E8E !important; margin-left: .25rem;">入驻企业</span></div></router-link></flexbox-item>
+	      <flexbox-item><router-link to="/home/lovechiose"><div class="flex-group1"><img src="../assets/images/jingxuan.png" alt=""><br/><span style="color:#8E8E8E !important; margin-left: .25rem;">爱心精选</span></div></router-link></flexbox-item>
+	      <flexbox-item><router-link to="/home/iGoJoin"><div class="flex-group1"><img src="../assets/images/jiaoru.png" alt=""><br/><span style="color:#8E8E8E !important; margin-left: .25rem;">爱心加入</span></div></router-link></flexbox-item>
+	</flexbox>
+	</div>
+</div>	
 </div>
-<div class='group1'>
- <flexbox>
-      <flexbox-item><div class="flex-group1"><img src="../assets/images/qiye.png" alt=""><br/><span>入驻企业</span></div></flexbox-item>
-      <flexbox-item><div class="flex-group1"><img src="../assets/images/jingxuan.png" alt=""><br/><span>爱心精选</span></div></flexbox-item>
-      <flexbox-item><div class="flex-group1"><img src="../assets/images/jiaoru.png" alt=""><br/><span>爱心加入</span></div></flexbox-item>
-</flexbox>
-</div>
-	
-		
+<!--提示框-->
+    <div class="pop" v-if="isPopUp" @click="close(0)">
+        <div class="popup" v-if="isPopUp">
+         <div class="dda_join_pop_del" ></div>
+         <div class="dda_join_pop_up"></div>
+       </div>
+    </div>
 	</div>
 </template>
 
@@ -117,18 +141,14 @@ export default {
   data() {
     return {
       auto: false,
-      loop: false
+      loop: false,
+      isPopUp: false,
     };
   },
   created() {
     // if (this.travelListIndex.length == 0) {
     //     this.$store.dispatch('getTravelsList')
     // }
-  },
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.redirect(vm);
-    });
   },
   computed: {
     // ...mapGetters([
@@ -137,25 +157,18 @@ export default {
   },
   mounted() {},
   methods: {
-    redirect() {
-     
-      var openId = GetQueryString("openid");
-      
-      if (openId) {
-        sessionStorage["redirectOpenId"] = openId;
-        window.location.href = window.location.href.replace(/\?openid.*/ig,"#/dda/index");
-      }else{
-        
-      }
-
-      //获取url地址的字符串参数
-      function GetQueryString(key) {
-        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]);
-        return "";
-      }
-    }
+  	goto(item){
+         this.isPopUp = true;
+         document.body.style="height：100%;overflow：hidden;";
+          // console.log(item);
+          // localStorage.setItem("item",JSON.stringify(item));
+          // this.$router.push("./bmap");
+        },
+        close(type) {
+          if (type) {
+          }
+          this.isPopUp = false;
+        },
   }
 };
 </script>
@@ -164,9 +177,11 @@ export default {
 .header {
   background: #ffffff;
   box-shadow: 0 1px 2px 0 rgba(225, 225, 225, 0.5);
+  
 }
 .home {
-  padding: 0 0.3rem;
+  width:100% !important;
+  /*background-color:#2DA7E0;*/
 }
 .quxiang {
   background: url(../assets/images/headerquxiang.png) no-repeat;
@@ -176,11 +191,14 @@ export default {
   line-height: 0.82rem;
   color: linear-gradient(-180deg, #2da7e0 0%, #77baf1 100%);
   .chaxun {
-    line-height: 0.5rem;
+    line-height: 0.8rem;
+    color:#2da7e0;
+    font-size: 0.28rem;
     img {
-      height: 0.36rem;
-      width: 0.36rem;
+      height: 0.26rem;
+      width: 0.3rem;
       margin-right: 0.18rem;
+      margin-left: 0.18rem;
     }
   }
   .city {
@@ -212,10 +230,9 @@ export default {
   height: 1.8rem;
 }
 .xinjintoutiao {
-  height: 0.9rem;
-  width: 100%;
-  padding: 0.26rem 0;
-  border: 1px solid red;
+  padding: 0.5rem 0.26rem 0.5rem 0.26rem;
+  margin-bottom: .3rem;
+  box-shadow: 0 0 5px 2.5px rgba(225, 225, 225, 0.5);
   .xinjintoutiao-inner {
     height: 100%;
   }
@@ -235,6 +252,8 @@ export default {
 
 .service-center {
   width: 100%;
+  box-shadow: 0 0 5px 2.5px rgba(225, 225, 225, 0.5);
+  margin-bottom: .3rem;
   span {
     color: #2da7e0;
     width: 4px;
@@ -242,18 +261,20 @@ export default {
   }
   p {
     font-size: 0.28rem;
+    padding-top:.2rem;
+    padding-left: .25rem;
   }
   .service-center-swipter {
     margin: 0.26rem 0 0.3rem 0;
     height: 2.2rem;
     img {
-      width: 6.9rem;
+      width:100%;
       height: 100%;
     }
   }
 }
 .group1 {
-  height: 2.03rem;
+  height: 1.7rem;
   width: 100%;
 }
 .flex-group1 {
@@ -268,6 +289,16 @@ export default {
 .chuanweixingdong {
   height: 2.2rem;
   width: 100%;
+  span {
+    color: #2da7e0;
+    width: 4px;
+    margin-right: 0.3rem;
+  }
+  p {
+    font-size: 0.28rem;
+    padding:.2rem 0 .3rem .25rem;
+    
+  }
 }
 .chuanweixingdong-swipter {
   .cw1,
@@ -290,7 +321,6 @@ export default {
   p {
     position: absolute;
     bottom: 0;
-    height: 0.68rem;
     width: 100%;
     display: block;
     background: rgba(0, 0, 0, 0.4);
@@ -341,20 +371,20 @@ export default {
   .swiper-slide1,
   .swiper-slide2,
   .swiper-slide3 {
-    width: 2.95rem;
+    width: 2.71rem;
     height: 1.94rem;
     border-radius: 5px;
     background: url(../assets/images/databg.png) no-repeat;
     background-size: 100% 100%;
     float: left;
     margin-right: 0.32rem;
+    padding-left:.3rem;
   }
 }
 .activity2 {
   width: 10rem;
   height: 1.4rem;
-  border-top: 0.2rem solid #f5f5f5;
-  padding: 0.3rem 0;
+  padding-top: 0.3rem;
   margin-top: 0.4rem;
   color: #000;
   overflow: hidden;
@@ -364,7 +394,7 @@ export default {
   .swiper-slide1,
   .swiper-slide2,
   .swiper-slide3 {
-    width: 2.95rem;
+    width: 2.65rem;
     height: 1.94rem;
     border-radius: 5px;
     background: #fff no-repeat;
@@ -385,6 +415,36 @@ export default {
   background-size: 100% 100%;
   width: 100%;
   height: 2rem;
+  margin-bottom: .3rem;
+}
+.pop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.3) !important;
+  
+}
+.popup {
+  padding: 2rem 0 0;
+}
+.dda_join_pop_del {
+  background: url(../assets/images/dda_join_pop_del.png) no-repeat;
+  background-size: cover;
+  width: 0.72rem;
+  height: 1.2rem;
+  margin-left: 80%;
+}
+
+.dda_join_pop_up {
+  background: url(../assets/images/qidai.png) no-repeat;
+  background-size: cover;
+  width: 6.2rem;
+  height: 7.87rem;
+  margin: 0 auto;
+  text-align: center;
 }
 </style>
 <style>
@@ -405,7 +465,11 @@ export default {
   left: 7px;
 }
 .vux-tab .vux-tab-item {
-  background: #fff !important;
+    background: #fff !important;
+}
+.vux-slider .service-center-swipter .vux-swiper{width:100%;}
+.vux-swiper-item{
+	width:100%;
 }
 /* .vux-swiper{
   min-height:800px!important;

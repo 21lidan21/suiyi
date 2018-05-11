@@ -183,6 +183,26 @@ export default new Router({
       component: resolve => require(['../pages/home/UndertakingsContent3'], resolve)
     },
     {
+      path: '/home/helpService',
+      component: resolve => require(['../pages/home/helpService'], resolve)
+    },
+    {
+      path: '/home/hopeHelpService',
+      component: resolve => require(['../pages/home/hopeHelpService'], resolve)
+    },
+    {
+      path: '/home/iGoJoin',
+      component: resolve => require(['../pages/home/iGoJoin'], resolve)
+    },
+    {
+      path: '/home/lovechiose',
+      component: resolve => require(['../pages/home/lovechiose'], resolve)
+    },
+    {
+      path: '/home/loveTransmission',
+      component: resolve => require(['../pages/home/loveTransmission'], resolve)
+    },
+    {
       path: '*',
       name: 'notfound',
       component: NotFound
