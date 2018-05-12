@@ -63,16 +63,16 @@
 </template>
 
 <script>
-import { Scroller } from "vux";
-import { Swiper, GroupTitle, SwiperItem, XButton, Divider } from "vux";
-import { Flexbox, FlexboxItem } from "vux";
-import { CellBox } from "vux";
-import { XInput, Group, Cell } from "vux";
-import { Card } from "vux";
+import { Scroller } from 'vux'
+import { Swiper, GroupTitle, SwiperItem, XButton, Divider } from 'vux'
+import { Flexbox, FlexboxItem } from 'vux'
+import { CellBox } from 'vux'
+import { XInput, Group,  Cell } from 'vux'
+import { Card } from 'vux'
 
-import { PopupRadio, PopupPicker, Datetime } from "vux";
-import api from "../../fetch/api";
-import * as _ from "../../util/tool";
+import { PopupRadio,PopupPicker, Datetime } from 'vux'
+import api from '../../fetch/api'
+import * as _ from '../../util/tool'
 export default {
   components: {
     // swiper,
@@ -112,34 +112,35 @@ export default {
     };
   },
   created() {
-    this.getUserInfo();
+  this.getUserInfo()
   },
-  methods: {
-    getUserInfo() {
-      api
-        .GetUserInfoByID()
-        .then(res => {
-          console.log(res);
-          if (res) {
-            console.log(this.name);
-            this.name = res[0].name;
-            this.levelName = res[0].levelName;
-            this.point = res[0].point;
-            this.doNum = res[0].doNum;
-            this.showPrice = res[0].showPrice;
-            this.imgurl = res[0].headImgUrl;
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-
-    loginout() {
-      sessionStorage.sessionId = "";
-      this.$router.replace("/user");
-    }
-  }
+   methods: {
+       
+      
+       getUserInfo(){     
+            api.GetUserInfoByID()
+                .then(res => {
+                    console.log(res)
+                    if(res) {
+                      console.log(this.name)  
+                       this.name=res[0].name
+                       this.levelName=res[0].levelName
+                       this.point=res[0].point
+                       this.doNum=res[0].doNum
+                       this.showPrice=res[0].showPrice
+                       this.imgurl=res[0].headImgUrl
+                    }
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+       },
+     
+	loginout(){
+      sessionStorage.sessionId =''
+      this.$router.replace('/user')
+    }	
+	}
 };
 </script>
 <style scoped lang="scss">
@@ -180,47 +181,48 @@ export default {
     letter-spacing: 0.9px;
   }
 }
-.point,
-.doNum {
-  display: inline-block;
-  width: 2.24rem;
-  height: 0.8rem;
-  float: left;
-  text-align: center;
+.point,.doNum{
+    display: inline-block;
+    width: 2.24rem;
+    height: .8rem;
+    float: left;
+    text-align: center;
 }
-.point span:first-child,
-.doNum span:first-child {
-  font-family: PingFangSC-Regular;
-  font-size: 0.3rem;
-  color: #ffffff;
+.point span:first-child,.doNum span:first-child
+{
+    font-family:PingFangSC-Regular;
+    font-size:.3rem;
+    color:#ffffff;
+   
 }
-.point span:last-child,
-.doNum span:last-child {
-  font-family: PingFangSC-Regular;
-  font-size: 0.5rem;
-  color: #ffffff;
-  line-height: 0.5rem;
+.point span:last-child,.doNum span:last-child
+{
+    font-family:PingFangSC-Regular;
+    font-size:.5rem;
+    color:#ffffff;
+   line-height: .5rem;
 }
-.flex-right {
-  float: right;
+.flex-right{
+    float: right;
 }
 // .doNum{
 //     float: left;
 // }
-.group1 {
-  .flex-group1 {
-    text-align: center;
-    margin: 0.43rem 0 0.1rem 0;
-    border-right: #ccc solid 1px;
-    font-size: 0.3rem;
-    img {
-      height: 0.28rem;
-      width: 0.28rem;
-      margin-right: 0.1rem;
+ .group1{
+        
+        .flex-group1{
+            text-align: center;
+            margin: .43rem 0 .41rem 0;
+            border-right: #ccc solid 1px;
+            font-size: .3rem;
+            img{
+                height:.28rem;
+                width: .28rem;  
+                margin-right: .1rem; 
+               }
+        }
+        .flex-group1.last-child{
+          border-right: transparent solid 1px;
+        }
     }
-  }
-  .flex-group1.last-child {
-    border-right: transparent solid 1px;
-  }
-}
 </style>

@@ -93,10 +93,9 @@ export default {
         margin-left: -1rem;
     }
     .login_head{
-        text-align: center;
         margin: 0 auto;
+        padding-right: 1rem;
         position: relative;
-        width: 4rem;
        span{
            font-family:PingFangSC-Regular;
             font-size:.32rem;
@@ -104,7 +103,7 @@ export default {
             position: absolute;
             top: 50%;
             left: 50%;
-            margin-left: .25rem;
+            margin-right: .5rem;
             margin-top: -.44rem;
             width: 1.62rem;
             display: inline-block;

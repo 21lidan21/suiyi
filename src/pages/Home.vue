@@ -30,9 +30,9 @@
 <flexbox class="xinjintoutiao-inner">
    <flexbox-item :span="2"><div class="xinjintitle"><img src="../assets/images/xinjintoutiao.png" width="100%;" alt=""></div></flexbox-item>
   <flexbox-item><div class=""><swiper auto height="30px" direction="vertical" :interval=2000 class="text-scroll" :show-dots="false">
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao01.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.1rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao02.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.1rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.1rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao01.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.12rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao02.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.12rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.12rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
     </swiper></div>
    </flexbox-item>
 </flexbox>
@@ -219,7 +219,7 @@ export default {
       height: 0.26rem;
       width: 0.3rem;
       margin-right: 0.18rem;
-      margin-left: 0.18rem;
+      margin-left: 0.38rem;
     }
   }
   .city {
@@ -479,7 +479,7 @@ export default {
     .flex-group2{
         text-align: center;
         margin: .43rem 0 .1rem 0;
-        border-right: #ccc solid 1px;
+        border-right: #F6F6F6 solid 1px;
         line-height: .35rem;
     }
     .flex-group2.last-child{
@@ -488,6 +488,12 @@ export default {
 }
 </style>
 <style>
+::-webkit-scrollbar{
+  display:none;
+}
+.inner-container::-webkit-scrollbar {
+    display: none;
+}
 .vux-header-title-area,
 .vux-header .vux-header-title {
   color: #2da7e0 !important;
