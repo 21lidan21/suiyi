@@ -21,7 +21,8 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      vm.checkPay(vm);
+      // vm.checkPay(vm);
+      vm.getOpenId(vm);
     });
   },
   methods: {
@@ -32,19 +33,35 @@ export default {
         this.joinIn(redirectPay);
       // }
     },
-    joinIn(gotId) {
+    getOpenId(){
+
+       var redirectOpenId = sessionStorage["redirectOpenId"];
+      if (!redirectOpenId) {
+        location.href =
+          "http://www.lcaui.com/oauth/authorize.aspx?redirect_uri=" +
+          window.location.href;
+        return;
+      }
+
+      //获取url地址的字符串参数
+      function GetQueryString(key) {
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return "";
+      }
+    },
+    joinIn() {
       var self = this;
-      var openId =gotId;// GetQueryString("openid");
+      var openId =sessionStorage["redirectOpenId"]|| "";
       // if (gotId) {
       //   openId = gotId;
       // }
       // alert("url"+window.location.href+"--"+gotId+"openId"+openId);
       var wxJsApiParam = "";
 
-      if (openId == "" || typeof openId == "object") {
-        location.href =
-          "http://www.lcaui.com/oauth/authorize.aspx?redirect_uri=" +
-          window.location.href;
+      if (openId == "") {
+        this.getOpenId();
         return;
       }
 
@@ -89,7 +106,7 @@ export default {
             timeStamp: wx.timeStamp
           },
           function(res) {
-            console.log(res.err_code + "-" + res.err_desc + "-" + res.err_msg);
+            alert(res.err_code + "-" + res.err_desc + "-" + res.err_msg);
             switch (res.err_msg) {
               case "get_brand_wcpay_request:ok":
               case "ok":
