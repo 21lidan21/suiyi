@@ -1,10 +1,13 @@
 <template>
    <div  class="bg">
      <x-header   class="header "  :left-options="{backText: ''}">加入公益活动</x-header>
-     <div class="camp_header">
+     <div class="camp_header" v-if="isShow">
        <div class="balance">余额 <br><span class="txt" v-html="balance"></span></div>
        <div class="div_line"></div>
        <div class="balance">爱心值 <br><span class="txt" v-html="heart"></span>个</div>
+     </div>
+     <div class="camp_header camp_header_empty"  v-else>
+       登录后查看
      </div>
      <div class="flag">
      </div>
@@ -22,9 +25,17 @@
 export default {
   data() {
     return {
+      isShow:false,
       balance: sessionStorage['showPrice']||'',
       heart: sessionStorage['point']||'',
     };
+  },
+  created(){
+    if(sessionStorage["sessionId"]){
+      this.isShow = true;
+      this.balance = sessionStorage['showPrice'];
+      this.heart= sessionStorage['point'];
+    }
   },
   methods: {
     goto() {
@@ -48,6 +59,12 @@ export default {
 };
 </script>
 <style scoped >
+.camp_header_empty{
+  text-align: center;
+  font-size: 16px;
+  color:white;
+  line-height: 6em;
+}
 .footer {
   background: #ffffff;
   line-height: 1rem;
@@ -106,7 +123,7 @@ export default {
   width: 100%;
   height: 2.74rem;
   background: url(../../assets/images/camp.png) no-repeat;
-  background-size: auto 100%;
+  background-size: 100% 100%;
 }
 
 .header {

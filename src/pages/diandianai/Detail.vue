@@ -68,18 +68,19 @@ export default {
 .dda_detail_left {
   margin: 1em 0 0 1em;
   width: 80%;
-  height: 7rem;
+
   text-align: center;
   background: url(../../assets/images/dda_detail_left.png) no-repeat;
-  background-size: 100%;
+  background-size: 100% 100%;
 }
 .fill {
   height: 0.5rem;
 }
 .dda_detail_content {
+
   text-indent: 2em;
   text-align: left;
-  width: 5.6rem;
+  padding:0 1em;
   font-size: 12px;
   line-height: 1.5;
   font-weight: bold;
@@ -141,10 +142,9 @@ export default {
 }
 .dda_detail_leader {
   margin: 0 0 0 1.5rem;
-  height: 2.77rem;
-  width: 4.5rem;
+  height: 3.77rem;
   background: url(../../assets/images/dda_detail_leader.jpg) no-repeat center;
-  background-size: 100%;
+  background-size: 100% 100%;
 }
 .dda_detail_icons {
   height: 0.8rem;

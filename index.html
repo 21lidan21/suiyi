@@ -18,6 +18,11 @@
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="copyright" content="">
   <meta name="keywords" content="html5,css3,vue,axios,vuex">
+  <meta name="x5-orientation" content="portrait">
+  <meta name="screen-orientation"content="portrait">
+  <meta name="screen-orientation"content="portrait">
+
+
   <!-- 关键词 -->
   <meta name="description" content="">
   <!-- 网站内容描述 -->
@@ -25,6 +30,9 @@
   <!-- 作者 -->
   <title>随益</title>
   <link rel="stylesheet" href="static/css/reset.css">
+  <style>
+    
+  </style>
   <script src="http://api.map.baidu.com/api?v=2.0&ak=piXQ5CgHFqEefqCVbhhBFfe6HjF7l4zW"></script>
   <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
 </head>
@@ -38,6 +46,7 @@
     var docEl = doc.documentElement,
       resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
       recalc = function () {
+        setTimeout(()=>{
         var clientWidth = docEl.clientWidth;
         if (!clientWidth) return;
         if (clientWidth >= 640) {
@@ -55,6 +64,7 @@
           }
           document.body.removeChild(div);
         };
+      },400)
       };
     if (!doc.addEventListener) return;
     win.addEventListener(resizeEvt, recalc, false);

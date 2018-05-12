@@ -127,8 +127,36 @@ export default {
   created() {
     this.isShow = true;
     this.getUserInfo();
+    this.resetResize();
   },
   methods: {
+    resetResize(){
+      
+      setTimeout(()=>{
+
+     
+			var docEl = document.documentElement;
+			    var clientWidth = docEl.clientWidth;
+        if (!clientWidth) return;
+        if (clientWidth >= 640) {
+          docEl.style.fontSize = '100px';
+        } else {
+          docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+          var div = document.createElement('div');
+          div.style.width = '1.4rem';
+          div.style.height = '0';
+          document.body.appendChild(div);
+          var ideal = 140 * clientWidth / 750;
+          var rmd = (div.clientWidth / ideal);
+          if (rmd > 1.2 || rmd < 0.8) {
+            docEl.style.fontSize = 100 * (clientWidth / 750) / rmd + 'px';
+          }
+          document.body.removeChild(div);
+        };
+        
+      
+      },400)
+		},
     goto(path) {
       this.$router.push(path);
     },
