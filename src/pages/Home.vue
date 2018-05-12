@@ -1,6 +1,6 @@
 <template>
 <div class="home"> 
-  <x-header class="header" style="padding:0;" :left-options="{showBack: false}">随意</x-header>
+  <x-header class="header" style="padding:0;" :left-options="{showBack: false}">随益</x-header>
 <el-row :gutter="20" class='quxiang'>
   <el-col :span="19"><div class="grid-content bg-purple chaxun" @click="goto"><img src="../assets/images/chaxun.png" alt="">公益物质去向查询中心</div></el-col>
   <el-col :span="5"><div class="grid-content bg-purple city"><img src="../assets/images/local.png" alt="">南宁</div></el-col>
@@ -22,17 +22,19 @@
   <el-col :span="24"><div class="grid-content bg-purple-dark" @click="goto"><img src="../assets/images/kuaigongyi.jpg" width="100%" alt=""></div></el-col>
 </el-row>
  <div class="activity">
-   <router-link to="/home/undertakingsContent"><div class="swiper-slide1"><img onclick="return false"  src="../assets/images/top1.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">牛奶小镇</span><br/><span style="font-size: .22rem;">参与人数：112人</span><br/><span style="font-size: .22rem;">捐助累计：2800天</span><br/><span style="font-size: .22rem;">帮扶对象：191人</span></div></div></router-link>
-   <router-link to="/home/undertakingsContent1"><div class="swiper-slide2"><img onclick="return false"  src="../assets/images/top2.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">阅食小景</span><br/><span style="font-size: .22rem;">参与人数：36人</span><br/><span style="font-size: .22rem;">捐助累计：695天</span><br/><span style="font-size: .22rem;">帮扶对象：统计中...</span></div></div></router-link>
-   <router-link to="/home/undertakingsContent2"><div class="swiper-slide3"><img onclick="return false"  src="../assets/images/top3.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">传微远航</span><br/><span style="font-size: .22rem;">参与人数：36人</span><br/><span style="font-size: .22rem;">捐助累计：695天</span><br/><span style="font-size: .22rem;">帮扶对象：统计中...</span></div></div></router-link>
+   <router-link to="/home/undertakingsContent"><div class="swiper-slide1"><img onclick="return false"  src="../assets/images/top1.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">牛奶小镇</span><br/><span style="font-size: .22rem;">参与人数：统计中...</span><br/><span style="font-size: .22rem;">捐助累计：统计中...</span><br/><span style="font-size: .22rem;">帮扶对象：统计中...</span></div></div></router-link>
+   <router-link to="/home/undertakingsContent1"><div class="swiper-slide2"><img onclick="return false"  src="../assets/images/top2.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">阅食小景</span><br/><span style="font-size: .22rem;">参与人数：统计中...</span><br/><span style="font-size: .22rem;">捐助累计：统计中...</span><br/><span style="font-size: .22rem;">帮扶人数：统计中...</span></div></div></router-link>
+   <router-link to="/home/undertakingsContent2"><div class="swiper-slide3"><img onclick="return false"  src="../assets/images/top3.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">传微远航</span><br/><span style="font-size: .22rem;">参与人数：统计中...</span><br/><span style="font-size: .22rem;">捐助累计：统计中...</span><br/><span style="font-size: .22rem;">帮扶人数：统计中...</span></div></div></router-link>
+   <router-link to="/home/undertakingsContent3"><div class="swiper-slide3"><img onclick="return false"  src="../assets/images/top4.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">南宁市公安...</span><br/><span style="font-size: .22rem;">参与人数：24人</span><br/><span style="font-size: .22rem;">捐助累计：1600天</span><br/><span style="font-size: .22rem;">帮扶人数：8人</span></div></div></router-link>
  </div>
 <div class='xinjintoutiao'>
 <flexbox class="xinjintoutiao-inner">
    <flexbox-item :span="2"><div class="xinjintitle"><img src="../assets/images/xinjintoutiao.png" width="100%;" alt=""></div></flexbox-item>
   <flexbox-item><div class=""><swiper auto height="30px" direction="vertical" :interval=2000 class="text-scroll" :show-dots="false">
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao01.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.12rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao02.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.12rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.12rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao01.png" alt=""><div>爱心点燃希望，奉献成就未来</div><div style="margin-top:.12rem;">感谢 <span style="color: #2da7e0;">牛奶小镇</span> 成功入驻随益公益平台</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao02.png" alt=""><div>爱心点燃希望，奉献成就未来</div><div style="margin-top:.12rem;">感谢 <span style="color: #2da7e0;">阅食小景</span> 成功入驻随益公益平台</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div>爱心点燃希望，奉献成就未来</div><div style="margin-top:.12rem;">感谢 <span style="color: #2da7e0;">传微远航</span> 成功入驻随益公益平台</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div>爱心点燃希望，奉献成就未来</div><div style="margin-top:.12rem;">感谢 <span style="color: #2da7e0;">交警支队九大队</span> 成功入驻随益...</div></div></swiper-item>
     </swiper></div>
    </flexbox-item>
 </flexbox>

@@ -137,6 +137,7 @@ export default {
         .then(res => {
           console.log(res);
           if (res) {
+              this.$vux.toast.hide();
             // let userInfo = Object.assign()sessionId
             this.$store.dispatch("setLoadingState", false);
             //this.setUserInfo(res.data)
@@ -234,7 +235,9 @@ export default {
     background: #EEF8FF;
     color: #000;
     font-size: .3rem;
-    padding-left: 43%;
+}
+.weui-cell .weui-cell_radio .weui-check__label{
+	padding-left: 43%;
 }
 </style>
 

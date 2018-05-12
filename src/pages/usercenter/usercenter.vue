@@ -8,8 +8,8 @@
       </div>
       <div class='group1'>
  <flexbox>
-      <flexbox-item><div class="flex-group1"   @click="showPlugin('/my/GetOrderList')"><img src="../../assets/images/myorder.png" width="80%" alt=""><span>我的订单</span></div></flexbox-item>
-      <flexbox-item><div class="flex-group1"><img src="../../assets/images/helpman.png" alt=""><span>帮扶对象</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group1" @click="showPlugin('/my/GetOrderList')"><img src="../../assets/images/myorder.png" width="80%" alt=""><span>我的订单</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group1" @click="gotoBF"><img src="../../assets/images/helpman.png" alt=""><span>帮扶对象</span></div></flexbox-item>
       <flexbox-item><div class="flex-group1 last-child"><img src="../../assets/images/promote.png" alt=""><span>推广大使</span></div></flexbox-item>
 </flexbox>
 </div>
@@ -30,10 +30,19 @@
       <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
        联系客服
       </cell-box>
-       <cell-box is-link :link="{path:'/userset'}" style="font-size: .28rem;line-height: .6rem;">
+      <div @click="showPlugin('/userset')" style="border-top:1px solid #F7F7F7;">
+       <cell-box is-link   style="font-size: .28rem;line-height: .6rem;">
         个人设置
       </cell-box>
+      </div>
     </group>
+    <!--提示框-->
+    <div class="pop" v-if="isPopUp" @click="close(0)">
+        <div class="popup" v-if="isPopUp">
+         <div class="dda_join_pop_del" ></div>
+         <div class="dda_join_pop_up"></div>
+       </div>
+    </div>
    </div>
 </template>
 <script>
@@ -52,11 +61,25 @@ export default {
     CellBox,
 	},
   data() {
-    return {};
+    return {
+    	isPopUp :false
+    };
   },
   methods:{
     goto(path) {
       this.$router.push(path);
+    },
+    gotoBF(item) {
+      this.isPopUp = true;
+      document.body.style = "overflow：hidden;";
+      // console.log(item);
+      // localStorage.setItem("item",JSON.stringify(item));
+      // this.$router.push("./bmap");
+    },
+    close(type) {
+      if (type) {
+      }
+      this.isPopUp = false;
     },
     showPlugin (path) {
     	if(sessionStorage.sessionId == "" || sessionStorage.sessionId == "undefined" || sessionStorage.sessionId == undefined){
@@ -127,4 +150,33 @@ export default {
           border-right: transparent solid 1px;
         }
     }
+.pop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.3) !important;
+  
+}
+.popup {
+  padding: 2rem 0 0;
+}
+.dda_join_pop_del {
+  background: url(../../assets/images/dda_join_pop_del.png) no-repeat;
+  background-size: cover;
+  width: 0.72rem;
+  height: 1.2rem;
+  margin-left: 80%;
+}
+
+.dda_join_pop_up {
+  background: url(../../assets/images/qidai.png) no-repeat;
+  background-size: cover;
+  width: 6.2rem;
+  height: 7.87rem;
+  margin: 0 auto;
+  text-align: center;
+}
 </style>
