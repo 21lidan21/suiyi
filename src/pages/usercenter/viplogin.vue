@@ -1,6 +1,6 @@
 <template>
    <div class="login_bg">
-   	<x-header class="header" :left-options="{backText: ''}">验证码登录</x-header>
+   	<x-header class="header" :left-options="{backText: ''}">登录</x-header>
    	<div class="main">
    	<div style="width: 20%;margin:.5rem auto;">
       <img src="../../assets/images/wp04.png" style="width:1.2rem; height: 1.2rem;" alt="">
@@ -10,24 +10,18 @@
       <x-input title="" placeholder="请输入手机号码" v-model="username" :max="13" is-type="china-mobile"></x-input>
       <x-input title="" placeholder="请输入密码" type="password" class="weui-vcode" v-model="password">
       </x-input>
-       <x-button  :class="{ 'class-a': ischeck, 'class-b': !ischeck}" :disabled="disabled"  @click.native="login" style="font-size:.3rem;padding:.1rem 0;color:#ffffff" > 登 录</x-button>
-     
      </group>
-     <!--
-     	作者：offline
-     	时间：2018-05-11
-     	描述：
-    
-     <div style="margin-top:.15rem;font-size:.2rem;">
-     	<a @click="$router.push('/usercenter')">会员登录</a> | <a @click="$router.push('/regist')">注册</a>
+       <x-button  :class="{ 'class-a': ischeck, 'class-b': !ischeck}" :disabled="disabled"  @click.native="login" style="font-size:.3rem;padding:.1rem 0;color:#ffffff;margin-top:.5rem" > 登 录</x-button>
+     <div style="margin-top:.45rem;font-size:.35rem;text-align:center">
+     	<a @click="$router.push('/regist')">注册</a>
      </div>
-      -->
      </div>
    </div>
    </div>
 </template>
 <script>
 import { XInput, Group, XButton, Cell } from "vux";
+import crypto from 'crypto'
 import api from "../../fetch/api";
 import * as _ from "../../util/tool";
 
@@ -60,9 +54,10 @@ export default {
       this.ischeck = false;
       let data = {
         phone: this.username,
-        pwd: this.password,
+        pwd:  this.getmd5(this.password),
         openID: " "
       };
+      console.log(JSON.stringify(data));
       this.$store.dispatch("setLoadingState", true);
       api
         .vipLogin(data)
@@ -94,6 +89,14 @@ export default {
         type: text,
         width: "5rem"
       });
+    },
+    getmd5(val){
+        var a;
+        var md5 = crypto.createHash("md5");
+        md5.update(val);
+        var a = md5.digest('hex');
+        return a;
+            //47bce5c74f589f4867dbd57e9ca9f808 
     }
   }
 };

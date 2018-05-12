@@ -1,5 +1,5 @@
 <template>
-   <div class="login_bg">
+   <div class="login_bg" style="padding-bottom: 3rem;">
    	<x-header class="header" :left-options="{backText: ''}">注册</x-header>
    	<div class="main">
    	<div style="width: 20%;margin:.5rem auto;">
@@ -7,18 +7,18 @@
     </div>
     <div class="register">
      <group title="">
-      <x-input title="" placeholder="请输入手机号码" v-model="username" :max="13" is-type="china-mobile"></x-input>
-      <x-input title="" placeholder="请输入验证码" class="weui-vcode" v-model="password">
-        <x-button slot="right" type="primary" :class="{ 'class-a': ischeck, 'class-b': !ischeck}" :disabled="disabled" @click.native="sendCode" mini ><input style="color:#ffffff" type="text" v-model="text"></x-button>
+      <x-input title="" style="line-height: .6rem;" placeholder="请输入手机号码" v-model="username" :max="13" is-type="china-mobile"></x-input>
+      <x-input title="" style="line-height: .6rem;" placeholder="请输入验证码" class="weui-vcode" v-model="password">
+        <x-button slot="right" type="primary" :class="{ 'class-a': ischeck, 'class-b': !ischeck}" :disabled="disabled" @click.native="sendCode" mini ><input style="color:#ffffff;" type="text" v-model="text"></x-button>
       </x-input>
        
-      <x-input title="" type="password" placeholder="请输入设置登录密码" v-model="userpassword" :min="6"  @on-change="change"></x-input>
-     <x-input title="" type="password" style="border-bottom: 1px solid #F2F2F2;margin-bottom: .5rem;" v-model="userpassword2"  placeholder="请再次输入确认登录密码" :equal-with="userpassword"></x-input>
+      <x-input title="" style="line-height: .6rem;" type="password" placeholder="请输入设置登录密码" v-model="userpassword" :min="6"></x-input>
+     <x-input title=""  type="password" style="border-bottom: 1px solid #F2F2F2;line-height: .6rem;margin-bottom: .5rem;" v-model="userpassword2"  placeholder="请再次输入确认登录密码" :equal-with="userpassword"></x-input>
     <group title="以下是选填信息">
-      <x-input title="" name="name" v-model="name" placeholder="请输入姓名" is-type="china-name"></x-input>
-     <popup-radio style="font-size:.28rem;color:#B1B1B1;border-bottom: 1px solid #F2F2F2;" title="请选择性别" :options="options1" v-model="option1"></popup-radio>
-      <datetime :value.sync="value5" style="font-size:.28rem;color:#B1B1B1;border-bottom: 1px solid #F2F2F2;" placeholder="" :min-year=2000 :max-year=2016 format="YYYY-MM-DD" @on-change="change" title="请选择生日" year-row="{value}年" month-row="{value}月" day-row="{value}日"  confirm-text="完成" cancel-text="取消"></datetime>
-     <x-input title="" name="cardID" placeholder="请输入随益会员卡" v-model="cardID"></x-input>
+      <x-input style="line-height: .6rem;" title="" name="name" v-model="name" placeholder="请输入姓名" is-type="china-name"></x-input>
+     <popup-radio style="font-size:.28rem;line-height: .6rem;color:#B1B1B1;border-bottom: 1px solid #F2F2F2;" title="请选择性别" :options="options1" v-model="option1"></popup-radio>
+      <datetime :value.sync="value5" style="font-size:.28rem;line-height: .6rem;color:#B1B1B1;border-bottom: 1px solid #F2F2F2;" placeholder="" :min-year="1930" :max-year="2030" format="YYYY-MM-DD" @on-change="change" title="请选择生日" year-row="{value}年" month-row="{value}月" day-row="{value}日"  confirm-text="完成" cancel-text="取消"></datetime>
+     <x-input style="line-height: .6rem;" title="" name="cardID" placeholder="请输入随益会员卡" v-model="cardID"></x-input>
     </group>
     <x-button :gradients="['#2da7e0', '#77baf1']"  @click.native="regist" style="font-size: .3rem;padding:.1rem 0;"> 注册</x-button>
      </group>
@@ -30,6 +30,7 @@
 <script>
 import { XInput, Group, XButton, Cell } from "vux";
 import { PopupRadio, PopupPicker, Datetime } from "vux";
+import crypto from 'crypto'
 import api from "../../fetch/api";
 import * as _ from "../../util/tool";
 
@@ -46,9 +47,9 @@ export default {
   data() {
     return {
       time: 60,
-     ischeck: true,
-      disabled:false,
-      text:'发送验证码',
+      ischeck: true,
+      disabled: false,
+      text: "发送验证码",
       maskValue: "",
       iconType: "",
       username: "",
@@ -67,19 +68,20 @@ export default {
     };
   },
   methods: {
-     timer: function () {
-         console.log(this.time);
-            if (this.time > 0) {
-                this.time--;
-                this.text = this.time + 's 后重获取重新获取验证码';
-                setTimeout(this.timer, 1000);
-            }else{
-             this.disabled = false;
-            }
-        },  
+    timer: function() {
+      if (this.time > 0) {
+        this.time--;
+        this.text = this.time + "s 再重试";
+        setTimeout(this.timer, 1000);
+      } else {
+        this.time = 60;
+        this.text = "发送验证码";
+        this.disabled = false;
+        this.ischeck = true;
+      }
+    },
     change(value) {
       this.birthDay = value;
-      console.log("change", value);
     },
     sendCode() {
       if (!this.username) {
@@ -124,10 +126,10 @@ export default {
         phone: this.username,
         code: this.password,
         codeKey: this.codeKey,
-        password: this.userpassword,
+        password: this.getmd5(this.userpassword),
         cardID: this.cardID,
         birthDay: this.birthDay,
-        openid: "8888",
+        openid:sessionStorage["suiyiOpenId"]|| "",//微信认证凭证码
         userName: this.name,
         sex: this.sexValue
       };
@@ -139,11 +141,18 @@ export default {
             this.$store.dispatch("setLoadingState", false);
             //this.setUserInfo(res.data)
             sessionStorage.sessionId = res.sessionId;
-            this.$router.replace("/home");
+            this.$router.replace("/userinfo");
           }
         })
         .catch(error => {
           console.log(error);
+          this.toats(error.data.desc, "cancel", 3000);
+          setTimeout(() => {
+            // 隐藏
+            this.$vux.toast.hide();
+            this.disabled = false;
+            this.ischeck = true;
+          }, 3000);
         });
     },
     toats(msg, text, time) {
@@ -153,6 +162,14 @@ export default {
         type: text,
         width: "5rem"
       });
+    },
+    getmd5(val){
+        var a;
+        var md5 = crypto.createHash("md5");
+        md5.update(val);
+        var a = md5.digest('hex');
+        return a;
+            //47bce5c74f589f4867dbd57e9ca9f808 
     }
   }
 };
@@ -161,14 +178,14 @@ export default {
 .login_bg {
   width: 100%;
   height: 100%;
-  padding-bottom: 2rem;
 }
 .class-a {
   background: #2da7e0;
   width: 50%;
 }
 .class-b {
-  background: #F8B62C;
+  background: #f8b62c;
+  width: 50%;
 }
 .main {
   padding-top: 0.5rem;
@@ -211,6 +228,13 @@ export default {
   transform: rotate(315deg);
   top: 8px;
   left: 7px;
+}
+.weui-cells_radio{
+	line-height: 1rem;
+    background: #EEF8FF;
+    color: #000;
+    font-size: .3rem;
+    padding-left: 43%;
 }
 </style>
 

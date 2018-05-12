@@ -1,6 +1,6 @@
 <template>
    <div class="usercenter" style="padding-bottom: 2rem;">
-      <div class="head" @click="$router.push('/login')">
+      <div class="head" @click="$router.push('/viplogin')">
           <div class="login_head">
           <div class="headimg"><img src="../../assets/images/我的有色.png" width="100%" alt=""></div>
           <span>登录/注册</span>
@@ -15,22 +15,22 @@
 </div>
  <group>
       
-      <cell-box is-link style="font-size: .28rem;">
+      <cell-box is-link style="font-size: .28rem;line-height: .6rem; border-top:1px solid #F7F7F7;">
         我的地址
       </cell-box>
-       <cell-box is-link style="font-size: .28rem;">
+       <cell-box is-link style="font-size: .28rem; line-height: .6rem;">
         爱心体验券
       </cell-box>
-      <cell-box is-link style="font-size: .28rem;">
+      <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
        我的收藏
       </cell-box>
-       <cell-box is-link style="font-size: .28rem;">
+       <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
         周边领取点
       </cell-box>
-      <cell-box is-link style="font-size: .28rem;">
+      <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
        联系客服
       </cell-box>
-       <cell-box is-link :link="{path:'/userset'}" style="font-size: .28rem;">
+       <cell-box is-link :link="{path:'/userset'}" style="font-size: .28rem;line-height: .6rem;">
         个人设置
       </cell-box>
     </group>
@@ -117,9 +117,10 @@ export default {
             text-align: center;
             margin: .43rem 0 .1rem 0;
             border-right: #ccc solid 1px;
+            font-size: .3rem;
             img{
-                height:.26rem;
-                width: .26rem; 
+                height:.28rem;
+                width: .28rem; 
                 margin-right: .1rem; 
                }
         }

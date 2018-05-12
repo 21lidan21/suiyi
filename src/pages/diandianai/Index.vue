@@ -106,7 +106,7 @@ export default {
             timeStamp: wx.timeStamp
           },
           function(res) {
-            alert(res.err_code + "-" + res.err_desc + "-" + res.err_msg);
+            console.log(res.err_code + "-" + res.err_desc + "-" + res.err_msg);
             switch (res.err_msg) {
               case "get_brand_wcpay_request:ok":
               case "ok":

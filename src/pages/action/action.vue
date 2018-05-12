@@ -3,9 +3,15 @@
    <x-header class="header" style="padding:0;" :left-options="{showBack: false}">传微行动</x-header>
     <div>
       <div style="padding:.1rem 0;">
-      <tab :line-width="2" height=".6rem" custom-bar-width="1rem" active-color='#2da7e0'  v-model="index">
+      <!-- <tab :line-width="2" height=".6rem" custom-bar-width="1rem" active-color='#2da7e0'  v-model="index">
         <tab-item class="vux-center" @on-item-click="onItemClick" :selected="demo2 === item" v-for="(item, index) in list2" @click="demo2 = item" :key="index">{{item}}</tab-item>
-      </tab>
+      </tab> -->
+       <tab class="tabsp"  :line-width="2" active-color="red" >
+        <tab-item selected>商品分类</tab-item>
+        <tab-item>常温类</tab-item>
+        <tab-item>低温酸奶</tab-item>
+        <tab-item>奶酪</tab-item>
+       </tab>
       </div>
 
       <div style="margin-bottom:2rem">
