@@ -17,12 +17,14 @@ import api from "../../fetch/api";
 
 export default {
   data() {
-    return {};
+    return {
+      isPaying:0
+    };
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
       // vm.checkPay(vm);
-      vm.getOpenId(vm);
+     // vm.getOpenId(vm);
     });
   },
   methods: {
@@ -33,27 +35,10 @@ export default {
         this.joinIn(redirectPay);
       // }
     },
-    getOpenId(){
-
-       var redirectOpenId = sessionStorage["redirectOpenId"];
-      if (!redirectOpenId) {
-        location.href =
-          "http://www.lcaui.com/oauth/authorize.aspx?redirect_uri=" +
-          window.location.href;
-        return;
-      }
-
-      //获取url地址的字符串参数
-      function GetQueryString(key) {
-        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]);
-        return "";
-      }
-    },
+    
     joinIn() {
       var self = this;
-      var openId =sessionStorage["redirectOpenId"]|| "";
+      var openId =sessionStorage["suiyiOpenId"]|| "";
       // if (gotId) {
       //   openId = gotId;
       // }
@@ -61,9 +46,13 @@ export default {
       var wxJsApiParam = "";
 
       if (openId == "") {
-        this.getOpenId();
+        alert("openId为空");
         return;
       }
+      if(self.isPaying){
+        return;
+      }
+      this.isPaying = 1;
 
       //获取url地址的字符串参数
       function GetQueryString(key) {
@@ -89,6 +78,7 @@ export default {
       //调用微信JS api 支付
       function jsApiCall(obj) {
         if (obj.length <= 0) {
+          self.isPaying = 0;
           console.log("wxJsApiParam length is 0");
           //$$.showMsg("缺少支付参数，请返回重试");
           return;
@@ -106,7 +96,8 @@ export default {
             timeStamp: wx.timeStamp
           },
           function(res) {
-            alert(res.err_code + "-" + res.err_desc + "-" + res.err_msg);
+            self.isPaying = 0;
+            console.log(res.err_code + "-" + res.err_desc + "-" + res.err_msg);
             switch (res.err_msg) {
               case "get_brand_wcpay_request:ok":
               case "ok":
@@ -139,10 +130,12 @@ export default {
           if ( wxJsApiParam.length > 0) {
             callpay(wxJsApiParam);
           }else{
+            self.isPaying = 0;
             console.log("支付parameters");;
           }
         })
         .catch(error => {
+          self.isPaying = 0;
           alert(error.data.desc);
         });
     }

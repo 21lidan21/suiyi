@@ -33,6 +33,7 @@ axios.interceptors.response.use((res) =>{
     }
     return res.data ;
 }, (error) => {
+    console.log("222222222222222222");
     _.toast("网络异常", 'fail');
     return Promise.reject(error);
 });
@@ -164,8 +165,7 @@ export default {
         let httpUrl =  "/GetSchoolList?req="+param.req;
         return fetch(httpUrl)
      },
-     getStudentsList(){
-        axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || '';
+     getStudentsList(data){
         return fetch("/GetStudentsBySchool", data)
      },
      getorderlist(data){

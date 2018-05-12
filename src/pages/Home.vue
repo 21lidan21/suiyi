@@ -154,7 +154,8 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      vm.redirect(vm);
+    
+      vm.getOpenId(vm)
     });
   },
   computed: {
@@ -164,6 +165,27 @@ export default {
   },
   mounted() {},
   methods: {
+    getOpenId(){
+
+       
+       var openid = GetQueryString("openid");
+      if (!openid) {
+        location.href =
+          "http://www.lcaui.com/oauth/authorize.aspx?redirect_uri=" +
+          window.location.href;
+        return;
+      }else{
+         sessionStorage["suiyiOpenId"] = openid;
+      }
+
+      //获取url地址的字符串参数
+      function GetQueryString(key) {
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return "";
+      }
+    },
     redirect() {
       var openId = GetQueryString("openid");
 

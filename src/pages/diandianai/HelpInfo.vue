@@ -3,12 +3,19 @@
     <x-header   class="header" :left-options="{backText: ''}">帮扶对象信息</x-header>
 		<div style=" border-bottom:solid 1px rgb(255, 208, 75);padding:10px;width:70px;margin-left:5px;" class="doing">我们在行动</div>
 
-  <group>
+
+<flexbox>
+      <flexbox-item :span="2/3"><div class="flex-demo">
+        <group>
+      
     <popup-picker :title="title1" :data="list1" v-model="value1" @on-show="onShow" @on-hide="onHide" @on-change="onChange" ></popup-picker>
-  </group>
 
-
-   
+  </group></div></flexbox-item>
+      <flexbox-item><div class="flex-demo schoool-info">
+      点击查看详情</div></flexbox-item>
+      
+    </flexbox>
+  
 
  
     <el-row  v-infinite-scroll="loadMore"
@@ -17,10 +24,10 @@
       <div v-for="(item, index) in editableTabs2" @click="selectPerson(index)" :key="index+'Index'" >
   <el-col    :span="12"  >
     <el-card  class="border_pollyfill"  :class="{isActive: index == nActive }">
-      <img :src="item.img" class="image">
+      <img :src="item.headUrl" class="image">
       <div style="padding: 14px;line-height:1.5;font-size:14px;">
-        姓名：<span class="info_color" v-text="item.name"></span><br>
-        班级：<span class="info_color" v-text="item.banji"></span>
+        姓名：<span class="info_color" v-text="item.showName"></span><br>
+        班级：<span class="info_color" v-text="item.showGradeName"></span>
       </div>
     </el-card>
   </el-col></div>
@@ -35,12 +42,16 @@
 
 <script>
 import { PopupPicker, Group } from "vux";
+import { Flexbox, FlexboxItem } from 'vux'
+
 import api from "../../fetch/api";
 
 export default {
   components: {
     PopupPicker,
-    Group
+    Group,
+    Flexbox,
+    FlexboxItem
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -51,33 +62,14 @@ export default {
   data() {
     return {
       nActive: 0,
-      editableTabs2: [
-        {
-          img:
-            "https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike272%2C5%2C5%2C272%2C90/sign=09fa593b700e0cf3b4fa46a96b2f997a/37d3d539b6003af3a32f2849372ac65c1038b606.jpg",
-          name: "选项是否",
-          banji: "5年纪"
-        },
-        {
-          img:
-            "https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike272%2C5%2C5%2C272%2C90/sign=09fa593b700e0cf3b4fa46a96b2f997a/37d3d539b6003af3a32f2849372ac65c1038b606.jpg",
-          name: "选项是否",
-          banji: "5年纪"
-        },
-        {
-          img:
-            "https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike272%2C5%2C5%2C272%2C90/sign=09fa593b700e0cf3b4fa46a96b2f997a/37d3d539b6003af3a32f2849372ac65c1038b606.jpg",
-          name: "选项是否",
-          banji: "5年纪"
-        }
-      ],
+      editableTabs2: [],
       title1: "学校：",
       list1: [[]],
       value1: ["默认学校"],
       rawData: [],
       nowSchoolId: "",
-      curPage :0,
-      // allLoaded: false,
+      curPage: 1,
+      pageSize :5
     };
   },
   computed: {
@@ -102,6 +94,7 @@ export default {
           this.rawData = res;
           this.value1 = [res[0]["schoolName"]];
           this.nowSchoolId = res[0]["schoolID"];
+          console.log("this.nowSchoolId",this.nowSchoolId)
           this.getStudents();
         })
         .catch(err => {});
@@ -109,25 +102,30 @@ export default {
     getStudents(needClose) {
       var param = {
         schoolID: this.nowSchoolId,
-        pageSize: 10,
+        pageSize: this.pageSize,
         curPage: this.curPage
       };
+      console.log("param",param);
       api
         .getStudentsList(param)
         .then(res => {
           console.log(res);
-          if(needClose){
-            this.loading = flase;
+          if (needClose) {
+            this.loading = false;
           }
+          this.editableTabs2 = this.editableTabs2.concat(res);
         })
         .catch(err => {
-          console.log(err);
-          if(needClose){
-            this.loading = flase;
+          console.log(1111, err);
+          if (needClose) {
+            this.loading = false;
           }
         });
     },
     loadMore() {
+      if(!this.nowSchoolId){
+        return;
+      }
       this.loading = true;
       this.curPage++;
       this.getStudents(1);
@@ -173,6 +171,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.schoool-info{
+  text-align: center;
+  margin: 0 auto;
+}
 .isActive {
   border: 2px solid rgb(255, 208, 75) !important;
   border-radius: 4px;
@@ -187,7 +189,7 @@ export default {
   color: #2da7e0;
 }
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 2em;
   left: 2em;
   right: 2em;
