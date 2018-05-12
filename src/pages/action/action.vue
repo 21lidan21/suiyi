@@ -6,11 +6,12 @@
       <!-- <tab :line-width="2" height=".6rem" custom-bar-width="1rem" active-color='#2da7e0'  v-model="index">
         <tab-item class="vux-center" @on-item-click="onItemClick" :selected="demo2 === item" v-for="(item, index) in list2" @click="demo2 = item" :key="index">{{item}}</tab-item>
       </tab> -->
-       <tab class="tabsp"  :line-width="2" active-color="red" >
-        <tab-item selected>商品分类</tab-item>
-        <tab-item>常温类</tab-item>
-        <tab-item>低温酸奶</tab-item>
-        <tab-item>奶酪</tab-item>
+       <tab class="tabsp"  :line-width="2" active-color="#2da7e0" >
+        <tab-item selected>全部</tab-item>
+        <tab-item>传微教育</tab-item>
+        <tab-item>传微献爱心</tab-item>
+        <tab-item>传微扶贫</tab-item>
+        <tab-item>更新中...</tab-item>
        </tab>
       </div>
 
@@ -41,15 +42,14 @@
 <script>
 import { mapGetters,mapActions } from 'vuex'
 import { Tab, TabItem, Sticky, Divider, XButton, Swiper, SwiperItem } from 'vux'
-const list = () => ['全部', '传微教育', '传微献爱心', '传微扶贫', '更新中...']
 
 export default {
     data() {
         return {
-          index01: 0,
-          list2: list(),
-          demo2: '全部',
-          index: 0,   
+          // index01: 0,
+          // list2: list(),
+          // demo2: '全部',
+          // index: 0,   
            };
       },
       computed:{
