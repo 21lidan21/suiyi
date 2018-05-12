@@ -8,7 +8,7 @@
       </flexbox>
      </div>
      <div>
-    <swiper auto style="width:100%;height:2.4rem important;">
+    <swiper auto style="width:100%;height:2.2rem important;">
       <swiper-item class="banner01"  @click="goto"></swiper-item>
       <swiper-item class="banner02"  @click="goto"></swiper-item>
       <swiper-item class="banner03"  @click="goto"></swiper-item>
@@ -19,7 +19,7 @@
        <div class="item"><img onclick="return false"  src="../../assets/images/juan3.png" alt=""></div>
       </div>
      </div>
-      <tab class="tabsp" :line-width="0" active-color="red" >
+    <tab class="tabsp" :line-width="0" active-color="red" >
       <tab-item selected>商品分类</tab-item>
       <tab-item>常温类</tab-item>
       <tab-item>低温酸奶</tab-item>
@@ -125,6 +125,8 @@ export default {
   border:1px solid #dddddd;
 }
 .container{
+    -webkit-overflow-scrolling:touch !important;
+    width:100% !important;
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
@@ -138,6 +140,7 @@ export default {
         width:40%;
         margin-left:.41rem; 
         margin-top: .18rem;
+        margin-rigth:1rem;
     }
 }
 .banner01 {
@@ -159,8 +162,8 @@ export default {
   margin: .1rem 0;
   .point{
     margin:.1rem .5rem; 
-    height: .5rem;
-    width: 80%;
+    height: .4rem;
+    width: 70%;
   }
   .point1{
     margin:.1rem .2rem .1rem .8rem; 
@@ -261,6 +264,6 @@ export default {
     background: #fff !important;
 }
 .vux-swiper{
-  max-height:180px!important;
+  max-height:2.4rem!important;
 }
 </style>

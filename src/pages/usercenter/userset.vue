@@ -57,7 +57,7 @@ export default {
     return {
       name: "",
       option1: "",
-      options1: [{ key: "0", value: "男" }, { key: "1", value: "女" }],
+      options1: [{ key: "1", value: "男" }, { key: "2", value: "女" }],
       value5: "",
       cardID: "",
       phone: "",
@@ -73,16 +73,16 @@ export default {
       console.log("change", value);
     },
     getUserInfo() {
+      var that = this;
       api.GetUserInfoByID()
         .then(res => {
           console.log(res);
           if (res) {
-            console.log(this.name);
-            this.name = res[0].userName;
-            this.option1 = res[0].sex;
-            this.value5 = res[0].birthDay;
-            this.cardID = res[0].cardNo;
-            this.phone = res[0].phone;
+            that.name = res[0].name;
+            that.option1 = res[0].sex;
+            that.value5 = res[0].birthDay;
+            that.cardID = res[0].cardNo;
+            that.phone = res[0].phone;
           }
         })
         .catch(error => {
@@ -98,15 +98,10 @@ export default {
         phone: this.username,
         sendType: "3"
       };
-      api
-        .RegistVerifiCode(data)
+      api.RegistVerifiCode(data)
         .then(res => {
           console.log(res);
           if (res) {
-            // let userInfo = Object.assign()
-            // this.$store.dispatch('setLoadingState', false)
-            // this.setUserInfo(res.data)
-            // this.$router.replace('/home')
             console.log(res[0].key);
             this.codeKey = res[0].key;
           }
@@ -118,7 +113,8 @@ export default {
     loginout() {
       sessionStorage.sessionId = "";
       this.$router.replace("/user");
-    }
+    },
+    
   }
 };
 </script>

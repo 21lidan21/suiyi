@@ -1,15 +1,14 @@
 <template>
   <div  class="headerDiv">
   <x-header   class="header "  :left-options="{backText: ''}">我的订单</x-header>
-  
-    <tab class="tabsp"  :line-width="1"  active-color="#2da7e0" >
+    <tab class="tabsp" ac :line-width="1" v-model="index"  active-color="#2da7e0" >
         <tab-item selected @on-item-click="onItemClick">全部</tab-item>
         <tab-item @on-item-click="onItemClick">待付款</tab-item>
         <tab-item @on-item-click="onItemClick">待收取</tab-item>
-        <tab-item @on-item-click="onItemClick">待评价</tab-item>
-        <tab-item @on-item-click="onItemClick">申请退款</tab-item>
+        <tab-item @on-item-click="onItemClick">已完成</tab-item>
+        <tab-item @on-item-click="onItemClick">申请退换</tab-item>
     </tab>
-    <div class="par-div" v-for="item in orderList[0].dataList" :key="item+'1'">
+    <div class="par-div" v-for="(item,index) in orderList[0].dataList" :key="item.orderID+index">
       <div @click="getData(item)">
         <div class="top-div">
           <flexbox :gutter="0" >
@@ -57,6 +56,7 @@ import { Flexbox, FlexboxItem, Divider ,Tab, TabItem,Swiper, SwiperItem  } from 
 export default {
     data() {
         return {
+           index : 0,
            isPopUp: false,
            type:0,
          };
@@ -75,10 +75,10 @@ export default {
         Swiper, 
         SwiperItem 
       },
-
       beforeRouteEnter(to, from, next) {
             next((vm) => {
-               vm.onItemClick(1);
+               vm.index = parseInt(sessionStorage['nowType'])||0;
+               vm.onItemClick(vm.index);
             })
         },
       methods: {
@@ -119,7 +119,7 @@ export default {
              case 3:
             nowType='d';
             break;
-             case 4:
+            case 4:
             nowType='e';
             break;
             default:
@@ -130,10 +130,11 @@ export default {
             "userID": sessionStorage.sessionId || '',
             "curStatus":nowType,
             "pageSize": 10,
-            "curPage": 1
+            "curPage": 1,
+            "indexType":index,
           };
           this.$store.dispatch("getorderlistinfo",param);
-          console.log('on item click:', index)
+          // console.log('on item click:', index)
         },
         price:function(value){
            return "X"+value;
@@ -158,6 +159,9 @@ body{
   position: absolute;
 }
 .tabsp{
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling:touch !important;
+  width:100% !important;
   border-top:1px solid #dddddd;
   box-shadow:0 6px 6px 0 rgba(226,226,226,0.50);
 }

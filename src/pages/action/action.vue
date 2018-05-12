@@ -102,14 +102,14 @@ export default {
 
 <style lang="less" scoped>
 .content{
-     overflow-x: hidden !important;
+    overflow-x: hidden !important;
     -webkit-overflow-scrolling:touch !important;
     width:100% !important;
   }
   .contentBody{
       overflow-y: auto !important;
       -webkit-overflow-scrolling:touch !important;
-      min-height:150% !important;
+      min-height:135% !important;
   }
 .header {
   background: #ffffff;

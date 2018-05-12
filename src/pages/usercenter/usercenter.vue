@@ -1,6 +1,6 @@
 <template>
    <div class="usercenter" style="padding-bottom: 2rem;">
-      <div class="head" @click="$router.push('/viplogin')">
+      <div class="head" @click="$router.push('/my/viplogin')">
           <div class="login_head" v-if="isShow">
           <div class="headimg"><img src="../../assets/images/我的有色.png" width="100%" alt=""></div>
           <span>登录/注册</span>

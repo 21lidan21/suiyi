@@ -61,7 +61,7 @@ export default new Router({
       component: resolve => require(['../pages/usercenter/login'], resolve)
     },
     {
-			path: '/viplogin',
+			path: '/my/viplogin',
 			meta: {
         title: '会员登录',
         requireAuth: false
@@ -69,7 +69,7 @@ export default new Router({
       component: resolve => require(['../pages/usercenter/viplogin'], resolve)
     },
     {
-			path: '/regist',
+			path: '/my/regist',
 			meta: {
         title: '验证码登录',
         requireAuth: false
@@ -92,7 +92,7 @@ export default new Router({
       },
     component: resolve => require(['../pages/usercenter/GetOrderDetails'], resolve)
     },
-		{	path: '/userset',
+		{	path: '/my/userset',
 			meta: {
         title: '个人设置',
         requireAuth: false

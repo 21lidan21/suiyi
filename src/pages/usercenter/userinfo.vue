@@ -2,7 +2,7 @@
    <div class="usercenter" style="padding-bottom:2rem">
       <div class="head" >
         <div v-if="isShow">
-           <div style="padding:.2rem 2rem;"><img src="../../assets/images/topDiv.png" alt=""></div>
+           <div style="padding:.2rem 1.5rem;"><img src="../../assets/images/topDiv.png" alt=""></div>
            <div class='groupDiv1'> 
                 <flexbox>
                   <flexbox-item :span=2 class="headimg">
@@ -14,19 +14,19 @@
                    <flexbox-item :span=3  >
                   </flexbox-item> 
                   <flexbox-item >
-                    <div  class="rightDiv"></div>
+                    <div  :class="[{'pthyImg':'pthyImg'==img,'tshyImg':'tshyImg'==img,'jxhyImg':'jxhyImg'==img,'mxhyImg':'mxhyImg'==img},'rightDiv']"></div>
                   </flexbox-item>
                 </flexbox>
             </div>
             <div class='group2'> 
                 <flexbox>
-                  <flexbox-item class="divgroup">
+                  <flexbox-item :span=3.3 class="divgroup" >
                       <div>余额</div>
-                      <div v-text="showPrice"></div>
+                      <div v-text="showPrice" style="border-right:1px solid #ffffff"></div>
                   </flexbox-item>
                   <flexbox-item class="divgroup">
-                      <div>爱心值</div>
-                      <div v-text="point"></div>
+                      <div style="margin-left:.15rem">爱心值</div>
+                      <div style="margin-left:.15rem" v-text="point"></div>
                   </flexbox-item>
                   <flexbox-item :span=4 class="divgroup1">
                       <div><img src="../../assets/images/fmilk.png" alt=""/><span>x{{doNum}}</span></div>
@@ -39,27 +39,27 @@
       <flexbox>
         <flexbox-item><div class="flex-group1" @click="goto('/my/GetOrderList')"><img src="../../assets/images/myorder.png" width="80%" alt=""><span>我的订单</span></div></flexbox-item>
         <flexbox-item><div class="flex-group1" @click="gotoBF"><img src="../../assets/images/helpman.png" alt=""><span>帮扶对象</span></div></flexbox-item>
-        <flexbox-item><div class="flex-group1 last-child"><img src="../../assets/images/promote.png" alt=""><span>推广大使</span></div></flexbox-item>
+        <flexbox-item><div class="flex-group1 last-child" @click="gotoBF"><img src="../../assets/images/promote.png" alt=""><span>推广大使</span></div></flexbox-item>
       </flexbox>
 </div>
  <group>
       
       <cell-box is-link style="font-size: .28rem;line-height: .6rem;border-top:1px solid #F7F7F7;">
-        我的地址
+        <div style="width:100%" @click="gotoBF">我的地址</div>
       </cell-box>
        <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
-        爱心体验券
+          <div style="width:100%" @click="gotoBF">爱心体验券</div>
       </cell-box>
       <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
-       我的收藏
+         <div style="width:100%" @click="gotoBF">我的收藏</div>
       </cell-box>
-       <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
+       <cell-box is-link :link="{path:'/dda/receive'}" style="font-size: .28rem;line-height: .6rem;">
         周边领取点
       </cell-box>
       <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
-       联系客服
+         <div style="width:100%" @click="gotoBF">联系客服</div>
       </cell-box>
-       <cell-box is-link :link="{path:'/userset'}" style="font-size: .28rem;">
+       <cell-box is-link :link="{path:'/my/userset'}" style="font-size: .28rem;">
         个人设置
       </cell-box>
     </group>
@@ -111,7 +111,7 @@ export default {
       isShow:false,
       name: "",
       option1: "",
-      options1: [{ key: "0", value: "男" }, { key: "1", value: "女" }],
+      options1: [{ key: "1", value: "男" }, { key: "2", value: "女" }],
       value5: "",
       cardID: "",
       phone: "",
@@ -121,7 +121,8 @@ export default {
       point: "",
       doNum: "",
       showPrice: "",
-      isPopUp: false
+      isPopUp: false,
+      img:'',
     };
   },
   created() {
@@ -141,9 +142,25 @@ export default {
       }
       this.isPopUp = false;
     },
+    setImg(levelName){
+      if(levelName=="普通会员"){
+          this.img = 'pthyImg';
+      }else if(levelName=="天使会员"){
+        this.img = 'tshyImg';
+      }
+      else if(levelName=="明星会员"){
+         this.img = 'mxhyImg';
+      }
+      else if(levelName=="巨星会员"){
+          this.img = 'jxhyImg';
+      }else{
+          this.img = 'pthyImg';
+      }
+    },
     getUserInfo() {
       this.name = sessionStorage["name"] || "";
       this.levelName = sessionStorage["levelName"] || "";
+      this.setImg(this.levelName);//设置等级卡片
       this.point = sessionStorage["point"] || "";
       this.doNum = sessionStorage["doNum"] || "";
       this.showPrice = sessionStorage["showPrice"] || "";
@@ -157,6 +174,7 @@ export default {
               console.log(this.name);
               this.name = res[0].name;
               this.levelName = res[0].levelName;
+              this.setImg(this.levelName);//设置等级卡片
               this.point = res[0].point;
               this.doNum = res[0].doNum;
               this.showPrice = res[0].showPrice;
@@ -228,13 +246,27 @@ export default {
   }
 }
 .rightDiv{
-        height:.5rem;
+        height:.6rem;
         width: 2rem;
         margin-top:-.5rem;
         text-align:center;
-        background: url(../../assets/images/pthy.png) no-repeat;
-        background-size: 100% 100%;
-    }
+ }
+ .pthyImg{
+      background: url(../../assets/images/pthy.png) no-repeat;
+      background-size: 100% 100%;
+ }
+  .mxhyImg{
+      background: url(../../assets/images/mxhy.png) no-repeat;
+      background-size: 100% 100%;
+ }
+  .tshyImg{
+      background: url(../../assets/images/tshy.png) no-repeat;
+      background-size: 100% 100%;
+ }
+  .jxhyImg{
+      background: url(../../assets/images/jxhy.png) no-repeat;
+      background-size: 100% 100%;
+ }
 .point,
 .doNum {
   display: inline-block;
