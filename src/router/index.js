@@ -127,6 +127,14 @@ export default new Router({
       component: resolve => require(['../pages/diandianai/Receive'], resolve)
     },
     {
+			path: '/dda/schoolDetail',
+			meta: {
+        title: '领取点',
+        requireAuth: false
+      },
+      component: resolve => require(['../pages/diandianai/SchoolDetail'], resolve)
+    },
+    {
 			path: '/dda/bmap',
 			meta: {
         title: '地图',

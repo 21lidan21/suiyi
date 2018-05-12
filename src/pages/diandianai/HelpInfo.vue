@@ -5,13 +5,13 @@
 
 
 <flexbox>
-      <flexbox-item :span="2/3"><div class="flex-demo">
+      <flexbox-item :span="9"><div class="flex-demo">
         <group>
       
     <popup-picker :title="title1" :data="list1" v-model="value1" @on-show="onShow" @on-hide="onHide" @on-change="onChange" ></popup-picker>
 
   </group></div></flexbox-item>
-      <flexbox-item><div class="flex-demo schoool-info">
+      <flexbox-item><div class="schoool-info"  @click="gotoSchoolDetail">
       点击查看详情</div></flexbox-item>
       
     </flexbox>
@@ -122,6 +122,10 @@ export default {
           }
         });
     },
+    gotoSchoolDetail(){
+      sessionStorage["nowSchoolId"] = this.nowSchoolId;
+      this.$router.push("/dda/schoolDetail");
+    },
     loadMore() {
       if(!this.nowSchoolId){
         return;
@@ -172,8 +176,8 @@ export default {
 
 <style scoped lang="scss">
 .schoool-info{
-  text-align: center;
-  margin: 0 auto;
+  position: relative;
+  top:.8em;
 }
 .isActive {
   border: 2px solid rgb(255, 208, 75) !important;

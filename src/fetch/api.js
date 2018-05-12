@@ -179,5 +179,8 @@ export default {
      },
      ThreeeLoveOrderPub(param){
         return fetch("/ThreeeLoveOrderPub", param)
+     },
+     getSchoolInfo(param){
+        return fetch("/GetSchoolInfo?schoolId="+param.schoolId)
      }
 }
