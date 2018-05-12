@@ -42,9 +42,6 @@ export default {
       ischeck: true
     };
   },
-  created(){
-   this.getUserInfo();
-  },
   methods: {
     resetResize() {
       var docEl = document.documentElement;
@@ -66,30 +63,6 @@ export default {
         document.body.removeChild(div);
       }
     },
-    getUserInfo(){     
-            api.GetUserInfoByID()
-                .then(res => {
-                    console.log(res)
-                    if(res) {
-                       sessionStorage['name'] = res[0].name;
-                      //  this.name=res[0].name;
-                       sessionStorage['levelName'] = res[0].levelName;
-                      //  this.levelName=res[0].levelName
-                       sessionStorage['point'] = res[0].point;
-                      //  this.point=res[0].point
-                       sessionStorage['doNum'] = res[0].doNum;
-                      //  this.doNum=res[0].doNum
-                       sessionStorage['showPrice'] = res[0].showPrice;
-                      //  this.showPrice=res[0].showPrice
-                       sessionStorage['headImgUrl'] = res[0].headImgUrl;
-                      //  this.imgurl=res[0].headImgUrl
-                       this.$router.replace('/userinfo');
-                    }
-                })
-                .catch(error => {
-                   // this.$router.replace('/user')
-                })
-       },
     login() {
       if (!this.username || !this.password) {
         this.toats("请输入账号密码", "cancel", 3000);

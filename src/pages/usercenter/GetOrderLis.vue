@@ -107,14 +107,20 @@ export default {
           this.type=index;
           var nowType = index;
           switch(index){
-            case 1:
+            case 0:
             nowType='a';
             break;
-            case 2:
+            case 1:
             nowType='b';
             break;
-            case 3:
+            case 2:
             nowType='c';
+            break;
+             case 3:
+            nowType='d';
+            break;
+             case 4:
+            nowType='e';
             break;
             default:
             nowType='a';

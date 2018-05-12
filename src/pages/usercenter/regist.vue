@@ -125,6 +125,7 @@ export default {
         })
         .catch(error => {
           console.log(error);
+          this.toats(error.data.desc, "cancel", 3000);
         });
     },
     regist() {

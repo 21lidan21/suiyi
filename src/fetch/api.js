@@ -4,7 +4,7 @@ import qs from 'qs'
 import * as _ from '../util/tool'
 
 // axios 配置
-axios.defaults.timeout = 5000;
+axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
 axios.defaults.baseURL = 'http://api.syccpt.com';
@@ -37,9 +37,9 @@ axios.interceptors.response.use((res) =>{
     return Promise.reject(error);
 });
 
-export function fetch(url, params) {
+export function fetch(url, params,headers) {
     return new Promise((resolve, reject) => {
-        axios.post(url, params)
+        axios.post(url, params,headers)
             .then(response => {
                 resolve(response.data || response);
             }, err => {
@@ -68,18 +68,14 @@ export default {
         return fetch('/VipRegister', params)
     },
     GetUserInfoByID(params) {
-       // return fetch('/GetUserInfoByID', params)
-       
-
         let httpUrl =  "/GetUserInfoByID?sessionID="+sessionStorage.sessionId;
-        axios.defaults.headers.post['access-key'] = sessionStorage.sessionId;
-        return fetch(httpUrl)
+        return fetch(httpUrl,null,{headers:{"access-key":sessionStorage.sessionId}})
     },
     /**
      * 发送注册验证码
      */
      RegistVerifiCode(params) {
-         return fetch('/SendCode', params)
+         return fetch('/VipRegisterSMSCode', params)
      },
 
     /**
@@ -157,7 +153,6 @@ export default {
       */
      getStoreList(data){
         let httpUrl =  "/GetStoreList?code="+data.code;
-        // axios.defaults.headers.post['access-key'] = data.token;
         return fetch(httpUrl, {'code': data.code})
      },
      getDefaultSchoolList(param){
@@ -168,13 +163,10 @@ export default {
         return fetch("/GetStudentsBySchool", data)
      },
      getorderlist(data){
-        axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || '';
-        return fetch("/GetOrderList", data)
+         return fetch("/GetOrderList", data,{headers:{"access-key":sessionStorage.sessionId}})
      },
      getOrderDetails(data){
-         console.log(JSON.stringify(data));
-        axios.defaults.headers.post['access-key'] = sessionStorage.sessionId || '';
-        return fetch("/GetOrderDetails", data)
+        return fetch("/GetOrderDetails", data,{headers:{"access-key":sessionStorage.sessionId}})
      },
      ThreeeLoveOrderPub(param){
         return fetch("/ThreeeLoveOrderPub", param)

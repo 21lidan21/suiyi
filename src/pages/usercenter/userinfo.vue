@@ -1,42 +1,46 @@
 <template>
-   <div class="usercenter">
-      <div class="head" @click="$router.push('/login')">
-          <div class="login_head">
-          <div class="headimg"><img :src="imgurl" alt=""></div>
-          <span>{{name}}</span>
-         <span class="levelName">{{levelName}}</span>
-   <div class='group2'> 
-        <!-- <div class='showvalue'>
-      <span>余额</span><br/><span>{{point}}</span>
-        </div>     -->
-    <flexbox>
-      <flexbox-item >
-        <div class="flex-demo">  
-          <div class='point'><span>余额</span><br/><span>{{doNum}}</span></div>
-         <div class='doNum'><span>爱心值</span><br/><span>{{point}}</span></div>
-        </div>
-      </flexbox-item>
-     <!--  <flexbox-item :span="4"><div class="flex-right"><span>{{showPrice}}</span></div></flexbox-item>-->
-    </flexbox>
-</div>
-          
-   <!-- <div class='group2'>      
-    <flexbox>
-      <flexbox-item ><div class="flex-demo"> <span>{{point}}</span>
-         <span>{{doNum}}</span></div></flexbox-item>
-      <flexbox-item :span="4"><div class="flex-demo"><span>{{showPrice}}</span></div></flexbox-item>
-    </flexbox>
-     </div>    -->
-        
-         
-          </div>
+   <div class="usercenter" style="padding-bottom:2rem">
+      <div class="head" >
+        <div v-if="isShow">
+           <div style="padding:.2rem 2rem;"><img src="../../assets/images/topDiv.png" alt=""></div>
+           <div class='groupDiv1'> 
+                <flexbox>
+                  <flexbox-item :span=2 class="headimg">
+                     <img :src="imgurl" alt="">
+                  </flexbox-item>
+                  <flexbox-item :span=3 style="text-align:center;margin-top:-.3rem;color:#ffffff">
+                      {{name}}
+                  </flexbox-item>
+                   <flexbox-item :span=3  >
+                  </flexbox-item> 
+                  <flexbox-item >
+                    <div  class="rightDiv"></div>
+                  </flexbox-item>
+                </flexbox>
+            </div>
+            <div class='group2'> 
+                <flexbox>
+                  <flexbox-item class="divgroup">
+                      <div>余额</div>
+                      <div v-text="showPrice"></div>
+                  </flexbox-item>
+                  <flexbox-item class="divgroup">
+                      <div>爱心值</div>
+                      <div v-text="point"></div>
+                  </flexbox-item>
+                  <flexbox-item :span=4 class="divgroup1">
+                      <div><img src="../../assets/images/fmilk.png" alt=""/><span>x{{doNum}}</span></div>
+                  </flexbox-item>
+                </flexbox>
+            </div>
+            </div>
       </div>  
       <div class='group1'>
- <flexbox>
-      <flexbox-item><div class="flex-group1" @click="goto('/my/GetOrderList')"><img src="../../assets/images/myorder.png" width="80%" alt=""><span>我的订单</span></div></flexbox-item>
-      <flexbox-item><div class="flex-group1" @click="gotoBF"><img src="../../assets/images/helpman.png" alt=""><span>帮扶对象</span></div></flexbox-item>
-      <flexbox-item><div class="flex-group1 last-child"><img src="../../assets/images/promote.png" alt=""><span>推广大使</span></div></flexbox-item>
-</flexbox>
+      <flexbox>
+        <flexbox-item><div class="flex-group1" @click="goto('/my/GetOrderList')"><img src="../../assets/images/myorder.png" width="80%" alt=""><span>我的订单</span></div></flexbox-item>
+        <flexbox-item><div class="flex-group1" @click="gotoBF"><img src="../../assets/images/helpman.png" alt=""><span>帮扶对象</span></div></flexbox-item>
+        <flexbox-item><div class="flex-group1 last-child"><img src="../../assets/images/promote.png" alt=""><span>推广大使</span></div></flexbox-item>
+      </flexbox>
 </div>
  <group>
       
@@ -49,7 +53,7 @@
       <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
        我的收藏
       </cell-box>
-       <cell-box is-link :link="{path:'/dda/receive'}" style="font-size: .28rem;line-height: .6rem;">
+       <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
         周边领取点
       </cell-box>
       <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
@@ -70,16 +74,16 @@
 </template>
 
 <script>
-import { Scroller } from 'vux'
-import { Swiper, GroupTitle, SwiperItem, XButton, Divider } from 'vux'
-import { Flexbox, FlexboxItem } from 'vux'
-import { CellBox } from 'vux'
-import { XInput, Group,  Cell } from 'vux'
-import { Card } from 'vux'
+import { Scroller } from "vux";
+import { Swiper, GroupTitle, SwiperItem, XButton, Divider } from "vux";
+import { Flexbox, FlexboxItem } from "vux";
+import { CellBox } from "vux";
+import { XInput, Group, Cell } from "vux";
+import { Card } from "vux";
 
-import { PopupRadio,PopupPicker, Datetime } from 'vux'
-import api from '../../fetch/api'
-import * as _ from '../../util/tool'
+import { PopupRadio, PopupPicker, Datetime } from "vux";
+import api from "../../fetch/api";
+import * as _ from "../../util/tool";
 export default {
   components: {
     // swiper,
@@ -104,6 +108,7 @@ export default {
 
   data() {
     return {
+      isShow:false,
       name: "",
       option1: "",
       options1: [{ key: "0", value: "男" }, { key: "1", value: "女" }],
@@ -111,52 +116,63 @@ export default {
       cardID: "",
       phone: "",
       birthDay: "",
-      imgurl: "",
+      imgurl: "../../assets/images/defualt.png",
       levelName: "",
       point: "",
       doNum: "",
-      showPrice: ""
+      showPrice: "",
+      isPopUp: false
     };
   },
   created() {
+    this.isShow = true;
     this.getUserInfo();
   },
   methods: {
-       goto(path) {
-	      this.$router.push(path);
-	    },
-	    gotoBF(item) {
-	      this.isPopUp = true;
-	      document.body.style = "overflow：hidden;";
-	    },
-	    close(type) {
-	      if (type) {
-	      }
-	      this.isPopUp = false;
-	    },
+    goto(path) {
+      this.$router.push(path);
+    },
+    gotoBF(item) {
+      this.isPopUp = true;
+      document.body.style = "overflow：hidden;";
+    },
+    close(type) {
+      if (type) {
+      }
+      this.isPopUp = false;
+    },
     getUserInfo() {
-        this.name = sessionStorage['name']||'';
-        this.levelName = sessionStorage['levelName']||'';
-        this.point = sessionStorage['point']||'';
-        this.doNum = sessionStorage['doNum']||'';
-        this.showPrice = sessionStorage['showPrice']||'';
-        this.imgurl = sessionStorage['imgurl']||'';
-      // api.GetUserInfoByID()
-      //   .then(res => {
-      //     console.log(res);
-      //     if (res) {
-      //       console.log(this.name);
-      //       this.name = res[0].name;
-      //       this.levelName = res[0].levelName;
-      //       this.point = res[0].point;
-      //       this.doNum = res[0].doNum;
-      //       this.showPrice = res[0].showPrice;
-      //       this.imgurl = res[0].headImgUrl;
-      //     }
-      //   })
-      //   .catch(error => {
-      //     this.$router.replace("/user");
-      //   });
+      this.name = sessionStorage["name"] || "";
+      this.levelName = sessionStorage["levelName"] || "";
+      this.point = sessionStorage["point"] || "";
+      this.doNum = sessionStorage["doNum"] || "";
+      this.showPrice = sessionStorage["showPrice"] || "";
+      this.imgurl = sessionStorage["headImgUrl"] || "";
+      if (this.name == "") {
+        api
+          .GetUserInfoByID()
+          .then(res => {
+            console.log(res);
+            if (res) {
+              console.log(this.name);
+              this.name = res[0].name;
+              this.levelName = res[0].levelName;
+              this.point = res[0].point;
+              this.doNum = res[0].doNum;
+              this.showPrice = res[0].showPrice;
+              this.imgurl = res[0].headImgUrl;
+                sessionStorage['name'] = res[0].name;
+                sessionStorage['levelName'] = res[0].levelName;
+                sessionStorage['point'] = res[0].point;
+                sessionStorage['doNum'] = res[0].doNum;
+                sessionStorage['showPrice'] = res[0].showPrice;
+                sessionStorage['headImgUrl'] = res[0].headImgUrl;
+            }
+          })
+          .catch(error => {
+            this.$router.replace("/user");
+          });
+      }
     },
 
     loginout() {
@@ -175,15 +191,22 @@ export default {
   line-height: 1rem;
   //margin: 1.8rem auto;
   // text-align: center;
+ .groupDiv1 {
+    margin:-0.2rem;
+    margin-left:.2rem; 
   .headimg {
-    width: 1rem;
-    height: 1rem;
-    background: #fff;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 1.36rem 0.38rem 0 0.3rem;
+    img{
+      width: 1.2rem;
+      border-radius: 0.6rem;
+    }
+    
+ }
     // margin: 1.8rem 0;
     // margin-left: -1.2rem;
+  }
+  span {
+    color: #ffffff;
+    margin-top:-1rem; 
   }
   .levelName {
     float: right;
@@ -204,6 +227,14 @@ export default {
     letter-spacing: 0.9px;
   }
 }
+.rightDiv{
+        height:.5rem;
+        width: 2rem;
+        margin-top:-.5rem;
+        text-align:center;
+        background: url(../../assets/images/pthy.png) no-repeat;
+        background-size: 100% 100%;
+    }
 .point,
 .doNum {
   display: inline-block;
@@ -225,28 +256,52 @@ export default {
   color: #ffffff;
   line-height: 0.5rem;
 }
-.flex-right {
-  float: right;
+.divgroup {
+  height: 50px;
+  div {
+    padding: 0 0.4rem;
+    height: 0.5rem;
+    font-size: 0.28rem;
+    color: #ffffff;
+  }
 }
-
- .group1{
-        
-        .flex-group1{
-            text-align: center;
-            margin: .43rem 0 .41rem 0;
-            border-right: #ccc solid 1px;
-            font-size: .3rem;
-            img{
-                height:.28rem;
-                width: .28rem;  
-                margin-right: .1rem; 
-               }
-        }
-        .flex-group1.last-child{
-          border-right: transparent solid 1px;
-        }
+.divgroup1 {
+  height: 50px;
+  div {
+    img {
+      width: 0.3rem;
+      height: 0.6rem;
+      margin-left: 0.3rem;
     }
-    .pop {
+    span {
+      font-size: 0.28rem;
+      color: #ffffff;
+      text-align: center;
+      padding-left: 0.5rem;
+    }
+    margin-top: 0.4rem;
+    padding: 0 0.4rem;
+    height: 0.5rem;
+    text-align: left;
+  }
+}
+.group1 {
+  .flex-group1 {
+    text-align: center;
+    margin: 0.43rem 0 0.1rem 0;
+    border-right: #ccc solid 1px;
+    font-size: 0.3rem;
+    img {
+      height: 0.28rem;
+      width: 0.28rem;
+      margin-right: 0.1rem;
+    }
+  }
+  .flex-group1.last-child {
+    border-right: transparent solid 1px;
+  }
+}
+.pop {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -254,7 +309,6 @@ export default {
   right: 0;
   z-index: 1000;
   background: rgba(0, 0, 0, 0.3) !important;
-  
 }
 .popup {
   padding: 2rem 0 0;

@@ -75,10 +75,11 @@ export default {
           this.isPopUp = false;
         },
         onItemClick () {
+          console.log("请求");
           let param ={
-                  "userID": sessionStorage.sessionId || '',
-                  "orderID": orderID
-                };
+              "userID": sessionStorage.sessionId || '',
+              "orderID": this.orderID
+          };
           this.$store.dispatch("getorderListDetails",param);
         },
         price:function(value){

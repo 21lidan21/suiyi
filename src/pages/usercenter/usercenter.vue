@@ -1,7 +1,7 @@
 <template>
    <div class="usercenter" style="padding-bottom: 2rem;">
       <div class="head" @click="$router.push('/viplogin')">
-          <div class="login_head">
+          <div class="login_head" v-if="isShow">
           <div class="headimg"><img src="../../assets/images/我的有色.png" width="100%" alt=""></div>
           <span>登录/注册</span>
           </div>
@@ -46,6 +46,7 @@
    </div>
 </template>
 <script>
+import api from "../../fetch/api";
 import {  GroupTitle, Group, Cell, CellBox,SwiperItem, Flexbox, FlexboxItem, XButton, Divider} from 'vux'
 export default {
     components: {
@@ -62,10 +63,46 @@ export default {
 	},
   data() {
     return {
+      isShow:false,
     	isPopUp :false
     };
   },
+  created(){
+   this.getUserInfo();
+  },
   methods:{
+        getUserInfo(){     
+          var that = this;
+          console.log(sessionStorage.sessionId);
+           if(!sessionStorage.sessionId){
+                that.isShow = true;
+                return;
+           }
+            api.GetUserInfoByID()
+                .then(res => {
+                    console.log(res)
+                    if(res) {
+                       sessionStorage['name'] = res[0].name;
+                      //  this.name=res[0].name;
+                       sessionStorage['levelName'] = res[0].levelName;
+                      //  this.levelName=res[0].levelName
+                       sessionStorage['point'] = res[0].point;
+                      //  this.point=res[0].point
+                       sessionStorage['doNum'] = res[0].doNum;
+                      //  this.doNum=res[0].doNum
+                       sessionStorage['showPrice'] = res[0].showPrice;
+                      //  this.showPrice=res[0].showPrice
+                       sessionStorage['headImgUrl'] = res[0].headImgUrl;
+                      //  this.imgurl=res[0].headImgUrl
+                       that.$router.replace('/userinfo');
+                    }
+                })
+                .catch(error => {
+                    that.isShow = true;
+                     console.log("错误信息1"+error)
+                   // this.$router.replace('/user')
+                })
+       },
     goto(path) {
       this.$router.push(path);
     },
@@ -100,7 +137,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .head{
-    background: url(../../assets/images/个人中心背景.png) no-repeat ;
+    background: url(../../assets/images/usercenterbg1.jpg) no-repeat ;
     background-size: 100% 100%;
     width: 100%;
     height: 4.6rem;
