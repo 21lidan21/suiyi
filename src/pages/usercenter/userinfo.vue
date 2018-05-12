@@ -12,8 +12,8 @@
     <flexbox>
       <flexbox-item >
         <div class="flex-demo">  
-          <div class='point'><span>余额</span><br/><span>{{point}}</span></div>
-         <div class='doNum'><span>爱心值</span><br/><span>{{doNum}}</span></div>
+          <div class='point'><span>余额</span><br/><span>{{doNum}}</span></div>
+         <div class='doNum'><span>爱心值</span><br/><span>{{point}}</span></div>
         </div>
       </flexbox-item>
       <flexbox-item :span="4"><div class="flex-right"><span>{{showPrice}}</span></div></flexbox-item>
@@ -40,19 +40,19 @@
 </div>
  <group>
       
-      <cell-box is-link style="font-size: .28rem;">
+      <cell-box is-link style="font-size: .28rem;line-height: .6rem;border-top:1px solid #F7F7F7;">
         我的地址
       </cell-box>
-       <cell-box is-link style="font-size: .28rem;">
+       <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
         爱心体验券
       </cell-box>
-      <cell-box is-link style="font-size: .28rem;">
+      <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
        我的收藏
       </cell-box>
-       <cell-box is-link style="font-size: .28rem;">
+       <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
         周边领取点
       </cell-box>
-      <cell-box is-link style="font-size: .28rem;">
+      <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
        联系客服
       </cell-box>
        <cell-box is-link :link="{path:'/userset'}" style="font-size: .28rem;">
@@ -74,41 +74,41 @@ import { PopupRadio,PopupPicker, Datetime } from 'vux'
 import api from '../../fetch/api'
 import * as _ from '../../util/tool'
 export default {
-    components: {
-		// swiper, 
-		// swiperSlide,
-		Scroller,
-		Swiper,
-		SwiperItem,
-		GroupTitle,
-		XButton,
-		Divider,
-		Flexbox,
-        FlexboxItem,
-        Group,  
-        CellBox,
-        XInput,  
-        Cell,
-        PopupRadio,
-        PopupPicker, 
-        Datetime,
-        Card
-    },
-    
+  components: {
+    // swiper,
+    // swiperSlide,
+    Scroller,
+    Swiper,
+    SwiperItem,
+    GroupTitle,
+    XButton,
+    Divider,
+    Flexbox,
+    FlexboxItem,
+    Group,
+    CellBox,
+    XInput,
+    Cell,
+    PopupRadio,
+    PopupPicker,
+    Datetime,
+    Card
+  },
+
   data() {
     return {
-        name:'',
-        option1:'',
-        options1:[{key:'0',value:'男'},{key:'1',value:'女'}],
-        value5:'',
-        cardID:'',
-        phone:'',
-        birthDay:'',
-        imgurl:'',
-        levelName:'',
-        point:'',
-        doNum:'',
-        showPrice:''
+      name: "",
+      option1: "",
+      options1: [{ key: "0", value: "男" }, { key: "1", value: "女" }],
+      value5: "",
+      cardID: "",
+      phone: "",
+      birthDay: "",
+      imgurl: "",
+      levelName: "",
+      point: "",
+      doNum: "",
+      showPrice: ""
     };
   },
   created() {
@@ -144,43 +144,42 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.head{
-    background: url(../../assets/images/usercenterbg1.jpg) no-repeat ;
-    background-size: 100% 100%;
-    width: 100%;
-    height: 4.6rem;
-    line-height: 1rem;
-    //margin: 1.8rem auto;
-   // text-align: center;
-    .headimg{
-        width: 1rem;
-        height: 1rem;
-        background: #fff;
-        border-radius: 50%;
-        display: inline-block;
-        margin: 1.36rem .38rem 0 .3rem;
-       // margin: 1.8rem 0;
-        // margin-left: -1.2rem;
-    }
-    .levelName{
-        float: right;
-        width: 1.5rem;
-        height: .46rem;
-        display: inline-block;
-        background-color:#fff;
-        text-align: center;
-        line-height: .5rem;
-        margin-top: 1.7rem;
-        border-top-left-radius:2em;
--webkit-border-top-left-radius:2em;
-border-bottom-left-radius:2em;
--webkit-border-bottom-left-radius:2em;
-font-family:PingFangSC-Regular;
-font-size:.18rem;
-color:#f0a807;
-letter-spacing:0.9px;
-    }
-   
+.head {
+  background: url(../../assets/images/usercenterbg1.jpg) no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 4.6rem;
+  line-height: 1rem;
+  //margin: 1.8rem auto;
+  // text-align: center;
+  .headimg {
+    width: 1rem;
+    height: 1rem;
+    background: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 1.36rem 0.38rem 0 0.3rem;
+    // margin: 1.8rem 0;
+    // margin-left: -1.2rem;
+  }
+  .levelName {
+    float: right;
+    width: 1.5rem;
+    height: 0.46rem;
+    display: inline-block;
+    background-color: #fff;
+    text-align: center;
+    line-height: 0.5rem;
+    margin-top: 1.7rem;
+    border-top-left-radius: 2em;
+    -webkit-border-top-left-radius: 2em;
+    border-bottom-left-radius: 2em;
+    -webkit-border-bottom-left-radius: 2em;
+    font-family: PingFangSC-Regular;
+    font-size: 0.18rem;
+    color: #f0a807;
+    letter-spacing: 0.9px;
+  }
 }
 .point,.doNum{
     display: inline-block;
@@ -215,9 +214,10 @@ letter-spacing:0.9px;
             text-align: center;
             margin: .43rem 0 .41rem 0;
             border-right: #ccc solid 1px;
+            font-size: .3rem;
             img{
-                height:.26rem;
-                width: .26rem;  
+                height:.28rem;
+                width: .28rem;  
                 margin-right: .1rem; 
                }
         }

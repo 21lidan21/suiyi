@@ -21,28 +21,18 @@
 <el-row type="flex" justify="center" class='kuaigongyi'>
   <el-col :span="24"><div class="grid-content bg-purple-dark" @click="goto"><img src="../assets/images/kuaigongyi.jpg" width="100%" alt=""></div></el-col>
 </el-row>
- 
-   <scroller lock-y :scrollbar-x=false>
-      <div  class="activity">
-      	<router-link to="/home/undertakingsContent">
-      <div class="swiper-slide1"><img src="../assets/images/top1.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">牛奶小镇</span><br/><span>参与人数：112人</span><br/><span>捐助累计：2800天</span><br/><span>帮扶对象：191人</span></div></div>
-      </router-link>
-      <router-link to="/home/undertakingsContent1">
-      <div class="swiper-slide2"><img src="../assets/images/top2.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">阅食小景</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div></div>
-      </router-link>
-      <router-link to="/home/undertakingsContent2">
-      <div class="swiper-slide3"><img src="../assets/images/top3.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">传微远航</span><br/><span>参与人数：36人</span><br/><span>捐助累计：695天</span><br/><span>帮扶对象：统计中...</span></div></div>
-    </router-link>
-      </div>
-    </scroller>
-  
+ <div class="activity">
+   <router-link to="/home/undertakingsContent"><div class="swiper-slide1"><img onclick="return false"  src="../assets/images/top1.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">牛奶小镇</span><br/><span style="font-size: .22rem;">参与人数：112人</span><br/><span style="font-size: .22rem;">捐助累计：2800天</span><br/><span style="font-size: .22rem;">帮扶对象：191人</span></div></div></router-link>
+   <router-link to="/home/undertakingsContent1"><div class="swiper-slide2"><img onclick="return false"  src="../assets/images/top2.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">阅食小景</span><br/><span style="font-size: .22rem;">参与人数：36人</span><br/><span style="font-size: .22rem;">捐助累计：695天</span><br/><span style="font-size: .22rem;">帮扶对象：统计中...</span></div></div></router-link>
+   <router-link to="/home/undertakingsContent2"><div class="swiper-slide3"><img onclick="return false"  src="../assets/images/top3.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">传微远航</span><br/><span style="font-size: .22rem;">参与人数：36人</span><br/><span style="font-size: .22rem;">捐助累计：695天</span><br/><span style="font-size: .22rem;">帮扶对象：统计中...</span></div></div></router-link>
+ </div>
 <div class='xinjintoutiao'>
 <flexbox class="xinjintoutiao-inner">
    <flexbox-item :span="2"><div class="xinjintitle"><img src="../assets/images/xinjintoutiao.png" width="100%;" alt=""></div></flexbox-item>
   <flexbox-item><div class=""><swiper auto height="30px" direction="vertical" :interval=2000 class="text-scroll" :show-dots="false">
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao01.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.1rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao02.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.1rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.1rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao01.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.12rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao02.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.12rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div>目前入驻联盟商家xxx家</div><div style="margin-top:.12rem;">青秀区xxx蛋糕店（新竹店）入驻了</div></div></swiper-item>
     </swiper></div>
    </flexbox-item>
 </flexbox>
@@ -230,7 +220,9 @@ export default {
 }
 .home {
   width: 100% !important;
- 
+  height:100%;
+ font-size:100%;
+ margin-bottom: 3rem;
   /*background-color:#2DA7E0;*/
 }
 
@@ -249,7 +241,7 @@ export default {
       height: 0.26rem;
       width: 0.3rem;
       margin-right: 0.18rem;
-      margin-left: 0.18rem;
+      margin-left: 0.38rem;
     }
   }
   .city {
@@ -408,14 +400,17 @@ export default {
   width: 100%;
   overflow: hidden;
 }
+
 .activity {
-  width: 10rem;
+  width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
   height: 2.04rem;
 
   padding: 0.3rem 0;
 
   color: #fff;
-  overflow: hidden;
   img {
     width: 0.48rem;
     height: 0.46rem;
@@ -425,14 +420,16 @@ export default {
   .swiper-slide1,
   .swiper-slide2,
   .swiper-slide3 {
-    width: 2.71rem;
-    height: 1.94rem;
+  	display:inline-block;
+        box-sizing: border-box;
+        width:42%;
     border-radius: 5px;
     background: url(../assets/images/databg.png) no-repeat;
     background-size: 100% 100%;
-    float: left;
+    
     margin-right: 0.32rem;
     padding-left:.3rem;
+    padding-bottom: .3rem;
   }
 }
 .activity2 {
@@ -504,7 +501,7 @@ export default {
     .flex-group2{
         text-align: center;
         margin: .43rem 0 .1rem 0;
-        border-right: #ccc solid 1px;
+        border-right: #F6F6F6 solid 1px;
         line-height: .35rem;
     }
     .flex-group2.last-child{
@@ -513,6 +510,12 @@ export default {
 }
 </style>
 <style>
+::-webkit-scrollbar{
+  display:none;
+}
+.inner-container::-webkit-scrollbar {
+    display: none;
+}
 .vux-header-title-area,
 .vux-header .vux-header-title {
   color: #2da7e0 !important;
