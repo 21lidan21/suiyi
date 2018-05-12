@@ -16,7 +16,7 @@
          <div class='doNum'><span>爱心值</span><br/><span>{{point}}</span></div>
         </div>
       </flexbox-item>
-      <flexbox-item :span="4"><div class="flex-right"><span>{{showPrice}}</span></div></flexbox-item>
+     <!--  <flexbox-item :span="4"><div class="flex-right"><span>{{showPrice}}</span></div></flexbox-item>-->
     </flexbox>
 </div>
           
@@ -33,8 +33,8 @@
       </div>  
       <div class='group1'>
  <flexbox>
-      <flexbox-item><div class="flex-group1"><img src="../../assets/images/myorder.png" width="80%" alt=""><span>我的订单</span></div></flexbox-item>
-      <flexbox-item><div class="flex-group1"><img src="../../assets/images/helpman.png" alt=""><span>帮扶对象</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group1" @click="goto('/my/GetOrderList')"><img src="../../assets/images/myorder.png" width="80%" alt=""><span>我的订单</span></div></flexbox-item>
+      <flexbox-item><div class="flex-group1" @click="gotoBF"><img src="../../assets/images/helpman.png" alt=""><span>帮扶对象</span></div></flexbox-item>
       <flexbox-item><div class="flex-group1 last-child"><img src="../../assets/images/promote.png" alt=""><span>推广大使</span></div></flexbox-item>
 </flexbox>
 </div>
@@ -59,6 +59,13 @@
         个人设置
       </cell-box>
     </group>
+    <!--提示框-->
+    <div class="pop" v-if="isPopUp" @click="close(0)">
+        <div class="popup" v-if="isPopUp">
+         <div class="dda_join_pop_del" ></div>
+         <div class="dda_join_pop_up"></div>
+       </div>
+    </div>
    </div>
 </template>
 
@@ -112,35 +119,51 @@ export default {
     };
   },
   created() {
-  this.getUserInfo()
+    this.getUserInfo();
   },
-   methods: {
-       
-      
-       getUserInfo(){     
-            api.GetUserInfoByID()
-                .then(res => {
-                    console.log(res)
-                    if(res) {
-                      console.log(this.name)  
-                       this.name=res[0].name
-                       this.levelName=res[0].levelName
-                       this.point=res[0].point
-                       this.doNum=res[0].doNum
-                       this.showPrice=res[0].showPrice
-                       this.imgurl=res[0].headImgUrl
-                    }
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-       },
-     
-	loginout(){
-      sessionStorage.sessionId =''
-      this.$router.replace('/user')
-    }	
-	}
+  methods: {
+       goto(path) {
+	      this.$router.push(path);
+	    },
+	    gotoBF(item) {
+	      this.isPopUp = true;
+	      document.body.style = "overflow：hidden;";
+	    },
+	    close(type) {
+	      if (type) {
+	      }
+	      this.isPopUp = false;
+	    },
+    getUserInfo() {
+        this.name = sessionStorage['name']||'';
+        this.levelName = sessionStorage['levelName']||'';
+        this.point = sessionStorage['point']||'';
+        this.doNum = sessionStorage['doNum']||'';
+        this.showPrice = sessionStorage['showPrice']||'';
+        this.imgurl = sessionStorage['imgurl']||'';
+      // api.GetUserInfoByID()
+      //   .then(res => {
+      //     console.log(res);
+      //     if (res) {
+      //       console.log(this.name);
+      //       this.name = res[0].name;
+      //       this.levelName = res[0].levelName;
+      //       this.point = res[0].point;
+      //       this.doNum = res[0].doNum;
+      //       this.showPrice = res[0].showPrice;
+      //       this.imgurl = res[0].headImgUrl;
+      //     }
+      //   })
+      //   .catch(error => {
+      //     this.$router.replace("/user");
+      //   });
+    },
+
+    loginout() {
+      sessionStorage.sessionId = "";
+      this.$router.replace("/user");
+    }
+  }
 };
 </script>
 <style scoped lang="scss">
@@ -181,33 +204,31 @@ export default {
     letter-spacing: 0.9px;
   }
 }
-.point,.doNum{
-    display: inline-block;
-    width: 2.24rem;
-    height: .8rem;
-    float: left;
-    text-align: center;
+.point,
+.doNum {
+  display: inline-block;
+  width: 2.24rem;
+  height: 0.8rem;
+  float: left;
+  text-align: center;
 }
-.point span:first-child,.doNum span:first-child
-{
-    font-family:PingFangSC-Regular;
-    font-size:.3rem;
-    color:#ffffff;
-   
+.point span:first-child,
+.doNum span:first-child {
+  font-family: PingFangSC-Regular;
+  font-size: 0.3rem;
+  color: #ffffff;
 }
-.point span:last-child,.doNum span:last-child
-{
-    font-family:PingFangSC-Regular;
-    font-size:.5rem;
-    color:#ffffff;
-   line-height: .5rem;
+.point span:last-child,
+.doNum span:last-child {
+  font-family: PingFangSC-Regular;
+  font-size: 0.5rem;
+  color: #ffffff;
+  line-height: 0.5rem;
 }
-.flex-right{
-    float: right;
+.flex-right {
+  float: right;
 }
-// .doNum{
-//     float: left;
-// }
+
  .group1{
         
         .flex-group1{
@@ -225,4 +246,33 @@ export default {
           border-right: transparent solid 1px;
         }
     }
+    .pop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.3) !important;
+  
+}
+.popup {
+  padding: 2rem 0 0;
+}
+.dda_join_pop_del {
+  background: url(../../assets/images/dda_join_pop_del.png) no-repeat;
+  background-size: cover;
+  width: 0.72rem;
+  height: 1.2rem;
+  margin-left: 80%;
+}
+
+.dda_join_pop_up {
+  background: url(../../assets/images/qidai.png) no-repeat;
+  background-size: cover;
+  width: 6.2rem;
+  height: 7.87rem;
+  margin: 0 auto;
+  text-align: center;
+}
 </style>

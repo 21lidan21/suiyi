@@ -12,8 +12,8 @@
       </x-input>
      </group>
        <x-button  :class="{ 'class-a': ischeck, 'class-b': !ischeck}" :disabled="disabled"  @click.native="login" style="font-size:.3rem;padding:.1rem 0;color:#ffffff;margin-top:.5rem" > 登 录</x-button>
-     <div style="margin-top:.45rem;font-size:.35rem;text-align:center">
-     	<a @click="$router.push('/regist')">注册</a>
+     <div @click="$router.push('/regist')" style="margin-top:.45rem;font-size:.35rem;text-align:center">
+     	注册
      </div>
      </div>
    </div>
@@ -42,6 +42,9 @@ export default {
       ischeck: true
     };
   },
+  created(){
+   this.getUserInfo();
+  },
   methods: {
     resetResize() {
       var docEl = document.documentElement;
@@ -63,6 +66,30 @@ export default {
         document.body.removeChild(div);
       }
     },
+    getUserInfo(){     
+            api.GetUserInfoByID()
+                .then(res => {
+                    console.log(res)
+                    if(res) {
+                       sessionStorage['name'] = res[0].name;
+                      //  this.name=res[0].name;
+                       sessionStorage['levelName'] = res[0].levelName;
+                      //  this.levelName=res[0].levelName
+                       sessionStorage['point'] = res[0].point;
+                      //  this.point=res[0].point
+                       sessionStorage['doNum'] = res[0].doNum;
+                      //  this.doNum=res[0].doNum
+                       sessionStorage['showPrice'] = res[0].showPrice;
+                      //  this.showPrice=res[0].showPrice
+                       sessionStorage['headImgUrl'] = res[0].headImgUrl;
+                      //  this.imgurl=res[0].headImgUrl
+                       this.$router.replace('/userinfo');
+                    }
+                })
+                .catch(error => {
+                   // this.$router.replace('/user')
+                })
+       },
     login() {
       if (!this.username || !this.password) {
         this.toats("请输入账号密码", "cancel", 3000);
@@ -74,16 +101,15 @@ export default {
       this.ischeck = false;
       let data = {
         phone: this.username,
-        pwd: this.getmd5(this.password),
-        openID: " "
+        pwd:  this.getmd5(this.password),
       };
       console.log(JSON.stringify(data));
       this.$store.dispatch("setLoadingState", true);
-      api
-        .vipLogin(data)
+      api.vipLogin(data)
         .then(res => {
           console.log(res);
           if (res) {
+            this.$vux.toast.hide();
             // let userInfo = Object.assign()sessionId
             this.$store.dispatch("setLoadingState", false);
             //this.setUserInfo(res.data)
@@ -92,14 +118,10 @@ export default {
           }
         })
         .catch(error => {
-          console.log(error.data.desc);
+          console.log(error);
+          this.disabled = false;
+          this.ischeck = true;
           this.toats(error.data.desc, "cancel", 3000);
-          setTimeout(() => {
-            // 隐藏
-            this.$vux.toast.hide();
-            this.disabled = false;
-            this.ischeck = true;
-          }, 3000);
         });
     },
     toats(msg, text, time) {

@@ -162,7 +162,7 @@ a.active {
   //   animation: slideLeft .3s;
   // }
 }
-
+input,input:focus,input:active{user-select: text;} 
 @keyframes slideLeft {
   from {
     transform: translate3d(100%, 0, 0);

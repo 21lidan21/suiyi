@@ -12,7 +12,7 @@
        请到活动公益宣传点或牛奶领取点<br>
        咨询、参加
      </div>
-     <div class="footer" @click="showPlugin('/dda/receive')">
+     <div class="footer" @click="goto()">
        <div class="footer_btn" >前往公益点</div>
      </div>
      
@@ -22,8 +22,8 @@
 export default {
   data() {
     return {
-      balance: "0.00",
-      heart: "0.00"
+      balance: sessionStorage['showPrice']||'',
+      heart: sessionStorage['point']||'',
     };
   },
   methods: {

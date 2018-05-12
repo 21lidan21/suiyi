@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="contentBody">
    <x-header class="header" style="padding:0;" :left-options="{showBack: false}">传微行动</x-header>
     <div>
       <div style="padding:.1rem 0;">
@@ -101,7 +101,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .content{
+  .contentBody{
       overflow-y: auto !important;
       -webkit-overflow-scrolling:touch !important;
       height:100% !important;

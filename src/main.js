@@ -12,8 +12,10 @@ import locale from 'element-ui/lib/locale/lang/en'
 
 import { XHeader,XImg } from 'vux'
 import { Loadmore,InfiniteScroll } from 'mint-ui'
+import {AlertPlugin,ToastPlugin } from 'vux'
 
-
+Vue.use(AlertPlugin)
+Vue.use(ToastPlugin)
 Vue.component('x-img', XImg)
 Vue.component('x-header', XHeader)
 Vue.component(Loadmore.name, Loadmore);
