@@ -19,7 +19,7 @@
 </el-row>
 </router-link>
 <el-row type="flex" justify="center" class='kuaigongyi'>
-  <el-col :span="24"><div class="grid-content bg-purple-dark" @click="goto"><img src="../assets/images/kuaigongyi.jpg" width="100%" alt=""></div></el-col>
+  <el-col :span="24"><div class="grid-content bg-purple-dark" @click="goto"><img onclick="return false" src="../assets/images/kuaigongyi.jpg" width="100%" alt=""></div></el-col>
 </el-row>
  <div class="activity">
    <router-link to="/home/undertakingsContent"><div class="swiper-slide1"><img onclick="return false"  src="../assets/images/top1.png" alt=""><div style="padding-top:.2rem;line-height: .35rem;color: #fff;"><span style="font-size: .28rem;">牛奶小镇</span><br/><span style="font-size: .22rem;">参与人数：统计中...</span><br/><span style="font-size: .22rem;">捐助累计：统计中...</span><br/><span style="font-size: .22rem;">帮扶对象：统计中...</span></div></div></router-link>
@@ -31,10 +31,10 @@
 <flexbox class="xinjintoutiao-inner">
    <flexbox-item :span="2"><div class="xinjintitle"><img src="../assets/images/xinjintoutiao.png" width="100%;" alt=""></div></flexbox-item>
   <flexbox-item><div class=""><swiper auto height="30px" direction="vertical" :interval=2000 class="text-scroll" :show-dots="false">
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao01.png" alt=""><div>爱心点燃希望，奉献成就未来</div><div style="margin-top:.12rem;">感谢 <span style="color: #2da7e0;">牛奶小镇</span> 成功入驻随益公益平台</div></div></swiper-item>
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao02.png" alt=""><div>爱心点燃希望，奉献成就未来</div><div style="margin-top:.12rem;">感谢 <span style="color: #2da7e0;">阅食小景</span> 成功入驻随益公益平台</div></div></swiper-item>
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div>爱心点燃希望，奉献成就未来</div><div style="margin-top:.12rem;">感谢 <span style="color: #2da7e0;">传微远航</span> 成功入驻随益公益平台</div></div></swiper-item>
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div>爱心点燃希望，奉献成就未来</div><div style="margin-top:.12rem;">感谢 <span style="color: #2da7e0;">交警支队九大队</span> 成功入驻随益...</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao01.png" alt=""><div style="margin-top:0.05rem;">爱心点燃希望，奉献成就未来</div><div style="margin-top:0.1rem;">感谢 <span style="color: #2da7e0;">牛奶小镇</span> 成功入驻随益公益平台</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao02.png" alt=""><div style="margin-top:0.05rem;">爱心点燃希望，奉献成就未来</div><div style="margin-top:0.1rem;">感谢 <span style="color: #2da7e0;">阅食小景</span> 成功入驻随益公益平台</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div style="margin-top:0.05rem;">爱心点燃希望，奉献成就未来</div><div style="margin-top:0.1rem;">感谢 <span style="color: #2da7e0;">传微远航</span> 成功入驻随益公益平台</div></div></swiper-item>
+      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div style="margin-top:0.05rem;">爱心点燃希望，奉献成就未来</div><div style="margin-top:0.1rem;">感谢 <span style="color: #2da7e0;">交警支队九大队</span> 成功入驻随益...</div></div></swiper-item>
     </swiper></div>
    </flexbox-item>
 </flexbox>
@@ -222,12 +222,12 @@ export default {
 }
 .home {
   width: 100% !important;
-  height:100%;
+  height:100% !important;
  font-size:100%;
-
-  /*background-color:#2DA7E0;*/
-   overflow-y: auto !important;
+ overflow-y: auto !important;
       -webkit-overflow-scrolling:touch !important;
+      
+  /*background-color:#2DA7E0;*/
 }
 
 .quxiang {

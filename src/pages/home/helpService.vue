@@ -1,5 +1,5 @@
 <template>
-	<div style="padding-bottom: 2rem;">
+	<div style="padding-bottom: 1rem;overflow-y: auto !important;-webkit-overflow-scrolling:touch !important;">
     <x-header class="header" :left-options="{backText: ''}">帮扶对象服务中心</x-header>
       <div style="margin-bottom: 0.3rem;">
       	<img src="../../assets/images/扶贫.jpg" alt="">
