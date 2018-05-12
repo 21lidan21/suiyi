@@ -83,6 +83,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+input{
+  line-height: 2em;
+}
 .header { 
   background:#ffffff;
   box-shadow:0 1px 2px 0 rgba(225,225,225,0.50);

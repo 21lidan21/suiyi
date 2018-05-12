@@ -31,10 +31,10 @@
 <flexbox class="xinjintoutiao-inner">
    <flexbox-item :span="2"><div class="xinjintitle"><img src="../assets/images/xinjintoutiao.png" width="100%;" alt=""></div></flexbox-item>
   <flexbox-item><div class=""><swiper auto height="30px" direction="vertical" :interval=2000 class="text-scroll" :show-dots="false">
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao01.png" alt=""><div style="margin-top:0.05rem;">爱心点燃希望，奉献成就未来</div><div style="margin-top:0.1rem;">感谢 <span style="color: #2da7e0;">牛奶小镇</span> 成功入驻随益公益平台</div></div></swiper-item>
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao02.png" alt=""><div style="margin-top:0.05rem;">爱心点燃希望，奉献成就未来</div><div style="margin-top:0.1rem;">感谢 <span style="color: #2da7e0;">阅食小景</span> 成功入驻随益公益平台</div></div></swiper-item>
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div style="margin-top:0.05rem;">爱心点燃希望，奉献成就未来</div><div style="margin-top:0.1rem;">感谢 <span style="color: #2da7e0;">传微远航</span> 成功入驻随益公益平台</div></div></swiper-item>
-      <swiper-item><div class="item"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div style="margin-top:0.05rem;">爱心点燃希望，奉献成就未来</div><div style="margin-top:0.1rem;">感谢 <span style="color: #2da7e0;">交警支队九大队</span> 成功入驻随益...</div></div></swiper-item>
+      <swiper-item><div class="item item-it"><img style="width:.6rem;" src="../assets/images/toutiao01.png" alt=""><div >爱心点燃希望，奉献成就未来</div><div >感谢 <span style="color: #2da7e0;">牛奶小镇</span> 成功入驻随益公益平台</div></div></swiper-item>
+      <swiper-item><div class="item item-it"><img style="width:.6rem;" src="../assets/images/toutiao02.png" alt=""><div >爱心点燃希望，奉献成就未来</div><div >感谢 <span style="color: #2da7e0;">阅食小景</span> 成功入驻随益公益平台</div></div></swiper-item>
+      <swiper-item><div class="item item-it"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div >爱心点燃希望，奉献成就未来</div><div >感谢 <span style="color: #2da7e0;">传微远航</span> 成功入驻随益公益平台</div></div></swiper-item>
+      <swiper-item><div class="item item-it"><img style="width:.6rem;" src="../assets/images/toutiao03.png" alt=""><div >爱心点燃希望，奉献成就未来</div><div >感谢 <span style="color: #2da7e0;">交警支队九大队</span> 成功入驻随益...</div></div></swiper-item>
     </swiper></div>
    </flexbox-item>
 </flexbox>
@@ -216,6 +216,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.item-it{
+  
+}
 .header {
   background: #ffffff;
   box-shadow: 0 1px 2px 0 rgba(225, 225, 225, 0.5);
@@ -289,6 +292,14 @@ export default {
   height: 0.64rem;
 }
 .item {
+  
+  
+  div{
+    overflow: hidden;
+    padding-top:1px ;
+    box-sizing: border-box;
+  }
+
   img {
     width: 0.8rem;
     height: 0.8rem;

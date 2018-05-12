@@ -1,5 +1,5 @@
 <template>
-	<div >
+	<div class="content">
     <x-header   class="header" :left-options="{backText: ''}">帮扶对象信息</x-header>
 		<div style=" border-bottom:solid 1px rgb(255, 208, 75);padding:10px;width:70px;margin-left:5px;" class="doing">我们在行动</div>
 
@@ -37,6 +37,7 @@
     <router-link to="/dda/joincamp">
       <div class="footer">我要捐助TA</div>
     </router-link>
+    <div class="polyfill"></div>
 	</div>
 </template>
 
@@ -175,6 +176,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.content{
+  width: 100% !important;
+  height:100% !important;
+
+ overflow-y: auto !important;
+      -webkit-overflow-scrolling:touch !important;
+}
+.polyfill{
+  height: 7em;
+}
 .schoool-info{
   position: relative;
   top:.8em;

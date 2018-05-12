@@ -43,6 +43,7 @@
          <div class="dda_join_pop_up"></div>
        </div>
     </div>
+    <div class="pollyfill"></div>
    </div>
 </template>
 <script>
@@ -136,6 +137,9 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+.pollyfill{
+  line-height: 3em;
+}
 .head{
     background: url(../../assets/images/usercenterbg1.jpg) no-repeat ;
     background-size: 100% 100%;
