@@ -1,5 +1,5 @@
 <template>
-   <div class="login_bg">
+   <div class="login_bg"  @click="resetResize" >
    	<x-header class="header" :left-options="{backText: ''}">登录</x-header>
    	<div class="main">
    	<div style="width: 20%;margin:.5rem auto;">
@@ -21,7 +21,7 @@
 </template>
 <script>
 import { XInput, Group, XButton, Cell } from "vux";
-import crypto from 'crypto'
+import crypto from "crypto";
 import api from "../../fetch/api";
 import * as _ from "../../util/tool";
 
@@ -43,6 +43,26 @@ export default {
     };
   },
   methods: {
+    resetResize() {
+      var docEl = document.documentElement;
+      var clientWidth = docEl.clientWidth;
+      if (!clientWidth) return;
+      if (clientWidth >= 640) {
+        docEl.style.fontSize = "100px";
+      } else {
+        docEl.style.fontSize = 100 * (clientWidth / 750) + "px";
+        var div = document.createElement("div");
+        div.style.width = "1.4rem";
+        div.style.height = "0";
+        document.body.appendChild(div);
+        var ideal = 140 * clientWidth / 750;
+        var rmd = div.clientWidth / ideal;
+        if (rmd > 1.2 || rmd < 0.8) {
+          docEl.style.fontSize = 100 * (clientWidth / 750) / rmd + "px";
+        }
+        document.body.removeChild(div);
+      }
+    },
     login() {
       if (!this.username || !this.password) {
         this.toats("请输入账号密码", "cancel", 3000);
@@ -54,7 +74,7 @@ export default {
       this.ischeck = false;
       let data = {
         phone: this.username,
-        pwd:  this.getmd5(this.password),
+        pwd: this.getmd5(this.password),
         openID: " "
       };
       console.log(JSON.stringify(data));
@@ -90,13 +110,13 @@ export default {
         width: "5rem"
       });
     },
-    getmd5(val){
-        var a;
-        var md5 = crypto.createHash("md5");
-        md5.update(val);
-        var a = md5.digest('hex');
-        return a;
-            //47bce5c74f589f4867dbd57e9ca9f808 
+    getmd5(val) {
+      var a;
+      var md5 = crypto.createHash("md5");
+      md5.update(val);
+      var a = md5.digest("hex");
+      return a;
+      //47bce5c74f589f4867dbd57e9ca9f808
     }
   }
 };

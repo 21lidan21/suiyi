@@ -43,6 +43,7 @@ export default {
     };
   },
   methods: {
+      
       sendCode(){
           if (!this.username ) {
                 alert('请填写手机号')

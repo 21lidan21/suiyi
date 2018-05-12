@@ -1,25 +1,25 @@
 <template>
 	<div class="tabar" v-show="isShowTabbar">
 		<div class="tab">
-			<div class="tab-item tab_home">
+			<div class="tab-item tab_home"  @click="resetResize">
 				<router-link to="/home">
 					<div class="tab-icon"></div>
 					<div class="tab-text">随益</div>
 				</router-link>
 			</div>
-			<div class="tab-item tab_running">
-				<router-link to="/action">
+			<div class="tab-item tab_running" @click="resetResize">
+				<router-link to="/action" >
 					<div class="tab-icon"></div>
 					<div class="tab-text">传微行动</div>
 				</router-link>
 			</div>
-			<div class="tab-item tab_travel">
+			<div class="tab-item tab_travel"  @click="resetResize">
 				<router-link to="/mall">
 					<div class="tab-icon"></div>
 					<div class="tab-text">爱心商城</div>
 				</router-link>
 			</div>
-			<div class="tab-item tab_user">
+			<div class="tab-item tab_user"  @click="resetResize">
 				<router-link to="/user">
 					<div class="tab-icon"></div>
 					<div class="tab-text">我的</div>
@@ -40,6 +40,28 @@ export default {
 		isShowTabbar () {
 			let routeLength = this.$route.path.split('/').length
 			return routeLength > 2 ? false : true
+		}
+	},
+	methods:{
+		resetResize(){
+			var docEl = document.documentElement;
+			    var clientWidth = docEl.clientWidth;
+        if (!clientWidth) return;
+        if (clientWidth >= 640) {
+          docEl.style.fontSize = '100px';
+        } else {
+          docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+          var div = document.createElement('div');
+          div.style.width = '1.4rem';
+          div.style.height = '0';
+          document.body.appendChild(div);
+          var ideal = 140 * clientWidth / 750;
+          var rmd = (div.clientWidth / ideal);
+          if (rmd > 1.2 || rmd < 0.8) {
+            docEl.style.fontSize = 100 * (clientWidth / 750) / rmd + 'px';
+          }
+          document.body.removeChild(div);
+        };
 		}
 	}
 }

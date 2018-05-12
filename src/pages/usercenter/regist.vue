@@ -1,6 +1,6 @@
 <template>
-   <div class="login_bg" style="padding-bottom: 3rem;">
-   	<x-header class="header" :left-options="{backText: ''}">注册</x-header>
+   <div class="login_bg" style="padding-bottom: 3rem;" @click="resetResize">
+   	<x-header class="header" :left-options="{backText: ''}" >注册</x-header>
    	<div class="main">
    	<div style="width: 20%;margin:.5rem auto;">
       <img src="../../assets/images/wp04.png" style="width:1.2rem; height: 1.2rem;" alt="">
@@ -68,6 +68,26 @@ export default {
     };
   },
   methods: {
+    resetResize(){
+			var docEl = document.documentElement;
+			    var clientWidth = docEl.clientWidth;
+        if (!clientWidth) return;
+        if (clientWidth >= 640) {
+          docEl.style.fontSize = '100px';
+        } else {
+          docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+          var div = document.createElement('div');
+          div.style.width = '1.4rem';
+          div.style.height = '0';
+          document.body.appendChild(div);
+          var ideal = 140 * clientWidth / 750;
+          var rmd = (div.clientWidth / ideal);
+          if (rmd > 1.2 || rmd < 0.8) {
+            docEl.style.fontSize = 100 * (clientWidth / 750) / rmd + 'px';
+          }
+          document.body.removeChild(div);
+        };
+		},
     timer: function() {
       if (this.time > 0) {
         this.time--;

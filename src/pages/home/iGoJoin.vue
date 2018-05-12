@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="container" @click="resetResize">
     <x-header class="header" :left-options="{backText: ''}">我要加入</x-header>
     <div style="width: 65%; margin: 1rem auto;">
       <img src="../../assets/images/wp01.jpg" width="100%;" alt="">
@@ -38,6 +38,26 @@ export default {
     };
   },
   methods: { 
+    resetResize(){
+			var docEl = document.documentElement;
+			    var clientWidth = docEl.clientWidth;
+        if (!clientWidth) return;
+        if (clientWidth >= 640) {
+          docEl.style.fontSize = '100px';
+        } else {
+          docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+          var div = document.createElement('div');
+          div.style.width = '1.4rem';
+          div.style.height = '0';
+          document.body.appendChild(div);
+          var ideal = 140 * clientWidth / 750;
+          var rmd = (div.clientWidth / ideal);
+          if (rmd > 1.2 || rmd < 0.8) {
+            docEl.style.fontSize = 100 * (clientWidth / 750) / rmd + 'px';
+          }
+          document.body.removeChild(div);
+        };
+		},
     goto(item){
          this.isPopUp = true;
          document.body.style="height：100%;overflow：hidden;";
