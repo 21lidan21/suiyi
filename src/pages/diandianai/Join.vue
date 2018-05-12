@@ -46,15 +46,21 @@
 export default {
   data() {
     return {
-      isPopUp: true,
+      isPopUp: sessionStorage["suiyiNeedFlag"] == 1,
       isMilk: false,
-      code: 897982379889689
+      code: "查看订单请登录"
     };
+  },
+  created(){
+    if(sessionStorage["sessionId"]){
+      this.code= "请在我的订单中查看";
+    }
   },
   methods: {
     close(type) {
       if (type) {
       }
+      sessionStorage["suiyiNeedFlag"] =0;
       this.isPopUp = false;
     },
     goto(path) {

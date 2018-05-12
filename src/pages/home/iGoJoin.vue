@@ -1,6 +1,6 @@
 <template>
-	<div class="container" @click="resetResize">
-    <x-header class="header" :left-options="{backText: ''}">我要加入</x-header>
+	<div class="container" >
+    <x-header class="header" :left-options="{backText: '',preventGoBack:true} " @on-click-back="resetResize" >我要加入</x-header>
     <div style="width: 65%; margin: 1rem auto;">
       <img src="../../assets/images/wp01.jpg" width="100%;" alt="">
     </div>
@@ -40,6 +40,10 @@ export default {
   },
   methods: { 
     resetResize(){
+      
+      setTimeout(()=>{
+
+     
 			var docEl = document.documentElement;
 			    var clientWidth = docEl.clientWidth;
         if (!clientWidth) return;
@@ -58,6 +62,9 @@ export default {
           }
           document.body.removeChild(div);
         };
+        
+      this.$router.push("/home")
+      },400)
 		},
     goto(item){
          this.isPopUp = true;

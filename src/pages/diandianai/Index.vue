@@ -103,7 +103,7 @@ export default {
               case "ok":
                 //跳转到上一页
                 //$('.return').trigger("click");
-
+                sessionStorage["suiyiNeedFlag"] = 1;
                 self.$router.push("/dda/join");
 
                 break;

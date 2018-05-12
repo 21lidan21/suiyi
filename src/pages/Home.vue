@@ -224,8 +224,10 @@ export default {
   width: 100% !important;
   height:100%;
  font-size:100%;
- margin-bottom: 3rem;
+
   /*background-color:#2DA7E0;*/
+   overflow-y: auto !important;
+      -webkit-overflow-scrolling:touch !important;
 }
 
 .quxiang {

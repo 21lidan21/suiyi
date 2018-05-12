@@ -1,6 +1,6 @@
 <template>
-   <div class="login_bg"  @click="resetResize" >
-   	<x-header class="header" :left-options="{backText: ''}">登录</x-header>
+   <div class="login_bg"  >
+   	<x-header class="header" :left-options="{backText: '',preventGoBack:true}" @on-click-back="resetResize">登录</x-header>
    	<div class="main">
    	<div style="width: 20%;margin:.5rem auto;">
       <img src="../../assets/images/wp04.png" style="width:1.2rem; height: 1.2rem;" alt="">
@@ -47,6 +47,7 @@ export default {
   },
   methods: {
     resetResize() {
+      setTimeout(()=>{
       var docEl = document.documentElement;
       var clientWidth = docEl.clientWidth;
       if (!clientWidth) return;
@@ -65,6 +66,8 @@ export default {
         }
         document.body.removeChild(div);
       }
+       this.$router.push("/user")
+      },400)
     },
     getUserInfo(){     
             api.GetUserInfoByID()
