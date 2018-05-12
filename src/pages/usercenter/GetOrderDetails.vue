@@ -98,10 +98,10 @@ export default {
   position: absolute;
   bottom: 0;
   top: 4.1rem;
-  left: 0.3rem;
-  right: 0.3rem;
+  left: 0;
+  right: 0;
   background: url(../../assets/images/milk.png) no-repeat center;
-  background-size: auto 100%;
+  background-size: 100% 100%;
 }
 .yellow_suc {
   color: #fcdf5e;

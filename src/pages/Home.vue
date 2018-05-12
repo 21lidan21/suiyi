@@ -147,7 +147,7 @@ export default {
   beforeRouteEnter(to, from, next) {
     next(vm => {
     
-    //  vm.getOpenId(vm)
+     vm.getOpenId(vm)
     });
   },
   computed: {
@@ -216,9 +216,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.item-it{
-  
-}
 .header {
   background: #ffffff;
   box-shadow: 0 1px 2px 0 rgba(225, 225, 225, 0.5);

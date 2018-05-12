@@ -1,7 +1,7 @@
 <template>
   <div  class="headerDiv">
   <x-header   class="header "  :left-options="{backText: ''}">我的订单</x-header>
-    <tab class="tabsp" ac :line-width="1" v-model="index"  active-color="#2da7e0" >
+    <tab class="tabsp" :line-width="1" v-model="index"  active-color="#2da7e0" >
         <tab-item selected @on-item-click="onItemClick">全部</tab-item>
         <tab-item @on-item-click="onItemClick">待付款</tab-item>
         <tab-item @on-item-click="onItemClick">待收取</tab-item>

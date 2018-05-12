@@ -94,7 +94,7 @@ input{
 	width:100%;
 	height:100%;
 	background: #EDF8FF; 
-	padding-bottom: .5rem;
+	padding-bottom: 1.5rem;
 }
 .main{
 	padding:0 .3rem .2rem .3rem;

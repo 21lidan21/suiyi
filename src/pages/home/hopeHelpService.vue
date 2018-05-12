@@ -85,7 +85,8 @@ export default {
 	width:100%;
 	height:100%;
 	background: #EDF8FF; 
-	padding-bottom: 1.5rem;
+	overflow-y: auto !important;
+    -webkit-overflow-scrolling:touch !important;
 }
 .main{
 	padding:0 .3rem .2rem .3rem;
@@ -94,7 +95,7 @@ export default {
 	border-radius: .15rem;
 	div{
 		border-bottom: 1px solid #F6F6F6;
-		line-height: .8rem;
+		line-height: 1rem;
 	}
 	.textarea{
 		border: 1px solid #F6F6F6;
