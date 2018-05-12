@@ -24,7 +24,7 @@
       <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
        我的收藏
       </cell-box>
-       <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
+       <cell-box is-link :link="{path:'/dda/receive'}" style="font-size: .28rem;line-height: .6rem;">
         周边领取点
       </cell-box>
       <cell-box is-link style="font-size: .28rem;line-height: .6rem;">
